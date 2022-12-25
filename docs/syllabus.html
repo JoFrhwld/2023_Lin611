@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.280">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Josef Fruehwald">
+
+<title>Lin611 - Spring 2023 - Lin611-001: Quantitative Methods in Linguistics</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""><link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet">
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Lin611 - Spring 2023</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="./syllabus.html" aria-current="page">
+ <span class="menu-text">Syllabus</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./about.html">
+ <span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/"><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#key-info" id="toc-key-info" class="nav-link active" data-scroll-target="#key-info"><span class="toc-section-number">1</span>  Key info</a></li>
+  <li><a href="#course-at-a-glance" id="toc-course-at-a-glance" class="nav-link" data-scroll-target="#course-at-a-glance"><span class="toc-section-number">2</span>  Course at a Glance</a></li>
+  <li><a href="#course-description" id="toc-course-description" class="nav-link" data-scroll-target="#course-description"><span class="toc-section-number">3</span>  Course Description</a></li>
+  <li><a href="#learning-outcomes" id="toc-learning-outcomes" class="nav-link" data-scroll-target="#learning-outcomes"><span class="toc-section-number">4</span>  Learning Outcomes</a></li>
+  <li><a href="#course-materials" id="toc-course-materials" class="nav-link" data-scroll-target="#course-materials"><span class="toc-section-number">5</span>  Course Materials</a>
+  <ul class="collapse">
+  <li><a href="#required" id="toc-required" class="nav-link" data-scroll-target="#required">Required:</a></li>
+  <li><a href="#recommended" id="toc-recommended" class="nav-link" data-scroll-target="#recommended">Recommended:</a></li>
+  </ul></li>
+  <li><a href="#course-technology" id="toc-course-technology" class="nav-link" data-scroll-target="#course-technology"><span class="toc-section-number">6</span>  Course Technology</a>
+  <ul class="collapse">
+  <li><a href="#rrstudio" id="toc-rrstudio" class="nav-link" data-scroll-target="#rrstudio">R/RStudio</a></li>
+  <li><a href="#quartoquarto-notebooks" id="toc-quartoquarto-notebooks" class="nav-link" data-scroll-target="#quartoquarto-notebooks">Quarto/Quarto Notebooks</a></li>
+  <li><a href="#gitgithub" id="toc-gitgithub" class="nav-link" data-scroll-target="#gitgithub">Git/Github</a></li>
+  <li><a href="#canvas" id="toc-canvas" class="nav-link" data-scroll-target="#canvas">Canvas</a></li>
+  </ul></li>
+  <li><a href="#communications" id="toc-communications" class="nav-link" data-scroll-target="#communications"><span class="toc-section-number">7</span>  Communications</a></li>
+  <li><a href="#course-schedule" id="toc-course-schedule" class="nav-link" data-scroll-target="#course-schedule"><span class="toc-section-number">8</span>  Course Schedule</a></li>
+  <li><a href="#course-evaluation" id="toc-course-evaluation" class="nav-link" data-scroll-target="#course-evaluation"><span class="toc-section-number">9</span>  Course Evaluation</a>
+  <ul class="collapse">
+  <li><a href="#assignment-submission" id="toc-assignment-submission" class="nav-link" data-scroll-target="#assignment-submission">Assignment Submission</a></li>
+  <li><a href="#work-through-blog" id="toc-work-through-blog" class="nav-link" data-scroll-target="#work-through-blog">Work-through Blog</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a></li>
+  <li><a href="#midterm-project" id="toc-midterm-project" class="nav-link" data-scroll-target="#midterm-project">Midterm Project</a></li>
+  <li><a href="#final-project" id="toc-final-project" class="nav-link" data-scroll-target="#final-project">Final Project</a></li>
+  <li><a href="#engagement" id="toc-engagement" class="nav-link" data-scroll-target="#engagement">Engagement</a></li>
+  </ul></li>
+  <li><a href="#late-submissions-and-re-submissions" id="toc-late-submissions-and-re-submissions" class="nav-link" data-scroll-target="#late-submissions-and-re-submissions"><span class="toc-section-number">10</span>  Late Submissions and Re-submissions</a>
+  <ul class="collapse">
+  <li><a href="#midterm-grades" id="toc-midterm-grades" class="nav-link" data-scroll-target="#midterm-grades">Midterm Grades</a></li>
+  <li><a href="#the-final-est-deadline" id="toc-the-final-est-deadline" class="nav-link" data-scroll-target="#the-final-est-deadline">The Final-est Deadline</a></li>
+  </ul></li>
+  <li><a href="#group-work-and-code-sources" id="toc-group-work-and-code-sources" class="nav-link" data-scroll-target="#group-work-and-code-sources"><span class="toc-section-number">11</span>  Group Work and Code Sources</a>
+  <ul class="collapse">
+  <li><a href="#large-language-model-a.k.a.-ai-generated-code" id="toc-large-language-model-a.k.a.-ai-generated-code" class="nav-link" data-scroll-target="#large-language-model-a.k.a.-ai-generated-code">Large Language Model (a.k.a. AI) Generated Code</a></li>
+  </ul></li>
+  <li><a href="#attendance-and-engagement" id="toc-attendance-and-engagement" class="nav-link" data-scroll-target="#attendance-and-engagement"><span class="toc-section-number">12</span>  Attendance and Engagement</a></li>
+  <li><a href="#academic-conduct" id="toc-academic-conduct" class="nav-link" data-scroll-target="#academic-conduct"><span class="toc-section-number">13</span>  Academic Conduct</a></li>
+  <li><a href="#university-academic-policy-statements" id="toc-university-academic-policy-statements" class="nav-link" data-scroll-target="#university-academic-policy-statements"><span class="toc-section-number">14</span>  University Academic Policy Statements</a>
+  <ul class="collapse">
+  <li><a href="#excused-absences-and-acceptable-excuses" id="toc-excused-absences-and-acceptable-excuses" class="nav-link" data-scroll-target="#excused-absences-and-acceptable-excuses">Excused Absences and Acceptable Excuses</a></li>
+  <li><a href="#religious-observances" id="toc-religious-observances" class="nav-link" data-scroll-target="#religious-observances">Religious Observances</a></li>
+  <li><a href="#verification-of-absences" id="toc-verification-of-absences" class="nav-link" data-scroll-target="#verification-of-absences">Verification of Absences</a></li>
+  <li><a href="#make-up-work" id="toc-make-up-work" class="nav-link" data-scroll-target="#make-up-work">Make-Up Work</a></li>
+  <li><a href="#excused-absences-for-military-duties" id="toc-excused-absences-for-military-duties" class="nav-link" data-scroll-target="#excused-absences-for-military-duties">Excused Absences for Military Duties</a></li>
+  <li><a href="#unexcused-absences" id="toc-unexcused-absences" class="nav-link" data-scroll-target="#unexcused-absences">Unexcused Absences</a></li>
+  <li><a href="#prep-week-and-reading-days" id="toc-prep-week-and-reading-days" class="nav-link" data-scroll-target="#prep-week-and-reading-days">Prep Week and Reading Days</a></li>
+  <li><a href="#accommodations-due-to-disability" id="toc-accommodations-due-to-disability" class="nav-link" data-scroll-target="#accommodations-due-to-disability">Accommodations Due to Disability</a></li>
+  <li><a href="#non-discrimination-statement-and-title-ix-information" id="toc-non-discrimination-statement-and-title-ix-information" class="nav-link" data-scroll-target="#non-discrimination-statement-and-title-ix-information">Non-Discrimination Statement and Title IX Information</a></li>
+  <li><a href="#regular-and-substantive-interaction" id="toc-regular-and-substantive-interaction" class="nav-link" data-scroll-target="#regular-and-substantive-interaction">Regular and Substantive Interaction</a></li>
+  </ul></li>
+  <li><a href="#diversity-equity-and-inclusion" id="toc-diversity-equity-and-inclusion" class="nav-link" data-scroll-target="#diversity-equity-and-inclusion"><span class="toc-section-number">15</span>  Diversity, Equity and Inclusion</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Lin611-001: Quantitative Methods in Linguistics</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Josef Fruehwald </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">January 2023</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<div>
+<p><a href="./Lin611_2023_syllabus.pdf">Syllabus pdf</a></p>
+</div>
+<section id="key-info" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="key-info"><span class="header-section-number">1</span> Key info</h2>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<section id="where-and-when" class="level3 quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<h3 class="anchored" data-anchor-id="where-and-when">Where and When</h3>
+<table class="table">
+<tbody>
+<tr class="odd">
+<td>Where:</td>
+<td>Funkhouser, 307B</td>
+</tr>
+<tr class="even">
+<td>When:</td>
+<td>Tuesdays &amp; Thursdays, 12:30 : 13:45</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="instructor" class="level3 quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<h3 class="anchored" data-anchor-id="instructor">Instructor</h3>
+<table class="table">
+<tbody>
+<tr class="odd">
+<td></td>
+<td>Dr.&nbsp;Josef Fruehwald</td>
+</tr>
+<tr class="even">
+<td>email:</td>
+<td>josef.fruehwald@uky.edu</td>
+</tr>
+<tr class="odd">
+<td>office hours:</td>
+<td>Mondays, 14:00 - 15:00</td>
+</tr>
+<tr class="even">
+<td>office location:</td>
+<td>POT 1671</td>
+</tr>
+</tbody>
+</table>
+</section>
+</div>
+</div>
+<hr>
+</section>
+<section id="course-at-a-glance" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="course-at-a-glance"><span class="header-section-number">2</span> Course at a Glance</h2>
+<dl>
+<dt>What you’ll learn:</dt>
+<dd>
+<p>the basics of statistical reasoning, linear modelling, data organization &amp; visualization, R</p>
+</dd>
+<dt>What you’ll do:</dt>
+<dd>
+<p>in-class exercises, a textbook work-through “blog”, a midterm project, a final project.</p>
+</dd>
+<dt>What you’ll need:</dt>
+<dd>
+<p>the course textbook, a computing device with a physical keyboard</p>
+</dd>
+<dt>The final-est deadline</dt>
+<dd>
+<p><a href="#the-final-est-deadline">Thursday, May 4</a></p>
+</dd>
+</dl>
+<div>
+<p><a title="Add to Calendar" class="addeventatc" data-id="Ko15801514" href="https://www.addevent.com/event/Ko15801514" target="_blank">Add to Calendar</a></p>
+<script type="text/javascript" src="https://cdn.addevent.com/libs/atc/1.6.1/atc.min.js" async="" defer=""></script>
+</div>
+<dl>
+<dt>Attendance Policy</dt>
+<dd>
+<p>Attendance is crucial for successful completion of the course, but there are no grade penalties.</p>
+</dd>
+<dt>Late Work Policy</dt>
+<dd>
+<p>2 day penalty free grace period on all assignments, 5% flat penalty afterwards. See <a href="#late-submissions-and-re-submissions">Late Submissions and Re-submissions</a></p>
+</dd>
+</dl>
+<hr>
+</section>
+<section id="course-description" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="course-description"><span class="header-section-number">3</span> Course Description</h2>
+<p>In recent decades, there has been a strong “quantitative turn” in linguistics. Quantitative methods, including statistical analysis, have always been fixtures in some subfields, but there are now few areas of linguistic inquiry where they are completely absent. As a graduate course in quantitative methods, the goals of this course are to help you establish baseline statistical reasoning, and to provide practical experience in data (re)organization and statistical model building. We will be focusing our attention on the most common variety of statistical models (linear models and their generalizations) in the most commonly used programming language (R).</p>
+<hr>
+</section>
+<section id="learning-outcomes" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="learning-outcomes"><span class="header-section-number">4</span> Learning Outcomes</h2>
+<p>After attending class meetings and completion of the coursework, students should be able to</p>
+<ul>
+<li><p>identify appropriate quantitative analysis procedures for diverse data sets.</p></li>
+<li><p>organize data sets tidily</p></li>
+<li><p>re-organize untidy data sets in R</p></li>
+<li><p>generate exploratory data visualizations</p></li>
+<li><p>specify and fit linear or generalized linear models in R</p></li>
+<li><p>report the meaningful results of a statistical model</p></li>
+</ul>
+<hr>
+</section>
+<section id="course-materials" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="course-materials"><span class="header-section-number">5</span> Course Materials</h2>
+<section id="required" class="level3">
+<h3 class="anchored" data-anchor-id="required">Required:</h3>
+<p>Winter, B. (2019). <em>Statistics for linguists: An introduction using R</em>. Routledge. ISBN 978-1138056091.</p>
+</section>
+<section id="recommended" class="level3">
+<h3 class="anchored" data-anchor-id="recommended">Recommended:</h3>
+<p>Wickham, H &amp; G. Grolemund (2022*) <em>R for Data Science</em> <a href="https://r4ds.had.co.nz/" class="uri">https://r4ds.had.co.nz/</a>.</p>
+<hr>
+</section>
+</section>
+<section id="course-technology" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="course-technology"><span class="header-section-number">6</span> Course Technology</h2>
+<section id="rrstudio" class="level3">
+<h3 class="anchored" data-anchor-id="rrstudio">R/RStudio</h3>
+<p>We’ll be learning how to implement our analyses in the R programming language, specifically using the RStudio IDE. You can install and configure RStudio on your own computer that you bring to class. You will also have access to RStudio Workbench hosted by the College of Arts &amp; Sciences at <a href="https://rstudio.as.uky.edu/" class="uri">https://rstudio.as.uky.edu/</a>. You can log in with your LinkBlue credentials.</p>
+</section>
+<section id="quartoquarto-notebooks" class="level3">
+<h3 class="anchored" data-anchor-id="quartoquarto-notebooks">Quarto/Quarto Notebooks</h3>
+<p>Quarto is a program built into RStudio that takes source documents written in Markdown and R, and renders them into various output document formats, including html and pdf. This program is included in RStudio, and won’t require additional download or installation.</p>
+</section>
+<section id="gitgithub" class="level3">
+<h3 class="anchored" data-anchor-id="gitgithub">Git/Github</h3>
+<p>Git is a “Version Control System” that lets you keep track of changes on software projects. Github is a service that allows online hosting of Git projects. You will need to create a free a Github account for the course.</p>
+</section>
+<section id="canvas" class="level3">
+<h3 class="anchored" data-anchor-id="canvas">Canvas</h3>
+<p>Canvas will be used to make course announcements, and to set &amp; submit assignments.</p>
+<hr>
+</section>
+</section>
+<section id="communications" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="communications"><span class="header-section-number">7</span> Communications</h2>
+<p>I will respond to emails in a timely manner during normal working hours, but it may take longer if you email me after 5pm on weekdays, or any time during the weekend.</p>
+<hr>
+</section>
+<section id="course-schedule" class="level2" data-number="8">
+<h2 data-number="8" class="anchored" data-anchor-id="course-schedule"><span class="header-section-number">8</span> Course Schedule</h2>
+<p>The topics and readings listed here are the tentative schedule for the course. We may find, in the room, that some topics will take longer than initially scheduled.</p>
+<div style="font-size: 0.75em">
+<table class="table">
+<colgroup>
+<col style="width: 9%">
+<col style="width: 17%">
+<col style="width: 19%">
+<col style="width: 19%">
+<col style="width: 37%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Week</th>
+<th>Dates</th>
+<th>Topics</th>
+<th>Readings</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td>Jan 10,12</td>
+<td>Onboarding</td>
+<td><a href="https://jofrhwld.github.io/blog/posts/2022/12/2022-12-21_github-onboarding/">Github Onboarding with RStudio</a></td>
+<td><p>Supplementary Resources</p>
+<p><a href="https://r4ds.had.co.nz/r-markdown.html">R4DS: RMarkdown</a></p>
+<p><a href="https://quarto.org/docs/get-started/hello/rstudio.html">Quarto Tutorial: Hello Quarto</a></p>
+<p><a href="https://quarto.org/docs/get-started/computations/rstudio.html">Quarto Tutorial: Computations</a></p>
+<p><a href="https://quarto.org/docs/get-started/authoring/rstudio.html">Quarto Tutorial: Authoring</a></p></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td>Jan 17, 19</td>
+<td>Introduction to R</td>
+<td>Winter, Ch 1</td>
+<td><p>Supplementary Resources:</p>
+<p><a href="https://rstudio-education.github.io/hopr/basics.html">Hands-On Programming with R, Chapter 2</a></p>
+<p><a href="https://jofrhwld.github.io/teaching/courses/2017_lsa/lectures/Session_1.nb.html">2017 LSA Course: Introduction to R</a></p></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td>Jan 24, 26</td>
+<td>Tidyverse and Workflows</td>
+<td>Winter, Ch 2</td>
+<td><p>Supplementary Resources:</p>
+<p><a href="https://r4ds.had.co.nz/tidy-data.html">R4DS, Tidy Data</a></p>
+<p><a href="https://r4ds.had.co.nz/data-visualisation.html">R4DS, Data-visualization</a></p>
+<p><a href="https://jofrhwld.github.io/teaching/courses/2017_lsa/lectures/Session_2.nb.html">2017 LSA Course: Data Frames</a></p>
+<p><a href="https://jofrhwld.github.io/teaching/courses/2017_lsa/lectures/Session_3.nb.html">2017 LSA Course: Split-Apply-Combine</a></p>
+<p><a href="https://jofrhwld.github.io/teaching/courses/2017_lsa/lectures/Session_4.nb.html">2017 LSA Course: ggplot2</a></p>
+<p><a href="https://posit.co/wp-content/uploads/2022/10/tidyr.pdf">tidyr cheat sheet (pdf)</a></p>
+<p><a href="https://posit.co/wp-content/uploads/2022/10/data-transformation-1.pdf">dplyr cheat sheet (pdf)</a></p>
+<p><a href="https://posit.co/wp-content/uploads/2022/10/data-visualization-1.pdf">ggplot2 cheat sheet (pdf)</a></p></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td>Jan 31, Feb 02</td>
+<td>Tidyverse and Workflows (part 2)</td>
+<td>Winter, Ch 2</td>
+<td>’’</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td>Feb 07, 09</td>
+<td>Descriptive Statistics, Models, and Distributions</td>
+<td>Winter, Ch3</td>
+<td><p>Supplementary Resources:</p>
+<p><a href="https://r4ds.had.co.nz/exploratory-data-analysis.html">R4DS, Exploratory Data Analysis</a></p></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+<td>Feb 14, 16</td>
+<td>Intro to Linear Models</td>
+<td>Winter Ch4</td>
+<td><p>Supplementary Resources</p>
+<p><a href="https://r4ds.had.co.nz/model-basics.html">R4DS: Model Basics</a></p>
+<p><a href="https://jofrhwld.github.io/teaching/courses/2017_lsa/lectures/Session_5.nb.html">2017 LSA Course: Fitting Linear Models</a></p></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">7</td>
+<td>Feb 21, 23</td>
+<td>Correlations and Transformations</td>
+<td>Winter Ch5</td>
+<td><p>Supplementary Resources</p>
+<p><a href="https://r4ds.had.co.nz/model-basics.html">R4DS: Model Basics</a></p>
+<p><a href="https://jofrhwld.github.io/teaching/courses/2017_lsa/lectures/Session_5.nb.html">2017 LSA Course: Fitting Linear Models</a></p></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">8</td>
+<td>Feb 28, Mar 02</td>
+<td>Multiple Regression</td>
+<td>Winter Ch6</td>
+<td><p>Supplementary Resources</p>
+<p><a href="https://r4ds.had.co.nz/model-basics.html">R4DS: Model Basics</a></p>
+<p><a href="https://jofrhwld.github.io/teaching/courses/2017_lsa/lectures/Session_5.nb.html">2017 LSA Course: Fitting Linear Models</a></p></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">9</td>
+<td>Mar 07, 09</td>
+<td>Categorical Predictors</td>
+<td>Winter Ch7</td>
+<td><p><strong>Midterm Project Due</strong></p>
+<p>Supplementary Resources</p>
+<p><a href="https://posit.co/wp-content/uploads/2022/10/factors-1.pdf">forcats cheat sheet (pdf)</a></p></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><em>Spring Break</em></td>
+<td><em>Mar 14, 16</em></td>
+<td><em>No class</em></td>
+<td><em>No Class</em></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">10</td>
+<td>Mar 21, 23</td>
+<td>Interactions and Non-Linear Effects</td>
+<td>Winter Ch 8</td>
+<td><p>Supplementary Material</p>
+<p><a href="https://arxiv.org/abs/1703.05339">Sóskuthy (2017)</a></p></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">11</td>
+<td>Mar 28, 30</td>
+<td>Inferential Statistics</td>
+<td>Winter Ch 9,10</td>
+<td><p>Supplementary Material</p>
+<p>Winter Ch 11</p>
+<p><a href="https://rpsychologist.com/cohend/">Visualizing Cohen’s <em>d</em></a></p>
+<p><a href="https://doi.org/10.1016/j.wocn.2018.05.005">Kirby &amp; Sonderegger (2018)</a></p></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">12</td>
+<td>Apr 04, 06</td>
+<td>Generalized Linear Models</td>
+<td>Winter Ch 12</td>
+<td><p>Supplementary Material</p>
+<p>Winter Ch 13</p></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">13</td>
+<td>Apr 11, 13</td>
+<td>Mixed Models</td>
+<td>Winter Ch 14</td>
+<td><p>Supplementary Material</p>
+<p><a href="https://jofrhwld.github.io/teaching/courses/2017_lsa/lectures/Session_7.nb.html">2017 LSA Course: Mixed Effects Models</a></p></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">14</td>
+<td>Apr 18, 20</td>
+<td>Mixed Models</td>
+<td>Winter Ch 15</td>
+<td><p>Supplementary Material</p>
+<p><a href="https://jofrhwld.github.io/teaching/courses/2017_lsa/lectures/Session_8.nb.html">2017 LSA Course: Model Comparison and Bootstrapping</a></p></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">15</td>
+<td>Apr 25</td>
+<td>Review &amp; Outlook</td>
+<td></td>
+<td>Winter Ch 16</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><em>Finals</em></td>
+<td><em>May 04</em></td>
+<td></td>
+<td></td>
+<td>Final Project Due / <a href="#the-final-est-deadline">The Final-est Deadline</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+</section>
+<section id="course-evaluation" class="level2" data-number="9">
+<h2 data-number="9" class="anchored" data-anchor-id="course-evaluation"><span class="header-section-number">9</span> Course Evaluation</h2>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<section id="grade-components" class="level3 quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<h3 class="anchored" data-anchor-id="grade-components">Grade Components</h3>
+<table class="table">
+<tbody>
+<tr class="odd">
+<td>Work-through Blog</td>
+<td style="text-align: right;">30%</td>
+</tr>
+<tr class="even">
+<td>Exercises</td>
+<td style="text-align: right;">20%</td>
+</tr>
+<tr class="odd">
+<td>Midterm Project</td>
+<td style="text-align: right;">20%</td>
+</tr>
+<tr class="even">
+<td>Final Project</td>
+<td style="text-align: right;">20%</td>
+</tr>
+<tr class="odd">
+<td>Engagement</td>
+<td style="text-align: right;">10%</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="grading-scale" class="level3 quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<h3 class="anchored" data-anchor-id="grading-scale">Grading Scale</h3>
+<table class="table">
+<tbody>
+<tr class="odd">
+<td>A</td>
+<td style="text-align: right;">&gt;= 90</td>
+</tr>
+<tr class="even">
+<td>B</td>
+<td style="text-align: right;">80 to 89</td>
+</tr>
+<tr class="odd">
+<td>C</td>
+<td style="text-align: right;">70 to 79</td>
+</tr>
+<tr class="even">
+<td>D</td>
+<td style="text-align: right;">60 to 69</td>
+</tr>
+<tr class="odd">
+<td>E</td>
+<td style="text-align: right;">&lt;= 59</td>
+</tr>
+</tbody>
+</table>
+</section>
+</div>
+</div>
+<section id="assignment-submission" class="level3">
+<h3 class="anchored" data-anchor-id="assignment-submission">Assignment Submission</h3>
+<p>Assignments will be set on canvas, and you will submit notification of the assignment’s completion through canvas. The <em>content</em> of the assignment itself may be contained elsewhere (e.g.&nbsp;the A&amp;S RStudio server, or a Github repository).</p>
+</section>
+<section id="work-through-blog" class="level3">
+<h3 class="anchored" data-anchor-id="work-through-blog">Work-through Blog</h3>
+<p>As we work through Winter (2019) chapter by chapter, you will need to update a Quarto blog in which you, at the very least, run every code chunk from the chapter. A template Quarto blog repository is already available on Github. These blog posts will be due at the end of the week in which we finish covering each chapter.</p>
+</section>
+<section id="exercises" class="level3">
+<h3 class="anchored" data-anchor-id="exercises">Exercises</h3>
+<p>In addition to running the code included in each chapter, there will also be occasional R programming exercises.</p>
+</section>
+<section id="midterm-project" class="level3">
+<h3 class="anchored" data-anchor-id="midterm-project">Midterm Project</h3>
+<p>There will be a midterm project to analyze a sample data set utilizing the methods covered in the course up to that point, and to report on your analysis.</p>
+</section>
+<section id="final-project" class="level3">
+<h3 class="anchored" data-anchor-id="final-project">Final Project</h3>
+<p>There will also be a final project in the same format as the midterm project, but to extend your analysis tools to the fuller suite of methods covered in the course.</p>
+</section>
+<section id="engagement" class="level3">
+<h3 class="anchored" data-anchor-id="engagement">Engagement</h3>
+<p>Inspired by Kirby Conrod’s approach to <a href="https://kconrod.medium.com/new-ways-of-encouraging-and-assessing-participation-81928518e518">Participation Grades</a></p>
+<blockquote class="blockquote">
+<p>This portion of the grade is a way for me to give you credit for informal/unstructured collaborative work that you do. Participation and collaboration are strong predictors of success and learning retention, so please make an effort to find a way that works well for you to participate and engage with your colleagues.</p>
+</blockquote>
+<p>A well known process for solving programming problems is “<a href="https://en.wikipedia.org/w/index.php?title=Rubber_duck_debugging&amp;oldid=1111165654">Rubber Duck Debugging</a>.” It works by describing how each step of a program is supposed to work to another person or, as the name suggests, a rubber duck. Often the solution to the problem or the typo causing the bug jumps out at you during the process. Having a study buddy or study group could be really helpful if only for this purpose.</p>
+<hr>
+</section>
+</section>
+<section id="late-submissions-and-re-submissions" class="level2" data-number="10">
+<h2 data-number="10" class="anchored" data-anchor-id="late-submissions-and-re-submissions"><span class="header-section-number">10</span> Late Submissions and Re-submissions</h2>
+<p>Every graded piece of work will have a due date. After a 2 day grace period, there will be a single, flat 5% deduction from late work, whenever it is submitted between the due date and the <a href="#the-final-est-deadline">The Final-est Deadline</a></p>
+<section id="midterm-grades" class="level3">
+<h3 class="anchored" data-anchor-id="midterm-grades">Midterm Grades</h3>
+<div>
+<p><a title="Add to Calendar" class="addeventatc" data-id="rP15801523" href="https://www.addevent.com/event/rP15801523" target="_blank">Add to Calendar</a></p>
+<script type="text/javascript" src="https://cdn.addevent.com/libs/atc/1.6.1/atc.min.js" async="" defer=""></script>
+</div>
+<p>I will submit midterm grades on March 13, 2023, at the end of the midterm grading window. Any unsubmitted assignments that were due before March 13 will be given a grade of 0, <strong><em>BUT</em></strong> you can still submit those assignments after March 13 for their inclusion in the final grade.</p>
+</section>
+<section id="the-final-est-deadline" class="level3">
+<h3 class="anchored" data-anchor-id="the-final-est-deadline">The Final-est Deadline</h3>
+<div>
+<p><a title="Add to Calendar" class="addeventatc" data-id="Ko15801514" href="https://www.addevent.com/event/Ko15801514" target="_blank">Add to Calendar</a></p>
+<script type="text/javascript" src="https://cdn.addevent.com/libs/atc/1.6.1/atc.min.js" async="" defer=""></script>
+</div>
+<p>The final-est deadline by which to submit any material to be graded is <strong>May 4, 2023</strong>. I have to set this hard deadline in order to have enough time to conclude final grading in time for the university’s final grade submission deadline.</p>
+<hr>
+</section>
+</section>
+<section id="group-work-and-code-sources" class="level2" data-number="11">
+<h2 data-number="11" class="anchored" data-anchor-id="group-work-and-code-sources"><span class="header-section-number">11</span> Group Work and Code Sources</h2>
+<p>It is acceptable to collaborate and confer with other students in the course. Any collaboration should be indicated in the assignment submission. You may also refer to code sources from elsewhere on the internet, as long as you also document the source, and explain what the code does. You might not receive credit for code which has been copied wholesale from another online source or from another student without credit or documentation.</p>
+<section id="large-language-model-a.k.a.-ai-generated-code" class="level3">
+<h3 class="anchored" data-anchor-id="large-language-model-a.k.a.-ai-generated-code">Large Language Model (a.k.a. AI) Generated Code</h3>
+<p>There are a number of services that will generate code based on natural language queries. Some words of warning:</p>
+<section id="fluent-bs" class="level4">
+<h4 class="anchored" data-anchor-id="fluent-bs">Fluent BS</h4>
+<p>Large Language Models have been found to generate code that looks superficially correct, but often does not actually run properly, or do what the human asker wanted. Being able to successfully identify where or why code does not work correctly is not always straight forward. This issue led the Q&amp;A site StackOverflow to <a href="https://stackoverflow.com/help/gpt-policy">ban submissions generated by LLMs</a>, stating</p>
+<blockquote class="blockquote">
+<p>[…] because GPT is good enough to convince users of the site that the answer holds merit, signals the community typically use to determine the legitimacy of their peers’ contributions frequently fail to detect severe issues with GPT-generated answers.</p>
+</blockquote>
+</section>
+<section id="explain-what-the-code-does" class="level4">
+<h4 class="anchored" data-anchor-id="explain-what-the-code-does">Explain what the code does</h4>
+<p>As stated above, you should provide credit to any external sources you turned to for code help, and explain what the resulting code does.</p>
+<hr>
+</section>
+</section>
+</section>
+<section id="attendance-and-engagement" class="level2" data-number="12">
+<h2 data-number="12" class="anchored" data-anchor-id="attendance-and-engagement"><span class="header-section-number">12</span> Attendance and Engagement</h2>
+<p>You are expected to attend all scheduled course meetings. It would be helpful, but not necessary, if you let me know in advance if you are going to miss any lectures.</p>
+<p>If you feel sick in any way, including but not limited to the well-known symptoms of COVID-19 (loss of taste or smell, a new and persistent cough, high fever, etc), do not come to class. There are other mechanisms for demonstrating engagement than attending lectures.</p>
+<p>I will also expect all of us in the course to treat each other with respect and civility in all aspects of the course, including</p>
+<ul>
+<li><p>In the audio of a Zoom meeting</p></li>
+<li><p>In the text chat of a Zoom meeting</p></li>
+<li><p>On any course discussion boards or other forums.</p></li>
+</ul>
+<hr>
+</section>
+<section id="academic-conduct" class="level2" data-number="13">
+<h2 data-number="13" class="anchored" data-anchor-id="academic-conduct"><span class="header-section-number">13</span> Academic Conduct</h2>
+<p>UK Senate rules on academic offences: <a href="https://www.uky.edu/universitysenate/ao" class="uri">https://www.uky.edu/universitysenate/ao</a></p>
+<p>Appropriating someone else’s work and portraying it as your own is cheating. Collaborating with someone and portraying that work as solely your own is cheating. Obtaining answers to homework assignments or exams from previous semesters is cheating. Using an internet search engine to look up a question and reporting that answer as your own is cheating. Falsifying data or experimental results is cheating. If you are unsure about whether a specific action is cheating, you may check with me.</p>
+<p>The minimum penalty for a first offense is a zero on the assignment on which the offense occurred. If the offense is considered severe or if the student has other academic offenses on their record, more serious penalties, up to suspension from the University may be imposed.</p>
+<p>When students submit work purporting to be their own, but which in any way borrows ideas, organization, wording or anything else from another source without appropriate acknowledgement of the fact, the students are guilty of plagiarism. Plagiarism includes reproducing someone else’s work, whether it be a published article, chapter of a book, a paper from a friend or some file, or something similar to this. Plagiarism also includes the practice of employing or allowing another person to alter or revise the work which a student submits as their own, whoever that other person may be.</p>
+<p>Students may discuss assignments among themselves or with an instructor or tutor, but when the actual work is done, it must be done by the student, and the student alone. When a student’s assignment involves research in outside sources of information, the student must carefully acknowledge exactly what, where and how they employed them. If the words of someone else are used, the student must put quotation marks around the passage in question and add an appropriate indication of its origin. Making simple changes while leaving the organization, content and phraseology intact is plagiaristic. However, nothing in these Rules shall apply to those ideas which are so generally and freely circulated as to be a part of the public domain (University Senate Rules Section 6.3.1).</p>
+<hr>
+</section>
+<section id="university-academic-policy-statements" class="level2" data-number="14">
+<h2 data-number="14" class="anchored" data-anchor-id="university-academic-policy-statements"><span class="header-section-number">14</span> University Academic Policy Statements</h2>
+<p>Link to University Senate Academic Policy Statements <a href="https://www.uky.edu/universitysenate/acadpolicy" class="uri">https://www.uky.edu/universitysenate/acadpolicy</a></p>
+<section id="excused-absences-and-acceptable-excuses" class="level3">
+<h3 class="anchored" data-anchor-id="excused-absences-and-acceptable-excuses">Excused Absences and Acceptable Excuses</h3>
+<details>
+<p><strong>Excused Absences</strong>: <em>Senate Rules 5.2.5.2.1</em> defines the following as acceptable reasons for excused absences: (a) significant illness, (b) death of a family member, (c) trips for members of student organizations sponsored by an educational unit, trips for University classes, and trips for participation in intercollegiate athletic events, (d) major religious holidays, (e) interviews for graduate/professional school or full-time employment post-graduation, and (f) other circumstances found to fit “reasonable cause for nonattendance” by the instructor of record. Students should notify the professor of absences prior to class when possible.</p>
+<p>If a course syllabus requires specific interactions (e.g., with the instructor or other students), in situations where a student’s total EXCUSED absences exceed 1/5 (or 20%) of the required interactions for the course, the student shall have the right to request and receive a “W,” or the Instructor of Record may award an “I” for the course if the student declines a “W.” (<em>Senate Rules 5.2.5.2.3.1</em>)</p>
+</details>
+</section>
+<section id="religious-observances" class="level3">
+<h3 class="anchored" data-anchor-id="religious-observances">Religious Observances</h3>
+<details>
+<strong>Religious Observances</strong>: Students anticipating an absence for a major religious holiday are responsible for notifying the instructor in writing of anticipated absences due to their observance of such holidays. <em>Senate Rules 5.2.5.2.1(4) requires faculty to include any notification requirements within the syllabus. If no requirement is specified, two weeks prior to the absence is reasonable and should not be given any later. Information regarding major religious holidays may be obtained through <a href="https://www.uky.edu/ombud/religious-observation-accommodations">the Ombud’s website</a>or calling 859-257-3737.</em>
+</details>
+</section>
+<section id="verification-of-absences" class="level3">
+<h3 class="anchored" data-anchor-id="verification-of-absences">Verification of Absences</h3>
+<details>
+<strong>Verification of Absences</strong>:Students may be asked to verify their absences in order for them to be considered excused. <em>Senate Rule 5.2.5.2.1</em> states that faculty have the right to request appropriate verification when students claim an excused absence due to: significant illness; death in the household, trips for classes, trips sponsored by an educational unit and trips for participation related to intercollegiate athletic events; and interviews for full-time job opportunities after graduation and interviews for graduate and professional school. (Appropriate notification of absences due to University-related trips is required prior to the absence when feasible and in no case more than one week after the absence.)
+</details>
+</section>
+<section id="make-up-work" class="level3">
+<h3 class="anchored" data-anchor-id="make-up-work">Make-Up Work</h3>
+<details>
+<strong>Make-Up Work</strong>: Students missing any graded work due to an excused absence are responsible: for informing the Instructor of Record about their excused absence within one week following the period of the excused absence (except where prior notification is required); and for making up the missed work. The instructor must give the student an opportunity to make up the work and/or the exams missed due to the excused absence, and shall do so, if feasible, during the semester in which the absence occurred. The instructor shall provide the student with an opportunity to make up the graded work and may not simply calculate the student’s grade on the basis of the other course requirements, unless the student agrees in writing. According to <em>SR 5.2.5.2.2</em>, if a student adds a class after the first day of classes and misses graded work, the instructor must provide the student with an opportunity to make up any graded work.
+</details>
+</section>
+<section id="excused-absences-for-military-duties" class="level3">
+<h3 class="anchored" data-anchor-id="excused-absences-for-military-duties">Excused Absences for Military Duties</h3>
+<details>
+<p><strong>Excused Absences for Military Duties</strong>: If a student is required to be absent for one-fifth or less of the required course interactions (e.g., class meetings) due to military duties, the following procedure (per <em>SR 5.2.5.2.3.2</em>) shall apply:</p>
+<ol type="1">
+<li><p>Once a student is aware of a call to duty, the student shall provide a copy of the military orders to the Director of the Veterans Resource Center. The student shall also provide the Director with a list of his/her courses and instructors.</p></li>
+<li><p>The Director will verify the orders with the appropriate military authority, and on behalf of the military student, notify each Instructor of Record via Department Letterhead as to the known extent of the absence.</p></li>
+<li><p>The Instructor of Record shall not penalize the student’s absence in any way and shall provide accommodations and timeframes so that the student can make up missed assignments, quizzes, and tests in a mutually agreed upon manner.</p></li>
+</ol>
+</details>
+</section>
+<section id="unexcused-absences" class="level3">
+<h3 class="anchored" data-anchor-id="unexcused-absences">Unexcused Absences</h3>
+<details>
+<strong>Unexcused Absences:</strong> If an attendance/interaction policy is not stated in the course syllabus or the policy does not include a penalty to the student, the instructor cannot penalize a student for any unexcused absences. (<em>SR 5.2.5.2.3.3</em>)
+</details>
+</section>
+<section id="prep-week-and-reading-days" class="level3">
+<h3 class="anchored" data-anchor-id="prep-week-and-reading-days">Prep Week and Reading Days</h3>
+<details>
+<p><strong>Prep Week and Reading Days</strong>: Per <em>Senate Rules 5.2.5.6</em>, the last week of instruction of a regular semester is termed “Prep Week.” This phrase also refers to the last three days of instruction of the summer session and winter intersession. The Prep Week rule applies to ALL courses taught in the fall semester, spring semester, and summer session, including those taught by distance learning or in a format that has been compressed into less than one semester or session. This rule does not apply to courses in professional programs in colleges that have University Senate approval to have their own calendar.</p>
+<p>Make-up exams and quizzes are allowed during Prep Week. In cases of “Take Home” final examinations, students shall not be required to return the completed examination before the regularly scheduled examination period for that course. No written examinations, including final examinations, may be scheduled during the Prep Week. No quizzes may be given during Prep Week. No project/lab practicals/paper/presentation deadlines or oral/listening examinations may fall during the Prep Week unless it was scheduled in the syllabus AND the course has no final examination (or assignment that acts as a final examination) scheduled during finals week. (A course with a lab component may schedule the lab practical of the course during Prep Week if the lab portion does not also require a Final Examination during finals week.) Class participation and attendance grades are permitted during Prep Week. The <em>Senate Rules</em> permit continuing into Prep Week regularly assigned graded homework that was announced in the class syllabus.</p>
+<p>For fall and spring semester, the Thursday and Friday of Prep Week are study days (i.e.&nbsp;“Reading Days”). There cannot be any required “interactions” on a Reading Day. “Interactions” include participation in an in-class or online discussion, attendance at a guest lecture, or uploading an assignment. See <em>Senate Rules 9.1</em> for a more complete description of required interactions.</p>
+</details>
+</section>
+<section id="accommodations-due-to-disability" class="level3">
+<h3 class="anchored" data-anchor-id="accommodations-due-to-disability">Accommodations Due to Disability</h3>
+<details>
+<strong>Accommodations Due to Disability</strong>: In accordance with federal law, if you have a documented disability that requires academic accommodations, please inform your instructor as soon as possible during scheduled office hours. In order to receive accommodations in a course, you must provide your instructor with a Letter of Accommodation from the Disability Resource Center (DRC). The DRC coordinates campus disability services available to students with disabilities. It is located on the corner of Rose Street and Huguelet Drive in the Multidisciplinary Science Building, Suite 407. You can reach them via phone at (859) 257-2754, <a href="https://www.uky.edu/universitysenate/drc@uky.edu"><u>via email</u></a> (<a href="mailto:drc@uky.edu">drc@uky.edu</a>) or visit their <a href="http://www.uky.edu/DisabilityResourceCenter"><u>website</u></a> (uky.edu/DisabilityResourceCenter). DRC accommodations are not retroactive and should therefore be established with the DRC as early in the semester as is feasible.
+</details>
+</section>
+<section id="non-discrimination-statement-and-title-ix-information" class="level3">
+<h3 class="anchored" data-anchor-id="non-discrimination-statement-and-title-ix-information">Non-Discrimination Statement and Title IX Information</h3>
+<details>
+<p><strong>Non-discrimination and Title IX policy</strong>: In accordance with federal law, UK is committed to providing a safe learning, living, and working environment for all members of the University community. The University maintains a comprehensive program which protects all members from discrimination, harassment, and sexual misconduct. For complete information about UK’s prohibition on discrimination and harassment on aspects such as race, color, ethnic origin, national origin, creed, religion, political belief, sex, and sexual orientation, please see <a href="https://www.uky.edu/regs/ar6-1"><u>the electronic version of <em>UK’s Administrative Regulation 6:1</em> (“Policy on Discrimination and Harassment”)</u></a> (<a href="https://www.uky.edu/regs/ar6-1" class="uri">https://www.uky.edu/regs/ar6-1</a>). In accordance with Title IX of the Education Amendments of 1972, the University prohibits discrimination and harassment on the basis of sex in academics, employment, and all of its programs and activities. Sexual misconduct is a form of sexual harassment in which one act is severe enough to create a hostile environment based on sex and is prohibited between members of the University community and shall not be tolerated. For more details, please see <a href="https://www.uky.edu/regs/sites/www.uky.edu.regs/files/files/ar/ar_6.2-interim-final_08_14_20_1.pdf"><u>the electronic version of <em>Administrative Regulations 6:2</em> (“Policy and Procedures for Addressing and Resolving Allegations of Sexual Harassment Under Title IX and Other Forms of Sexual Misconduct”)</u></a> (<a href="https://www.uky.edu/regs/sites/www.uky.edu.regs/files/files/ar/ar_6.2-interim-final_08_14_20_1.pdf">https://www.uky.edu/regs/sites/www.uky.edu.regs/files/files/ar/ar_6.2-in...</a>). Complaints regarding violations of University policies on discrimination, harassment, and sexual misconduct are handled by the Office of Institutional Equity and Equal Opportunity (Institutional Equity), which is located in 13 Main Building and can be reached by phone at (859) 257-8927. You can also visit <a href="https://www.uky.edu/eeo/"><u>Institutional Equity’s website</u></a> (<a href="https://www.uky.edu/eeo" class="uri">https://www.uky.edu/eeo</a>).</p>
+<p>Faculty members are obligated to forward any report made by a student related to discrimination, harassment, and sexual misconduct to the Office of Institutional Equity. Students can confidentially report alleged incidences through the <a href="https://www.uky.edu/vipcenter/"><u>Violence Intervention and Prevention Center</u></a> (<a href="https://www.uky.edu/vipcenter" class="uri">https://www.uky.edu/vipcenter</a>), <a href="https://www.uky.edu/counselingcenter/"><u>Counseling Center</u></a> (<a href="https://www.uky.edu/counselingcenter" class="uri">https://www.uky.edu/counselingcenter</a>), or <a href="https://ukhealthcare.uky.edu/university-health-service/student-health"><u>University Health Service</u></a> (<a href="https://ukhealthcare.uky.edu/university-health-service/student-health" class="uri">https://ukhealthcare.uky.edu/university-health-service/student-health</a>).</p>
+<p>Reports of discrimination, harassment, or sexual misconduct may be made via the <a href="https://www.uky.edu/eeo/"><u>Institutional Equity’s website</u></a> (<a href="https://www.uky.edu/eeo" class="uri">https://www.uky.edu/eeo</a>); at that site, click on “Make a Report” on the left-hand side of the page.</p>
+</details>
+</section>
+<section id="regular-and-substantive-interaction" class="level3">
+<h3 class="anchored" data-anchor-id="regular-and-substantive-interaction">Regular and Substantive Interaction</h3>
+<details>
+<strong>Regular and Substantive Interaction</strong>: All credit-bearing courses must support regular and substantive interaction (RSI) between the students and the instructor, regardless of the course’s delivery mode (e.g., in-person, hybrid, or online). Courses satisfy this requirement when course participants meet regularly as prescribed in SR 10.6, and the Instructor of Record substantively interacts with students in at least two of the following ways: provides direct instruction; assesses students’ learning; provides information or responds to students’ questions; and facilitates student discussions. Some exceptions allowed as per SACSCOC. For further information about the RSI requirement, see the <a href="https://www.uky.edu/tlai/compliance-faculty"><u>Compliance Resources</u></a> link on the Teaching, Learning and Academic Innovation Compliance page.
+</details>
+<hr>
+</section>
+</section>
+<section id="diversity-equity-and-inclusion" class="level2" data-number="15">
+<h2 data-number="15" class="anchored" data-anchor-id="diversity-equity-and-inclusion"><span class="header-section-number">15</span> Diversity, Equity and Inclusion</h2>
+<p>The University of Kentucky is committed to our core values of diversity and inclusion, mutual respect and human dignity, and a sense of community (<a href="https://www.uky.edu/regs/gr14"><u>Governing Regulations XIV</u></a>). We acknowledge and respect the seen and unseen diverse identities and experiences of all members of the university community (<a href="https://www.uky.edu/regs/gr14" class="uri">https://www.uky.edu/regs/gr14</a>). These identities include but are not limited to those based on race, ethnicity, gender identity and expressions, ideas and perspectives, religious and cultural beliefs, sexual orientation, national origin, age, ability, and socioeconomic status. We are committed to equity and justice and providing a learning and engaging community in which every member is engaged, heard, and valued.</p>
+<p>We strive to rectify and change behavior that is inconsistent with our principles and commitment to diversity, equity, and inclusion. If students encounter such behavior in a course, they are encouraged to speak with the instructor of record and/or the <a href="https://www.uky.edu/eeo/"><u>Office of Institutional Equity and Equal Opportunity</u></a>. Students may also contact a faculty member within the department, program director, the director of undergraduate or graduate studies, the department chair, any college administrator, or the dean. All of these individuals are mandatory reporters under University policies.</p>
+<p><a href="https://www.uky.edu/universitysenate/syllabus-dei" class="uri">https://www.uky.edu/universitysenate/syllabus-dei</a></p>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div quarto-reuse="quarto-reuse" class="quarto-appendix-contents"><div>CC-BY-SA 4.0</div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+    var links = window.document.querySelectorAll('a:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          // default icon
+          link.classList.add("external");
+      }
+    }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+<script src="site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

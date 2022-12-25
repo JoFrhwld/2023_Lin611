@@ -1,5 +1,6 @@
 project:
   type: website
+  output-dir: docs
 
 website:
   title: "Lin611 - Spring 2023"
@@ -15,6 +16,13 @@ format:
   html:
     theme: darkly
     css: styles.css
+    license: "CC-BY-SA 4.0"
+    smooth-scroll: true
+    link-external-newwindow: true
+    link-external-icon: true
+    include-in-header: google_font.html
+    mainfont: "Atkinson Hyperlegible"
+  pdf:
     license: "CC-BY-SA 4.0"
 
 editor: visual
