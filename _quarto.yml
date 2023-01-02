@@ -9,9 +9,8 @@ website:
       - href: syllabus.qmd
         text: "Syllabus"
     right:
-      - about.qmd
       - icon: github
-        href: https://github.com/
+        href: "https://classroom.github.com/classrooms/121321157-lin611-2023"
 format:
   html:
     theme: darkly

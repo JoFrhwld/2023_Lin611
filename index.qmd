@@ -1,12 +1,20 @@
 ---
 title: "Quantitative Methods in Linguistics"
-listing:
-  contents: class_notes
-  sort: "date"
-  type: default
-  categories: true
-  sort-ui: false
-  filter-ui: true
+# listing:
+#   contents: class_notes
+#   sort: "date"
+#   type: default
+#   categories: true
+#   sort-ui: false
+#   filter-ui: true
 page-layout: full
 title-block-banner: true
 ---
+
+This is the course website for Lin611: Quantitative Methods in Linguistics, taught in the Spring semester of 2023. Notes from in-class will be listed below. Other important information:
+
+-   Please read the [syllabus](syllabus.qmd)
+
+-   The course textbook is Winter, B. (2019). *Statistics for linguists: An introduction using R*. Routledge. ISBN 978-1-138-05608-4
+
+-   Keep an eye on the course Canvas Shell for announcements and assignments.
