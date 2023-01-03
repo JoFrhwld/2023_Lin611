@@ -8,6 +8,8 @@ website:
     left:
       - href: syllabus.qmd
         text: "Syllabus"
+      - href: schedule.qmd
+        text: "Schedule"
     right:
       - icon: github
         href: "https://classroom.github.com/classrooms/121321157-lin611-2023"
