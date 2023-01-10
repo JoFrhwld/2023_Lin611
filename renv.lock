@@ -1,17 +1,12 @@
 {
   "R": {
-    "Version": "4.2.1",
+    "Version": "4.2.2",
     "Repositories": [
       {
         "Name": "CRAN",
-        "URL": "https://cran.rstudio.com"
+        "URL": "https://cloud.r-project.org"
       }
     ]
-  },
-  "Python": {
-    "Version": "3.9.14",
-    "Type": "virtualenv",
-    "Name": "/Users/joseffruehwald/Documents/blog/renv/python/virtualenvs/renv-python-3.9"
   },
   "Packages": {
     "renv": {

@@ -1,0 +1,1024 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  letterpaper,
+  DIV=11,
+  numbers=noendperiod]{scrartcl}
+
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+  \setmainfont[]{Atkinson Hyperlegible}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[normalem]{ulem}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\setcounter{secnumdepth}{1}
+% Make \paragraph and \subparagraph free-standing
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
+\KOMAoption{captions}{tableheading}
+\makeatletter
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\AtBeginDocument{%
+\ifdefined\contentsname
+  \renewcommand*\contentsname{Table of contents}
+\else
+  \newcommand\contentsname{Table of contents}
+\fi
+\ifdefined\listfigurename
+  \renewcommand*\listfigurename{List of Figures}
+\else
+  \newcommand\listfigurename{List of Figures}
+\fi
+\ifdefined\listtablename
+  \renewcommand*\listtablename{List of Tables}
+\else
+  \newcommand\listtablename{List of Tables}
+\fi
+\ifdefined\figurename
+  \renewcommand*\figurename{Figure}
+\else
+  \newcommand\figurename{Figure}
+\fi
+\ifdefined\tablename
+  \renewcommand*\tablename{Table}
+\else
+  \newcommand\tablename{Table}
+\fi
+}
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{ruled}
+\@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
+\floatname{codelisting}{Listing}
+\newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+\makeatletter
+\@ifpackageloaded{tcolorbox}{}{\usepackage[many]{tcolorbox}}
+\makeatother
+\makeatletter
+\@ifundefined{shadecolor}{\definecolor{shadecolor}{rgb}{.97, .97, .97}}
+\makeatother
+\makeatletter
+\makeatother
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={Lin611-001: Quantitative Methods in Linguistics},
+  pdfauthor={Josef Fruehwald},
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Lin611-001: Quantitative Methods in Linguistics}
+\author{Josef Fruehwald}
+\date{January 2023}
+
+\begin{document}
+\maketitle
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[borderline west={3pt}{0pt}{shadecolor}, enhanced, breakable, interior hidden, boxrule=0pt, frame hidden, sharp corners]}{\end{tcolorbox}}\fi
+
+\renewcommand*\contentsname{Sections}
+{
+\hypersetup{linkcolor=}
+\setcounter{tocdepth}{1}
+\tableofcontents
+}
+\hypertarget{key-info}{%
+\section{Key info}\label{key-info}}
+
+\begin{figure}
+
+\begin{minipage}[t]{0.50\linewidth}
+
+{\centering 
+
+\hypertarget{where-and-when}{%
+\subsection{Where and When}\label{where-and-when}}
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule()
+\endhead
+Where: & Funkhouser, 307B \\
+When: & Tuesdays \& Thursdays, 12:30 : 13:45 \\
+\bottomrule()
+\end{longtable}
+
+}
+
+\end{minipage}%
+%
+\begin{minipage}[t]{0.50\linewidth}
+
+{\centering 
+
+\hypertarget{instructor}{%
+\subsection{Instructor}\label{instructor}}
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule()
+\endhead
+& Dr.~Josef Fruehwald \\
+email: & josef.fruehwald@uky.edu \\
+office hours: & Mondays, 14:00 - 15:00 \\
+office location: & POT 1671 \\
+\bottomrule()
+\end{longtable}
+
+}
+
+\end{minipage}%
+
+\end{figure}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{course-at-a-glance}{%
+\section{Course at a Glance}\label{course-at-a-glance}}
+
+\begin{description}
+\item[What you'll learn:]
+the basics of statistical reasoning, linear modelling, data organization
+\& visualization, R
+\item[What you'll do:]
+in-class exercises, a textbook work-through ``blog'', a midterm project,
+a final project.
+\item[What you'll need:]
+the course textbook, a computing device with a physical keyboard
+\item[The final-est deadline]
+\protect\hyperlink{the-final-est-deadline}{Thursday, May 4}
+\end{description}
+
+\begin{description}
+\item[Attendance Policy]
+Attendance is crucial for successful completion of the course, but there
+are no grade penalties.
+\item[Late Work Policy]
+2 day penalty free grace period on all assignments, 5\% flat penalty
+afterwards. See
+\protect\hyperlink{late-submissions-and-re-submissions}{Late Submissions
+and Re-submissions}
+\end{description}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{course-description}{%
+\section{Course Description}\label{course-description}}
+
+In recent decades, there has been a strong ``quantitative turn'' in
+linguistics. Quantitative methods, including statistical analysis, have
+always been fixtures in some subfields, but there are now few areas of
+linguistic inquiry where they are completely absent. As a graduate
+course in quantitative methods, the goals of this course are to help you
+establish baseline statistical reasoning, and to provide practical
+experience in data (re)organization and statistical model building. We
+will be focusing our attention on the most common variety of statistical
+models (linear models and their generalizations) in the most commonly
+used programming language (R).
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{learning-outcomes}{%
+\section{Learning Outcomes}\label{learning-outcomes}}
+
+After attending class meetings and completion of the coursework,
+students should be able to
+
+\begin{itemize}
+\item
+  identify appropriate quantitative analysis procedures for diverse data
+  sets.
+\item
+  organize data sets tidily
+\item
+  re-organize untidy data sets in R
+\item
+  generate exploratory data visualizations
+\item
+  specify and fit linear or generalized linear models in R
+\item
+  report the meaningful results of a statistical model
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{course-materials}{%
+\section{Course Materials}\label{course-materials}}
+
+\hypertarget{required}{%
+\subsection{Required:}\label{required}}
+
+Winter, B. (2019). \emph{Statistics for linguists: An introduction using
+R}. Routledge. ISBN 978-1138056091.
+
+\hypertarget{recommended}{%
+\subsection{Recommended:}\label{recommended}}
+
+Wickham, H \& G. Grolemund (2022*) \emph{R for Data Science}
+\url{https://r4ds.had.co.nz/}.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{course-technology}{%
+\section{Course Technology}\label{course-technology}}
+
+\hypertarget{rrstudio}{%
+\subsection{R/RStudio}\label{rrstudio}}
+
+We'll be learning how to implement our analyses in the R programming
+language, specifically using the RStudio IDE. You can install and
+configure RStudio on your own computer that you bring to class. You will
+also have access to RStudio Workbench hosted by the College of Arts \&
+Sciences at \url{https://rstudio.as.uky.edu/}. You can log in with your
+LinkBlue credentials.
+
+\hypertarget{quartoquarto-notebooks}{%
+\subsection{Quarto/Quarto Notebooks}\label{quartoquarto-notebooks}}
+
+Quarto is a program built into RStudio that takes source documents
+written in Markdown and R, and renders them into various output document
+formats, including html and pdf. This program is included in RStudio,
+and won't require additional download or installation.
+
+\hypertarget{gitgithub}{%
+\subsection{Git/Github}\label{gitgithub}}
+
+Git is a ``Version Control System'' that lets you keep track of changes
+on software projects. Github is a service that allows online hosting of
+Git projects. You will need to create a free a Github account for the
+course.
+
+\hypertarget{canvas}{%
+\subsection{Canvas}\label{canvas}}
+
+Canvas will be used to make course announcements, and to set \& submit
+assignments.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{communications}{%
+\section{Communications}\label{communications}}
+
+I will respond to emails in a timely manner during normal working hours,
+but it may take longer if you email me after 5pm on weekdays, or any
+time during the weekend.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{course-schedule}{%
+\section{Course Schedule}\label{course-schedule}}
+
+The topics and readings listed here are the tentative schedule for the
+course. We may find, in the room, that some topics will take longer than
+initially scheduled.
+
+\footnotesize
+
+\begin{longtable}[]{@{}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.0900}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1700}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1900}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1900}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.3700}}@{}}
+\toprule()
+\begin{minipage}[b]{\linewidth}\raggedleft
+Week
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Dates
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Topics
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Readings
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Notes
+\end{minipage} \\
+\midrule()
+\endhead
+1 & Jan 10,12 & Onboarding &
+\href{https://jofrhwld.github.io/blog/posts/2022/12/2022-12-21_github-onboarding/}{Github
+Onboarding with RStudio} & Supplementary Resources
+
+\href{https://r4ds.had.co.nz/r-markdown.html}{R4DS: RMarkdown}
+
+\href{https://quarto.org/docs/get-started/hello/rstudio.html}{Quarto
+Tutorial: Hello Quarto}
+
+\href{https://quarto.org/docs/get-started/computations/rstudio.html}{Quarto
+Tutorial: Computations}
+
+\href{https://quarto.org/docs/get-started/authoring/rstudio.html}{Quarto
+Tutorial: Authoring} \\
+2 & Jan 17, 19 & Introduction to R & Winter, Ch 1 & Supplementary
+Resources:
+
+\href{https://rstudio-education.github.io/hopr/basics.html}{Hands-On
+Programming with R, Chapter 2}
+
+\href{https://jofrhwld.github.io/teaching/courses/2017_lsa/lectures/Session_1.nb.html}{2017
+LSA Course: Introduction to R} \\
+3 & Jan 24, 26 & Tidyverse and Workflows & Winter, Ch 2 & Supplementary
+Resources:
+
+\href{https://r4ds.had.co.nz/tidy-data.html}{R4DS, Tidy Data}
+
+\href{https://r4ds.had.co.nz/data-visualisation.html}{R4DS,
+Data-visualization}
+
+\href{https://jofrhwld.github.io/teaching/courses/2017_lsa/lectures/Session_2.nb.html}{2017
+LSA Course: Data Frames}
+
+\href{https://jofrhwld.github.io/teaching/courses/2017_lsa/lectures/Session_3.nb.html}{2017
+LSA Course: Split-Apply-Combine}
+
+\href{https://jofrhwld.github.io/teaching/courses/2017_lsa/lectures/Session_4.nb.html}{2017
+LSA Course: ggplot2}
+
+\href{https://posit.co/wp-content/uploads/2022/10/tidyr.pdf}{tidyr cheat
+sheet (pdf)}
+
+\href{https://posit.co/wp-content/uploads/2022/10/data-transformation-1.pdf}{dplyr
+cheat sheet (pdf)}
+
+\href{https://posit.co/wp-content/uploads/2022/10/data-visualization-1.pdf}{ggplot2
+cheat sheet (pdf)} \\
+4 & Jan 31, Feb 02 & Tidyverse and Workflows (part 2) & Winter, Ch 2 &
+'\,' \\
+5 & Feb 07, 09 & Descriptive Statistics, Models, and Distributions &
+Winter, Ch3 & Supplementary Resources:
+
+\href{https://r4ds.had.co.nz/exploratory-data-analysis.html}{R4DS,
+Exploratory Data Analysis} \\
+6 & Feb 14, 16 & Intro to Linear Models & Winter Ch4 & Supplementary
+Resources
+
+\href{https://r4ds.had.co.nz/model-basics.html}{R4DS: Model Basics}
+
+\href{https://jofrhwld.github.io/teaching/courses/2017_lsa/lectures/Session_5.nb.html}{2017
+LSA Course: Fitting Linear Models} \\
+7 & Feb 21, 23 & Correlations and Transformations & Winter Ch5 &
+Supplementary Resources
+
+\href{https://r4ds.had.co.nz/model-basics.html}{R4DS: Model Basics}
+
+\href{https://jofrhwld.github.io/teaching/courses/2017_lsa/lectures/Session_5.nb.html}{2017
+LSA Course: Fitting Linear Models} \\
+8 & Feb 28, Mar 02 & Multiple Regression & Winter Ch6 & Supplementary
+Resources
+
+\href{https://r4ds.had.co.nz/model-basics.html}{R4DS: Model Basics}
+
+\href{https://jofrhwld.github.io/teaching/courses/2017_lsa/lectures/Session_5.nb.html}{2017
+LSA Course: Fitting Linear Models} \\
+9 & Mar 07, 09 & Categorical Predictors & Winter Ch7 & \textbf{Midterm
+Project Due}
+
+Supplementary Resources
+
+\href{https://posit.co/wp-content/uploads/2022/10/factors-1.pdf}{forcats
+cheat sheet (pdf)} \\
+\emph{Spring Break} & \emph{Mar 14, 16} & \emph{No class} & \emph{No
+Class} & \\
+10 & Mar 21, 23 & Interactions and Non-Linear Effects & Winter Ch 8 &
+Supplementary Material
+
+\href{https://arxiv.org/abs/1703.05339}{Sóskuthy (2017)} \\
+11 & Mar 28, 30 & Inferential Statistics & Winter Ch 9,10 &
+Supplementary Material
+
+Winter Ch 11
+
+\href{https://rpsychologist.com/cohend/}{Visualizing Cohen's \emph{d}}
+
+\href{https://doi.org/10.1016/j.wocn.2018.05.005}{Kirby \& Sonderegger
+(2018)} \\
+12 & Apr 04, 06 & Generalized Linear Models & Winter Ch 12 &
+Supplementary Material
+
+Winter Ch 13 \\
+13 & Apr 11, 13 & Mixed Models & Winter Ch 14 & Supplementary Material
+
+\href{https://jofrhwld.github.io/teaching/courses/2017_lsa/lectures/Session_7.nb.html}{2017
+LSA Course: Mixed Effects Models} \\
+14 & Apr 18, 20 & Mixed Models & Winter Ch 15 & Supplementary Material
+
+\href{https://jofrhwld.github.io/teaching/courses/2017_lsa/lectures/Session_8.nb.html}{2017
+LSA Course: Model Comparison and Bootstrapping} \\
+15 & Apr 25 & Review \& Outlook & & Winter Ch 16 \\
+\emph{Finals} & \emph{May 04} & & & Final Project Due /
+\protect\hyperlink{the-final-est-deadline}{The Final-est Deadline} \\
+\bottomrule()
+\end{longtable}
+
+\normalsize
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{course-evaluation}{%
+\section{Course Evaluation}\label{course-evaluation}}
+
+\begin{figure}
+
+\begin{minipage}[t]{0.50\linewidth}
+
+{\centering 
+
+\hypertarget{grade-components}{%
+\subsection{Grade Components}\label{grade-components}}
+
+\begin{longtable}[]{@{}lr@{}}
+\toprule()
+\endhead
+Work-through Blog & 30\% \\
+Exercises & 20\% \\
+Midterm Project & 20\% \\
+Final Project & 20\% \\
+Engagement & 10\% \\
+\bottomrule()
+\end{longtable}
+
+}
+
+\end{minipage}%
+%
+\begin{minipage}[t]{0.50\linewidth}
+
+{\centering 
+
+\hypertarget{grading-scale}{%
+\subsection{Grading Scale}\label{grading-scale}}
+
+\begin{longtable}[]{@{}lr@{}}
+\toprule()
+\endhead
+A & \textgreater= 90 \\
+B & 80 to 89 \\
+C & 70 to 79 \\
+D & 60 to 69 \\
+E & \textless= 59 \\
+\bottomrule()
+\end{longtable}
+
+}
+
+\end{minipage}%
+
+\end{figure}
+
+\hypertarget{assignment-submission}{%
+\subsection{Assignment Submission}\label{assignment-submission}}
+
+Assignments will be set on canvas, and you will submit notification of
+the assignment's completion through canvas. The \emph{content} of the
+assignment itself may be contained elsewhere (e.g.~the A\&S RStudio
+server, or a Github repository).
+
+\hypertarget{work-through-blog}{%
+\subsection{Work-through Blog}\label{work-through-blog}}
+
+As we work through Winter (2019) chapter by chapter, you will need to
+update a Quarto blog in which you, at the very least, run every code
+chunk from the chapter. A template Quarto blog repository is already
+available on Github. These blog posts will be due at the end of the week
+in which we finish covering each chapter.
+
+\hypertarget{exercises}{%
+\subsection{Exercises}\label{exercises}}
+
+In addition to running the code included in each chapter, there will
+also be occasional R programming exercises.
+
+\hypertarget{midterm-project}{%
+\subsection{Midterm Project}\label{midterm-project}}
+
+There will be a midterm project to analyze a sample data set utilizing
+the methods covered in the course up to that point, and to report on
+your analysis.
+
+\hypertarget{final-project}{%
+\subsection{Final Project}\label{final-project}}
+
+There will also be a final project in the same format as the midterm
+project, but to extend your analysis tools to the fuller suite of
+methods covered in the course.
+
+\hypertarget{engagement}{%
+\subsection{Engagement}\label{engagement}}
+
+Inspired by Kirby Conrod's approach to
+\href{https://kconrod.medium.com/new-ways-of-encouraging-and-assessing-participation-81928518e518}{Participation
+Grades}
+
+\begin{quote}
+This portion of the grade is a way for me to give you credit for
+informal/unstructured collaborative work that you do. Participation and
+collaboration are strong predictors of success and learning retention,
+so please make an effort to find a way that works well for you to
+participate and engage with your colleagues.
+\end{quote}
+
+A well known process for solving programming problems is
+``\href{https://en.wikipedia.org/w/index.php?title=Rubber_duck_debugging\&oldid=1111165654}{Rubber
+Duck Debugging}.'' It works by describing how each step of a program is
+supposed to work to another person or, as the name suggests, a rubber
+duck. Often the solution to the problem or the typo causing the bug
+jumps out at you during the process. Having a study buddy or study group
+could be really helpful if only for this purpose.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{late-submissions-and-re-submissions}{%
+\section{Late Submissions and
+Re-submissions}\label{late-submissions-and-re-submissions}}
+
+Every graded piece of work will have a due date. After a 2 day grace
+period, there will be a single, flat 5\% deduction from late work,
+whenever it is submitted between the due date and the
+\protect\hyperlink{the-final-est-deadline}{The Final-est Deadline}
+
+\hypertarget{midterm-grades}{%
+\subsection{Midterm Grades}\label{midterm-grades}}
+
+I will submit midterm grades on March 13, 2023, at the end of the
+midterm grading window. Any unsubmitted assignments that were due before
+March 13 will be given a grade of 0, \textbf{\emph{BUT}} you can still
+submit those assignments after March 13 for their inclusion in the final
+grade.
+
+\hypertarget{the-final-est-deadline}{%
+\subsection{The Final-est Deadline}\label{the-final-est-deadline}}
+
+The final-est deadline by which to submit any material to be graded is
+\textbf{May 4, 2023}. I have to set this hard deadline in order to have
+enough time to conclude final grading in time for the university's final
+grade submission deadline.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{group-work-and-code-sources}{%
+\section{Group Work and Code
+Sources}\label{group-work-and-code-sources}}
+
+It is acceptable to collaborate and confer with other students in the
+course. Any collaboration should be indicated in the assignment
+submission. You may also refer to code sources from elsewhere on the
+internet, as long as you also document the source, and explain what the
+code does. You might not receive credit for code which has been copied
+wholesale from another online source or from another student without
+credit or documentation.
+
+\hypertarget{large-language-model-a.k.a.-ai-generated-code}{%
+\subsection{Large Language Model (a.k.a. AI) Generated
+Code}\label{large-language-model-a.k.a.-ai-generated-code}}
+
+There are a number of services that will generate code based on natural
+language queries. Some words of warning:
+
+\hypertarget{fluent-bs}{%
+\subsubsection{Fluent BS}\label{fluent-bs}}
+
+Large Language Models have been found to generate code that looks
+superficially correct, but often does not actually run properly, or do
+what the human asker wanted. Being able to successfully identify where
+or why code does not work correctly is not always straight forward. This
+issue led the Q\&A site StackOverflow to
+\href{https://stackoverflow.com/help/gpt-policy}{ban submissions
+generated by LLMs}, stating
+
+\begin{quote}
+{[}\ldots{]} because GPT is good enough to convince users of the site
+that the answer holds merit, signals the community typically use to
+determine the legitimacy of their peers' contributions frequently fail
+to detect severe issues with GPT-generated answers.
+\end{quote}
+
+\hypertarget{explain-what-the-code-does}{%
+\subsubsection{Explain what the code
+does}\label{explain-what-the-code-does}}
+
+As stated above, you should provide credit to any external sources you
+turned to for code help, and explain what the resulting code does.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{attendance-and-engagement}{%
+\section{Attendance and Engagement}\label{attendance-and-engagement}}
+
+You are expected to attend all scheduled course meetings. It would be
+helpful, but not necessary, if you let me know in advance if you are
+going to miss any lectures.
+
+If you feel sick in any way, including but not limited to the well-known
+symptoms of COVID-19 (loss of taste or smell, a new and persistent
+cough, high fever, etc), do not come to class. There are other
+mechanisms for demonstrating engagement than attending lectures.
+
+I will also expect all of us in the course to treat each other with
+respect and civility in all aspects of the course, including
+
+\begin{itemize}
+\item
+  In the audio of a Zoom meeting
+\item
+  In the text chat of a Zoom meeting
+\item
+  On any course discussion boards or other forums.
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{academic-conduct}{%
+\section{Academic Conduct}\label{academic-conduct}}
+
+UK Senate rules on academic offences:
+\url{https://www.uky.edu/universitysenate/ao}
+
+Appropriating someone else's work and portraying it as your own is
+cheating. Collaborating with someone and portraying that work as solely
+your own is cheating. Obtaining answers to homework assignments or exams
+from previous semesters is cheating. Using an internet search engine to
+look up a question and reporting that answer as your own is cheating.
+Falsifying data or experimental results is cheating. If you are unsure
+about whether a specific action is cheating, you may check with me.
+
+The minimum penalty for a first offense is a zero on the assignment on
+which the offense occurred. If the offense is considered severe or if
+the student has other academic offenses on their record, more serious
+penalties, up to suspension from the University may be imposed.
+
+When students submit work purporting to be their own, but which in any
+way borrows ideas, organization, wording or anything else from another
+source without appropriate acknowledgement of the fact, the students are
+guilty of plagiarism. Plagiarism includes reproducing someone else's
+work, whether it be a published article, chapter of a book, a paper from
+a friend or some file, or something similar to this. Plagiarism also
+includes the practice of employing or allowing another person to alter
+or revise the work which a student submits as their own, whoever that
+other person may be.
+
+Students may discuss assignments among themselves or with an instructor
+or tutor, but when the actual work is done, it must be done by the
+student, and the student alone. When a student's assignment involves
+research in outside sources of information, the student must carefully
+acknowledge exactly what, where and how they employed them. If the words
+of someone else are used, the student must put quotation marks around
+the passage in question and add an appropriate indication of its origin.
+Making simple changes while leaving the organization, content and
+phraseology intact is plagiaristic. However, nothing in these Rules
+shall apply to those ideas which are so generally and freely circulated
+as to be a part of the public domain (University Senate Rules Section
+6.3.1).
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{university-academic-policy-statements}{%
+\section{University Academic Policy
+Statements}\label{university-academic-policy-statements}}
+
+Link to University Senate Academic Policy Statements
+\url{https://www.uky.edu/universitysenate/acadpolicy}
+
+\hypertarget{excused-absences-and-acceptable-excuses}{%
+\subsection{Excused Absences and Acceptable
+Excuses}\label{excused-absences-and-acceptable-excuses}}
+
+\textbf{Excused Absences}: \emph{Senate Rules 5.2.5.2.1} defines the
+following as acceptable reasons for excused absences: (a) significant
+illness, (b) death of a family member, (c) trips for members of student
+organizations sponsored by an educational unit, trips for University
+classes, and trips for participation in intercollegiate athletic events,
+(d) major religious holidays, (e) interviews for graduate/professional
+school or full-time employment post-graduation, and (f) other
+circumstances found to fit ``reasonable cause for nonattendance'' by the
+instructor of record. Students should notify the professor of absences
+prior to class when possible.
+
+If a course syllabus requires specific interactions (e.g., with the
+instructor or other students), in situations where a student's total
+EXCUSED absences exceed 1/5 (or 20\%) of the required interactions for
+the course, the student shall have the right to request and receive a
+``W,'' or the Instructor of Record may award an ``I'' for the course if
+the student declines a ``W.'' (\emph{Senate Rules 5.2.5.2.3.1})
+
+\hypertarget{religious-observances}{%
+\subsection{Religious Observances}\label{religious-observances}}
+
+\textbf{Religious Observances}: Students anticipating an absence for a
+major religious holiday are responsible for notifying the instructor in
+writing of anticipated absences due to their observance of such
+holidays. \emph{Senate Rules 5.2.5.2.1(4) requires faculty to include
+any notification requirements within the syllabus. If no requirement is
+specified, two weeks prior to the absence is reasonable and should not
+be given any later. Information regarding major religious holidays may
+be obtained through
+\href{https://www.uky.edu/ombud/religious-observation-accommodations}{the
+Ombud's website}or calling 859-257-3737.}
+
+\hypertarget{verification-of-absences}{%
+\subsection{Verification of Absences}\label{verification-of-absences}}
+
+\textbf{Verification of Absences}:Students may be asked to verify their
+absences in order for them to be considered excused. \emph{Senate Rule
+5.2.5.2.1} states that faculty have the right to request appropriate
+verification when students claim an excused absence due to: significant
+illness; death in the household, trips for classes, trips sponsored by
+an educational unit and trips for participation related to
+intercollegiate athletic events; and interviews for full-time job
+opportunities after graduation and interviews for graduate and
+professional school. (Appropriate notification of absences due to
+University-related trips is required prior to the absence when feasible
+and in no case more than one week after the absence.)
+
+\hypertarget{make-up-work}{%
+\subsection{Make-Up Work}\label{make-up-work}}
+
+\textbf{Make-Up Work}: Students missing any graded work due to an
+excused absence are responsible: for informing the Instructor of Record
+about their excused absence within one week following the period of the
+excused absence (except where prior notification is required); and for
+making up the missed work. The instructor must give the student an
+opportunity to make up the work and/or the exams missed due to the
+excused absence, and shall do so, if feasible, during the semester in
+which the absence occurred. The instructor shall provide the student
+with an opportunity to make up the graded work and may not simply
+calculate the student's grade on the basis of the other course
+requirements, unless the student agrees in writing. According to
+\emph{SR 5.2.5.2.2}, if a student adds a class after the first day of
+classes and misses graded work, the instructor must provide the student
+with an opportunity to make up any graded work.
+
+\hypertarget{excused-absences-for-military-duties}{%
+\subsection{Excused Absences for Military
+Duties}\label{excused-absences-for-military-duties}}
+
+\textbf{Excused Absences for Military Duties}: If a student is required
+to be absent for one-fifth or less of the required course interactions
+(e.g., class meetings) due to military duties, the following procedure
+(per \emph{SR 5.2.5.2.3.2}) shall apply:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Once a student is aware of a call to duty, the student shall provide a
+  copy of the military orders to the Director of the Veterans Resource
+  Center. The student shall also provide the Director with a list of
+  his/her courses and instructors.
+\item
+  The Director will verify the orders with the appropriate military
+  authority, and on behalf of the military student, notify each
+  Instructor of Record via Department Letterhead as to the known extent
+  of the absence.
+\item
+  The Instructor of Record shall not penalize the student's absence in
+  any way and shall provide accommodations and timeframes so that the
+  student can make up missed assignments, quizzes, and tests in a
+  mutually agreed upon manner.
+\end{enumerate}
+
+\hypertarget{unexcused-absences}{%
+\subsection{Unexcused Absences}\label{unexcused-absences}}
+
+\textbf{Unexcused Absences:} If an attendance/interaction policy is not
+stated in the course syllabus or the policy does not include a penalty
+to the student, the instructor cannot penalize a student for any
+unexcused absences. (\emph{SR 5.2.5.2.3.3})
+
+\hypertarget{prep-week-and-reading-days}{%
+\subsection{Prep Week and Reading
+Days}\label{prep-week-and-reading-days}}
+
+\textbf{Prep Week and Reading Days}: Per \emph{Senate Rules 5.2.5.6},
+the last week of instruction of a regular semester is termed ``Prep
+Week.'' This phrase also refers to the last three days of instruction of
+the summer session and winter intersession. The Prep Week rule applies
+to ALL courses taught in the fall semester, spring semester, and summer
+session, including those taught by distance learning or in a format that
+has been compressed into less than one semester or session. This rule
+does not apply to courses in professional programs in colleges that have
+University Senate approval to have their own calendar.
+
+Make-up exams and quizzes are allowed during Prep Week. In cases of
+``Take Home'' final examinations, students shall not be required to
+return the completed examination before the regularly scheduled
+examination period for that course. No written examinations, including
+final examinations, may be scheduled during the Prep Week. No quizzes
+may be given during Prep Week. No project/lab
+practicals/paper/presentation deadlines or oral/listening examinations
+may fall during the Prep Week unless it was scheduled in the syllabus
+AND the course has no final examination (or assignment that acts as a
+final examination) scheduled during finals week. (A course with a lab
+component may schedule the lab practical of the course during Prep Week
+if the lab portion does not also require a Final Examination during
+finals week.) Class participation and attendance grades are permitted
+during Prep Week. The \emph{Senate Rules} permit continuing into Prep
+Week regularly assigned graded homework that was announced in the class
+syllabus.
+
+For fall and spring semester, the Thursday and Friday of Prep Week are
+study days (i.e.~``Reading Days''). There cannot be any required
+``interactions'' on a Reading Day. ``Interactions'' include
+participation in an in-class or online discussion, attendance at a guest
+lecture, or uploading an assignment. See \emph{Senate Rules 9.1} for a
+more complete description of required interactions.
+
+\hypertarget{accommodations-due-to-disability}{%
+\subsection{Accommodations Due to
+Disability}\label{accommodations-due-to-disability}}
+
+\textbf{Accommodations Due to Disability}: In accordance with federal
+law, if you have a documented disability that requires academic
+accommodations, please inform your instructor as soon as possible during
+scheduled office hours. In order to receive accommodations in a course,
+you must provide your instructor with a Letter of Accommodation from the
+Disability Resource Center (DRC). The DRC coordinates campus disability
+services available to students with disabilities. It is located on the
+corner of Rose Street and Huguelet Drive in the Multidisciplinary
+Science Building, Suite 407. You can reach them via phone at (859)
+257-2754,
+\href{https://www.uky.edu/universitysenate/drc@uky.edu}{\uline{via
+email}} (\href{mailto:drc@uky.edu}{\nolinkurl{drc@uky.edu}}) or visit
+their
+\href{http://www.uky.edu/DisabilityResourceCenter}{\uline{website}}
+(uky.edu/DisabilityResourceCenter). DRC accommodations are not
+retroactive and should therefore be established with the DRC as early in
+the semester as is feasible.
+
+\hypertarget{non-discrimination-statement-and-title-ix-information}{%
+\subsection{Non-Discrimination Statement and Title IX
+Information}\label{non-discrimination-statement-and-title-ix-information}}
+
+\textbf{Non-discrimination and Title IX policy}: In accordance with
+federal law, UK is committed to providing a safe learning, living, and
+working environment for all members of the University community. The
+University maintains a comprehensive program which protects all members
+from discrimination, harassment, and sexual misconduct. For complete
+information about UK's prohibition on discrimination and harassment on
+aspects such as race, color, ethnic origin, national origin, creed,
+religion, political belief, sex, and sexual orientation, please see
+\href{https://www.uky.edu/regs/ar6-1}{\uline{the electronic version of
+\emph{UK's Administrative Regulation 6:1} (``Policy on Discrimination
+and Harassment'')}} (\url{https://www.uky.edu/regs/ar6-1}). In
+accordance with Title IX of the Education Amendments of 1972, the
+University prohibits discrimination and harassment on the basis of sex
+in academics, employment, and all of its programs and activities. Sexual
+misconduct is a form of sexual harassment in which one act is severe
+enough to create a hostile environment based on sex and is prohibited
+between members of the University community and shall not be tolerated.
+For more details, please see
+\href{https://www.uky.edu/regs/sites/www.uky.edu.regs/files/files/ar/ar_6.2-interim-final_08_14_20_1.pdf}{\uline{the
+electronic version of \emph{Administrative Regulations 6:2} (``Policy
+and Procedures for Addressing and Resolving Allegations of Sexual
+Harassment Under Title IX and Other Forms of Sexual Misconduct'')}}
+(\href{https://www.uky.edu/regs/sites/www.uky.edu.regs/files/files/ar/ar_6.2-interim-final_08_14_20_1.pdf}{https://www.uky.edu/regs/sites/www.uky.edu.regs/files/files/ar/ar\_6.2-in...}).
+Complaints regarding violations of University policies on
+discrimination, harassment, and sexual misconduct are handled by the
+Office of Institutional Equity and Equal Opportunity (Institutional
+Equity), which is located in 13 Main Building and can be reached by
+phone at (859) 257-8927. You can also visit
+\href{https://www.uky.edu/eeo/}{\uline{Institutional Equity's website}}
+(\url{https://www.uky.edu/eeo}).
+
+Faculty members are obligated to forward any report made by a student
+related to discrimination, harassment, and sexual misconduct to the
+Office of Institutional Equity. Students can confidentially report
+alleged incidences through the
+\href{https://www.uky.edu/vipcenter/}{\uline{Violence Intervention and
+Prevention Center}} (\url{https://www.uky.edu/vipcenter}),
+\href{https://www.uky.edu/counselingcenter/}{\uline{Counseling Center}}
+(\url{https://www.uky.edu/counselingcenter}), or
+\href{https://ukhealthcare.uky.edu/university-health-service/student-health}{\uline{University
+Health Service}}
+(\url{https://ukhealthcare.uky.edu/university-health-service/student-health}).
+
+Reports of discrimination, harassment, or sexual misconduct may be made
+via the \href{https://www.uky.edu/eeo/}{\uline{Institutional Equity's
+website}} (\url{https://www.uky.edu/eeo}); at that site, click on ``Make
+a Report'' on the left-hand side of the page.
+
+\hypertarget{regular-and-substantive-interaction}{%
+\subsection{Regular and Substantive
+Interaction}\label{regular-and-substantive-interaction}}
+
+\textbf{Regular and Substantive Interaction}: All credit-bearing courses
+must support regular and substantive interaction (RSI) between the
+students and the instructor, regardless of the course's delivery mode
+(e.g., in-person, hybrid, or online). Courses satisfy this requirement
+when course participants meet regularly as prescribed in SR 10.6, and
+the Instructor of Record substantively interacts with students in at
+least two of the following ways: provides direct instruction; assesses
+students' learning; provides information or responds to students'
+questions; and facilitates student discussions. Some exceptions allowed
+as per SACSCOC. For further information about the RSI requirement, see
+the \href{https://www.uky.edu/tlai/compliance-faculty}{\uline{Compliance
+Resources}} link on the Teaching, Learning and Academic Innovation
+Compliance page.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{diversity-equity-and-inclusion}{%
+\section{Diversity, Equity and
+Inclusion}\label{diversity-equity-and-inclusion}}
+
+The University of Kentucky is committed to our core values of diversity
+and inclusion, mutual respect and human dignity, and a sense of
+community (\href{https://www.uky.edu/regs/gr14}{\uline{Governing
+Regulations XIV}}). We acknowledge and respect the seen and unseen
+diverse identities and experiences of all members of the university
+community (\url{https://www.uky.edu/regs/gr14}). These identities
+include but are not limited to those based on race, ethnicity, gender
+identity and expressions, ideas and perspectives, religious and cultural
+beliefs, sexual orientation, national origin, age, ability, and
+socioeconomic status. We are committed to equity and justice and
+providing a learning and engaging community in which every member is
+engaged, heard, and valued.
+
+We strive to rectify and change behavior that is inconsistent with our
+principles and commitment to diversity, equity, and inclusion. If
+students encounter such behavior in a course, they are encouraged to
+speak with the instructor of record and/or the
+\href{https://www.uky.edu/eeo/}{\uline{Office of Institutional Equity
+and Equal Opportunity}}. Students may also contact a faculty member
+within the department, program director, the director of undergraduate
+or graduate studies, the department chair, any college administrator, or
+the dean. All of these individuals are mandatory reporters under
+University policies.
+
+\url{https://www.uky.edu/universitysenate/syllabus-dei}
+
+
+
+\end{document}

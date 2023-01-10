@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.280">
+<meta name="generator" content="quarto-1.0.36">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -12,15 +12,10 @@
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
-ul.task-list li input[type="checkbox"] {
-  width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
-  vertical-align: middle;
-}
 </style>
 
 
@@ -72,30 +67,29 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
-    <a class="navbar-brand" href="./index.html">
+      <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Lin611 - Spring 2023</span>
-    </a>
-  </div>
+  </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./syllabus.html" aria-current="page">
- <span class="menu-text">Syllabus</span></a>
+    <a class="nav-link active" href="./syllabus.html" aria-current="page">Syllabus</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./schedule.html">
- <span class="menu-text">Schedule</span></a>
+    <a class="nav-link" href="./schedule.html">Schedule</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./class_notes.html">Class Notes</a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
     <a class="nav-link" href="https://classroom.github.com/classrooms/121321157-lin611-2023"><i class="bi bi-github" role="img">
 </i> 
- <span class="menu-text"></span></a>
+ </a>
   </li>  
 </ul>
               <div id="quarto-search" class="" title="Search"></div>
@@ -108,29 +102,29 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
+        <nav id="TOC" role="doc-toc">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#key-info" id="toc-key-info" class="nav-link active" data-scroll-target="#key-info"><span class="toc-section-number">1</span>  Key info</a></li>
-  <li><a href="#course-at-a-glance" id="toc-course-at-a-glance" class="nav-link" data-scroll-target="#course-at-a-glance"><span class="toc-section-number">2</span>  Course at a Glance</a></li>
-  <li><a href="#course-description" id="toc-course-description" class="nav-link" data-scroll-target="#course-description"><span class="toc-section-number">3</span>  Course Description</a></li>
-  <li><a href="#learning-outcomes" id="toc-learning-outcomes" class="nav-link" data-scroll-target="#learning-outcomes"><span class="toc-section-number">4</span>  Learning Outcomes</a></li>
-  <li><a href="#course-materials" id="toc-course-materials" class="nav-link" data-scroll-target="#course-materials"><span class="toc-section-number">5</span>  Course Materials</a>
+  <li><a href="#key-info" id="toc-key-info" class="nav-link active" data-scroll-target="#key-info"> <span class="header-section-number">1</span> Key info</a></li>
+  <li><a href="#course-at-a-glance" id="toc-course-at-a-glance" class="nav-link" data-scroll-target="#course-at-a-glance"> <span class="header-section-number">2</span> Course at a Glance</a></li>
+  <li><a href="#course-description" id="toc-course-description" class="nav-link" data-scroll-target="#course-description"> <span class="header-section-number">3</span> Course Description</a></li>
+  <li><a href="#learning-outcomes" id="toc-learning-outcomes" class="nav-link" data-scroll-target="#learning-outcomes"> <span class="header-section-number">4</span> Learning Outcomes</a></li>
+  <li><a href="#course-materials" id="toc-course-materials" class="nav-link" data-scroll-target="#course-materials"> <span class="header-section-number">5</span> Course Materials</a>
   <ul class="collapse">
   <li><a href="#required" id="toc-required" class="nav-link" data-scroll-target="#required">Required:</a></li>
   <li><a href="#recommended" id="toc-recommended" class="nav-link" data-scroll-target="#recommended">Recommended:</a></li>
   </ul></li>
-  <li><a href="#course-technology" id="toc-course-technology" class="nav-link" data-scroll-target="#course-technology"><span class="toc-section-number">6</span>  Course Technology</a>
+  <li><a href="#course-technology" id="toc-course-technology" class="nav-link" data-scroll-target="#course-technology"> <span class="header-section-number">6</span> Course Technology</a>
   <ul class="collapse">
   <li><a href="#rrstudio" id="toc-rrstudio" class="nav-link" data-scroll-target="#rrstudio">R/RStudio</a></li>
   <li><a href="#quartoquarto-notebooks" id="toc-quartoquarto-notebooks" class="nav-link" data-scroll-target="#quartoquarto-notebooks">Quarto/Quarto Notebooks</a></li>
   <li><a href="#gitgithub" id="toc-gitgithub" class="nav-link" data-scroll-target="#gitgithub">Git/Github</a></li>
   <li><a href="#canvas" id="toc-canvas" class="nav-link" data-scroll-target="#canvas">Canvas</a></li>
   </ul></li>
-  <li><a href="#communications" id="toc-communications" class="nav-link" data-scroll-target="#communications"><span class="toc-section-number">7</span>  Communications</a></li>
-  <li><a href="#course-schedule" id="toc-course-schedule" class="nav-link" data-scroll-target="#course-schedule"><span class="toc-section-number">8</span>  Course Schedule</a></li>
-  <li><a href="#course-evaluation" id="toc-course-evaluation" class="nav-link" data-scroll-target="#course-evaluation"><span class="toc-section-number">9</span>  Course Evaluation</a>
+  <li><a href="#communications" id="toc-communications" class="nav-link" data-scroll-target="#communications"> <span class="header-section-number">7</span> Communications</a></li>
+  <li><a href="#course-schedule" id="toc-course-schedule" class="nav-link" data-scroll-target="#course-schedule"> <span class="header-section-number">8</span> Course Schedule</a></li>
+  <li><a href="#course-evaluation" id="toc-course-evaluation" class="nav-link" data-scroll-target="#course-evaluation"> <span class="header-section-number">9</span> Course Evaluation</a>
   <ul class="collapse">
   <li><a href="#assignment-submission" id="toc-assignment-submission" class="nav-link" data-scroll-target="#assignment-submission">Assignment Submission</a></li>
   <li><a href="#work-through-blog" id="toc-work-through-blog" class="nav-link" data-scroll-target="#work-through-blog">Work-through Blog</a></li>
@@ -139,18 +133,18 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#final-project" id="toc-final-project" class="nav-link" data-scroll-target="#final-project">Final Project</a></li>
   <li><a href="#engagement" id="toc-engagement" class="nav-link" data-scroll-target="#engagement">Engagement</a></li>
   </ul></li>
-  <li><a href="#late-submissions-and-re-submissions" id="toc-late-submissions-and-re-submissions" class="nav-link" data-scroll-target="#late-submissions-and-re-submissions"><span class="toc-section-number">10</span>  Late Submissions and Re-submissions</a>
+  <li><a href="#late-submissions-and-re-submissions" id="toc-late-submissions-and-re-submissions" class="nav-link" data-scroll-target="#late-submissions-and-re-submissions"> <span class="header-section-number">10</span> Late Submissions and Re-submissions</a>
   <ul class="collapse">
   <li><a href="#midterm-grades" id="toc-midterm-grades" class="nav-link" data-scroll-target="#midterm-grades">Midterm Grades</a></li>
   <li><a href="#the-final-est-deadline" id="toc-the-final-est-deadline" class="nav-link" data-scroll-target="#the-final-est-deadline">The Final-est Deadline</a></li>
   </ul></li>
-  <li><a href="#group-work-and-code-sources" id="toc-group-work-and-code-sources" class="nav-link" data-scroll-target="#group-work-and-code-sources"><span class="toc-section-number">11</span>  Group Work and Code Sources</a>
+  <li><a href="#group-work-and-code-sources" id="toc-group-work-and-code-sources" class="nav-link" data-scroll-target="#group-work-and-code-sources"> <span class="header-section-number">11</span> Group Work and Code Sources</a>
   <ul class="collapse">
   <li><a href="#large-language-model-a.k.a.-ai-generated-code" id="toc-large-language-model-a.k.a.-ai-generated-code" class="nav-link" data-scroll-target="#large-language-model-a.k.a.-ai-generated-code">Large Language Model (a.k.a. AI) Generated Code</a></li>
   </ul></li>
-  <li><a href="#attendance-and-engagement" id="toc-attendance-and-engagement" class="nav-link" data-scroll-target="#attendance-and-engagement"><span class="toc-section-number">12</span>  Attendance and Engagement</a></li>
-  <li><a href="#academic-conduct" id="toc-academic-conduct" class="nav-link" data-scroll-target="#academic-conduct"><span class="toc-section-number">13</span>  Academic Conduct</a></li>
-  <li><a href="#university-academic-policy-statements" id="toc-university-academic-policy-statements" class="nav-link" data-scroll-target="#university-academic-policy-statements"><span class="toc-section-number">14</span>  University Academic Policy Statements</a>
+  <li><a href="#attendance-and-engagement" id="toc-attendance-and-engagement" class="nav-link" data-scroll-target="#attendance-and-engagement"> <span class="header-section-number">12</span> Attendance and Engagement</a></li>
+  <li><a href="#academic-conduct" id="toc-academic-conduct" class="nav-link" data-scroll-target="#academic-conduct"> <span class="header-section-number">13</span> Academic Conduct</a></li>
+  <li><a href="#university-academic-policy-statements" id="toc-university-academic-policy-statements" class="nav-link" data-scroll-target="#university-academic-policy-statements"> <span class="header-section-number">14</span> University Academic Policy Statements</a>
   <ul class="collapse">
   <li><a href="#excused-absences-and-acceptable-excuses" id="toc-excused-absences-and-acceptable-excuses" class="nav-link" data-scroll-target="#excused-absences-and-acceptable-excuses">Excused Absences and Acceptable Excuses</a></li>
   <li><a href="#religious-observances" id="toc-religious-observances" class="nav-link" data-scroll-target="#religious-observances">Religious Observances</a></li>
@@ -163,7 +157,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#non-discrimination-statement-and-title-ix-information" id="toc-non-discrimination-statement-and-title-ix-information" class="nav-link" data-scroll-target="#non-discrimination-statement-and-title-ix-information">Non-Discrimination Statement and Title IX Information</a></li>
   <li><a href="#regular-and-substantive-interaction" id="toc-regular-and-substantive-interaction" class="nav-link" data-scroll-target="#regular-and-substantive-interaction">Regular and Substantive Interaction</a></li>
   </ul></li>
-  <li><a href="#diversity-equity-and-inclusion" id="toc-diversity-equity-and-inclusion" class="nav-link" data-scroll-target="#diversity-equity-and-inclusion"><span class="toc-section-number">15</span>  Diversity, Equity and Inclusion</a></li>
+  <li><a href="#diversity-equity-and-inclusion" id="toc-diversity-equity-and-inclusion" class="nav-link" data-scroll-target="#diversity-equity-and-inclusion"> <span class="header-section-number">15</span> Diversity, Equity and Inclusion</a></li>
   </ul>
 </nav>
     </div>
@@ -192,7 +186,6 @@ ul.task-list li input[type="checkbox"] {
       <p class="date">January 2023</p>
     </div>
   </div>
-  
     
   </div>
   
@@ -793,24 +786,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
-    let tooltip;
-    if (window.bootstrap) {
-      button.setAttribute("data-bs-toggle", "tooltip");
-      button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
-          customClass: "code-copy-button-tooltip",
-          offset: [0, -8]});
-      tooltip.show();    
-    }
     setTimeout(function() {
-      if (tooltip) {
-        tooltip.hide();
-        button.removeAttribute("data-bs-title");
-        button.removeAttribute("data-bs-toggle");
-        button.removeAttribute("data-bs-placement");
-      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -838,50 +814,31 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   for (var i=0; i<noterefs.length; i++) {
     const ref = noterefs[i];
     tippyHover(ref, function() {
-      // use id or data attribute instead here
-      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      let href = ref.getAttribute('href');
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
     });
   }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
-      }
-    } else {
-      return undefined;
-    }
-  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
-          }
-          popup.appendChild(citeDiv);
-        });
-        return popup.innerHTML;
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
       });
-    }
+      return popup.innerHTML;
+    });
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -889,7 +846,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
-    var links = window.document.querySelectorAll('a:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
+    var links = window.document.querySelectorAll('a:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {

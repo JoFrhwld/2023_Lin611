@@ -1,12 +1,12 @@
 ---
 title: "Quantitative Methods in Linguistics"
-# listing:
-#   contents: class_notes
-#   sort: "date"
-#   type: default
-#   categories: true
-#   sort-ui: false
-#   filter-ui: true
+listing:
+  contents: class_notes
+  sort: "date"
+  type: default
+  categories: true
+  sort-ui: false
+  filter-ui: true
 page-layout: full
 title-block-banner: true
 ---

@@ -1,0 +1,45 @@
+---
+title: "Welcome Day"
+author: "Josef Fruehwald"
+date: 2023-01-10
+format: html
+editor: visual
+---
+
+## R vs RStudio vs Quarto
+
+![An illustration of R vs RStudio vs Quarto](assets/IMG_5054.png){fig-alt="A nodes and arrow diagram illustrating the relationship between R and RStudio and Quarto" fig-align="center" width="100%"}
+
+R (on the left) is a programming language, which looks at (👀) R scipt files (the box with .r) and interprets them. RStudio is an IDE (Integrated Development Environment) that provides a more pleasant interface to working with R.
+
+Quarto (not pictured) is a program that interprets Quarto documents (the box with .qmd) and renders them as html files. We\'ll be doing this all inside of RStudio.
+
+## Examples from inside class
+
+This was an example of inserting an R code chunk into a quarto notebook
+
+```{r}
+#| echo: fenced
+1+1
+```
+
+This was an example of making a plot in quarto
+
+```{r}
+#| echo: fenced
+plot(cars)
+```
+
+This was an example of running R code from Winters (2019). This particular code prints out all of the named colors in R.
+
+```{r}
+#| echo: fenced
+colors()
+```
+
+This was just an illustration of using the color "steelblue" in a plot.
+
+```{r}
+#| echo: fenced
+plot(cars, col = "steelblue")
+```
