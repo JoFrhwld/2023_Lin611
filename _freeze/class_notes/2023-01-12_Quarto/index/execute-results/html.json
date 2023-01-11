@@ -1,0 +1,14 @@
+{
+  "hash": "18e5ced9dcabb95f689a401f4da99ba8",
+  "result": {
+    "markdown": "---\ntitle: \"Plan for Onboarding Day\"\nauthor: \"Josef Fruehwald\"\ndate: 2023-01-12\ncategories:\n  - \"Block 1\"\n  - \"Onboarding\"\n---\n\n\n## Configure RStudio to communicate with Github\n\n-   Follow Plan here: [Onboarding](../2023-01-12_gh-onboarding/index.qmd)\n\n## RStudio Project Creation\n\n-   General RStudio Project Creation\n\n-   RStudio Project creation from Github Repository\n\n## Quarto Intro\n\n### `.qmd` editing in the visual editor\n\n-   Open Week 1 `index.qmd`.\n\n-   basic formatting\n\n    -   headers\n\n    -   italics\n\n    -   monospace\n\n    -   links\n\n-   `yaml` header\n\n    -   Lots of options: <https://quarto.org/docs/reference/formats/html.html>\n\n    -   `title:`\n\n    -   `author:`\n\n    -   `date:`\n\n    -   `toc:`\n\n    -   `draft:`\n\n-   the `_metadata` file\n\n-   the `_quarto` file\n\n-   Code chunks\n\n\n::: {.cell}\n\n```{.r .cell-code}\n1+1\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n[1] 2\n```\n:::\n:::\n\n\n### Render\n\nUnder the *Build* tab, clicking \"Render Website\" will render the whole website as a preview. The actual html pages etc are created in the `_site` folder by default.\n\n## Visual Mode Goodies\n\n-   Forward slash `/` to bring up insert palette at the start of a new paragraph, or `⌘+/` or `CMD+/` for inline options.\n\n    -   e.g. images, tables, footnotes\n\n## Tricking out RStudio\n\nUnder *Tools\\>Global Options* there are a few things you might really want to customize, including\n\n-   Appearance: Will change the appearance and color themes of RStudio\n\n-   RMarkdown: Under the Citations tab, you can connect RStudio up to your Zotero\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

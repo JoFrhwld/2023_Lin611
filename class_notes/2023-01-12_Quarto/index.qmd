@@ -1,0 +1,76 @@
+---
+title: "Plan for Onboarding Day"
+author: "Josef Fruehwald"
+date: 2023-01-12
+categories:
+  - "Block 1"
+  - "Onboarding"
+---
+
+## Configure RStudio to communicate with Github
+
+-   Follow Plan here: [Onboarding](../2023-01-12_gh-onboarding/index.qmd)
+
+## RStudio Project Creation
+
+-   General RStudio Project Creation
+
+-   RStudio Project creation from Github Repository
+
+## Quarto Intro
+
+### `.qmd` editing in the visual editor
+
+-   Open Week 1 `index.qmd`.
+
+-   basic formatting
+
+    -   headers
+
+    -   italics
+
+    -   monospace
+
+    -   links
+
+-   `yaml` header
+
+    -   Lots of options: <https://quarto.org/docs/reference/formats/html.html>
+
+    -   `title:`
+
+    -   `author:`
+
+    -   `date:`
+
+    -   `toc:`
+
+    -   `draft:`
+
+-   the `_metadata` file
+
+-   the `_quarto` file
+
+-   Code chunks
+
+```{r}
+1+1
+```
+
+### Render
+
+Under the *Build* tab, clicking "Render Website" will render the whole website as a preview. The actual html pages etc are created in the `_site` folder by default.
+
+## Visual Mode Goodies
+
+-   Forward slash `/` to bring up insert palette at the start of a new paragraph, or `⌘+/` or `CMD+/` for inline options.
+
+    -   e.g. images, tables, footnotes
+
+## Tricking out RStudio
+
+Under *Tools\>Global Options* there are a few things you might really want to customize, including
+
+-   Appearance: Will change the appearance and color themes of RStudio
+
+-   RMarkdown: Under the Citations tab, you can connect RStudio up to your Zotero

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.0.36">
+<meta name="generator" content="quarto-1.2.280">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -11,10 +11,15 @@
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-span.underline{text-decoration: underline;}
-div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
 </style>
 
 
@@ -65,9 +70,9 @@ ul.task-list{list-style: none;}
     }
 
     const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
+      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -98,29 +103,34 @@ ul.task-list{list-style: none;}
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
-      <a class="navbar-brand" href="./index.html">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Lin611 - Spring 2023</span>
-  </a>
+    </a>
+  </div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./syllabus.html">Syllabus</a>
+    <a class="nav-link" href="./syllabus.html">
+ <span class="menu-text">Syllabus</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./schedule.html">Schedule</a>
+    <a class="nav-link" href="./schedule.html">
+ <span class="menu-text">Schedule</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./class_notes.html">Class Notes</a>
+    <a class="nav-link" href="./class_notes.html">
+ <span class="menu-text">Class Notes</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
     <a class="nav-link" href="https://classroom.github.com/classrooms/121321157-lin611-2023"><i class="bi bi-github" role="img">
 </i> 
- </a>
+ <span class="menu-text"></span></a>
   </li>  
 </ul>
               <div id="quarto-search" class="" title="Search"></div>
@@ -131,7 +141,7 @@ ul.task-list{list-style: none;}
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page-left">
+    <div class="quarto-title column-page">
       <h1 class="title">Quantitative Methods in Linguistics</h1>
                       </div>
   </div>
@@ -140,6 +150,7 @@ ul.task-list{list-style: none;}
   <div class="quarto-title-meta">
 
       
+    
       
     </div>
     
@@ -147,11 +158,9 @@ ul.task-list{list-style: none;}
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(1)</span></div></div></div>
+    
 <!-- main -->
-<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+<main class="content quarto-banner-title-block column-page" id="quarto-document-content">
 
 
 
@@ -174,7 +183,67 @@ ul.task-list{list-style: none;}
     </div>
 </div>
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-listing-date-sort="1673326800000" data-listing-file-modified-sort="1673387666873" data-listing-reading-time-sort="0.795">
+<div class="quarto-post image-right" data-index="0" data-categories="Block 1,Onboarding" data-listing-date-sort="1673499600000" data-listing-file-modified-sort="1673471005626" data-listing-reading-time-sort="1.21">
+<div class="thumbnail">
+<a href="./class_notes/2023-01-12_Quarto/index.html">
+<div class="thumbnail-image">
+
+</div>
+</a><p><a href="./class_notes/2023-01-12_Quarto/index.html"></a></p>
+</div>
+<div class="body">
+<a href="./class_notes/2023-01-12_Quarto/index.html">
+<h3 class="no-anchor listing-title">
+Plan for Onboarding Day
+</h3>
+<div class="listing-subtitle">
+
+</div>
+<div class="listing-description">
+General RStudio Project Creation
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./class_notes/2023-01-12_Quarto/index.html">
+<div class="listing-date">
+Jan 12, 2023
+</div>
+<div class="listing-author">
+Josef Fruehwald
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="1" data-categories="Onboarding" data-listing-date-sort="1673499600000" data-listing-file-modified-sort="1673468963813" data-listing-reading-time-sort="3.31">
+<div class="thumbnail">
+<p><a href="./class_notes/2023-01-12_gh/index.html"> <img src="./class_notes/2023-01-12_gh/github_onboarding_assets/rstudio_console.png" class="thumnail-image"> </a></p>
+</div>
+<div class="body">
+<a href="./class_notes/2023-01-12_gh/index.html">
+<h3 class="no-anchor listing-title">
+Github Onboarding with RStudio
+</h3>
+<div class="listing-subtitle">
+
+</div>
+<div class="listing-description">
+Instruction boxes with <i class="fa-brands fa-github" aria-label="github"></i> should be done on github, and instruction boxes with <i class="fa-brands fa-r-project" aria-label="r-project"></i> should be done in RStudio.
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./class_notes/2023-01-12_gh/index.html">
+<div class="listing-date">
+Jan 12, 2023
+</div>
+<div class="listing-author">
+Josef Fruehwald
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="2" data-listing-date-sort="1673326800000" data-listing-file-modified-sort="1673468852001" data-listing-reading-time-sort="0.795">
 <div class="thumbnail">
 <p><a href="./class_notes/2023-01-10/index.html"> <img src="./class_notes/2023-01-10/assets/IMG_5054.png" class="thumnail-image"> </a></p>
 </div>
@@ -187,7 +256,7 @@ Welcome Day
 
 </div>
 <div class="listing-description">
-<img src="assets/IMG_5054.png" class="img-fluid figure-img" alt="A nodes and arrow diagram illustrating the relationship between R and RStudio and Quarto" style="width:100.0%">
+R (on the left) is a programming language, which…
 </div>
 </a>
 </div>
@@ -248,7 +317,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -276,31 +362,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   for (var i=0; i<noterefs.length; i++) {
     const ref = noterefs[i];
     tippyHover(ref, function() {
-      let href = ref.getAttribute('href');
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
     });
   }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -308,7 +413,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
-    var links = window.document.querySelectorAll('a:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external)');
+    var links = window.document.querySelectorAll('a:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {

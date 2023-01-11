@@ -15,6 +15,21 @@ website:
     right:
       - icon: github
         href: "https://classroom.github.com/classrooms/121321157-lin611-2023"
+  sidebar: 
+    # - title: "Home"
+    #   style: "floating"
+    - title: "Class Notes"
+      href: class_notes.qmd
+      style: "floating"
+      search: true
+      contents: class_notes/
+    - title: "About"
+      href: about.qmd
+      style: floating
+      contents: 
+        - about.qmd
+        - schedule.qmd
+  page-navigation: true
 format:
   html:
     theme: darkly

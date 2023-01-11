@@ -2,9 +2,9 @@
 title: "Quantitative Methods in Linguistics"
 listing:
   contents: class_notes
-  sort: "date"
+  sort: "date desc"
   type: default
-  categories: true
+  categories: false
   sort-ui: false
   filter-ui: true
 page-layout: full
