@@ -49,6 +49,62 @@
     "text": "Tricking out RStudio\nUnder Tools>Global Options there are a few things you might really want to customize, including\n\nAppearance: Will change the appearance and color themes of RStudio\nRMarkdown: Under the Citations tab, you can connect RStudio up to your Zotero"
   },
   {
+    "objectID": "class_notes/2023-01-17_RLang/index.html",
+    "href": "class_notes/2023-01-17_RLang/index.html",
+    "title": "Basics of R Syntax",
+    "section": "",
+    "text": "To run R code in a Quarto notebook, you need to insert a “code chunk”. In visual editor mode, you can do that by typing the forward slash (/) and start typing in “R Code Chunk”. In the source editor mode, you have to have a line with ```{r} (three “backticks” followed by “r” in curly braces), then a few blank lines followed by another ```\n\n```{r}\n1+1\n```\n\n[1] 2\n\n\nTo actually run the code, you can either click on the green play button, or press the appropriate hotkey for your system (COMMAND+RETURN on a mac, CTRL+ENTER on windows)."
+  },
+  {
+    "objectID": "class_notes/2023-01-17_RLang/index.html#mathematical-operations",
+    "href": "class_notes/2023-01-17_RLang/index.html#mathematical-operations",
+    "title": "Basics of R Syntax",
+    "section": "Mathematical Operations",
+    "text": "Mathematical Operations\n\nAddition\n\n1 + 4\n\n[1] 5\n\n\n\n\nSubtraction\n\n1 - 4\n\n[1] -3\n\n\n\n\nMultiplication\n\n5 * 4\n\n[1] 20\n\n\n\n\nDivision\n\n5 / 4\n\n[1] 1.25\n\n\n\n\nExponentiation\n\n5 ^ 4\n\n[1] 625\n\n\n\n\nOrders of Operation\nHonestly, instead of gambling on how R may or may not interpret PEMDAS, just add parentheses ( ) around every operation in the order you want it to happen.\n\n(5 ^ (2 * 2)) / 6\n\n[1] 104.1667"
+  },
+  {
+    "objectID": "class_notes/2023-01-17_RLang/index.html#assignment",
+    "href": "class_notes/2023-01-17_RLang/index.html#assignment",
+    "title": "Basics of R Syntax",
+    "section": "Assignment",
+    "text": "Assignment\nTo assign values to a variable in R, you can use either <- or ->. Most style guides shun ->, but I actually wind up using it a lot.\n\nmy_variable <- 4 * 5\nprint(my_variable)\n\n[1] 20\n\n\n\nmy_variable / 2\n\n[1] 10"
+  },
+  {
+    "objectID": "class_notes/2023-01-17_RLang/index.html#data-types",
+    "href": "class_notes/2023-01-17_RLang/index.html#data-types",
+    "title": "Basics of R Syntax",
+    "section": "Data Types",
+    "text": "Data Types\n\nNumeric\nWhen using a number in R, we can only use digits and dots (.). If we try to enter “one hundred thousand” with a comma separator, we’ll get an error.\n\nbig_number <- 100,000\n\nError: <text>:1:18: unexpected ','\n1: big_number <- 100,\n                     ^\n\n\nWe also can’t use any percent signs (%) or currency symbols ($, £, €)\n\n\nCharacters\nWhen we type in text without any quotes, R will assume it’s a variable or function that’s already been defined and go looking for it.\n\nlarge <- 100000\nlarge\n\n[1] 1e+05\n\n\nIf the variable hasn’t been created already, we’ll get an error.\n\nsmall\n\nError in eval(expr, envir, enclos): object 'small' not found\n\n\nIf we enter text inside of quotation marks, either single quotes ' or double quotes \", R will instead treat the text as a value that we could, for example, assign to a variable, or just print out.\n\n\"small\"\n\n[1] \"small\"\n\n\n\ntiny_synonym <- \"small\"\ntiny_synonym\n\n[1] \"small\"\n\n\n\n\n\n\n\n\nCommon Error\n\n\n\nYou will often get confused about this and get the Error: object '' not found message. Even if you do this for 15 years, you will still sometimes enter plain text when you meant to put it in quotes, and put text in quotes you meant to enter without. It’s always annoying, but doesn’t mean you’re bad at doing this.\n\n\n\n\nLogical\nThere are two specialized values that you could call “True/False” or “Logical” or “Boolean” values\n\n# fullnames\nTRUE\n\n[1] TRUE\n\nFALSE\n\n[1] FALSE\n\n\n\n# Short Forms\nT\n\n[1] TRUE\n\nF\n\n[1] FALSE\n\n\nThese are often created using logical comparisons\n\nlarge  <- 100000\nmedium <-    600\n\nlarge < medium\n\n[1] FALSE\n\n\n\nshort_word <- \"to\"\n\nnchar(short_word) == 2\n\n[1] TRUE\n\n\n\n\nNA\nWhen you have a missing value, that’s given a special NA value.\n\nnumbers <- c(1, NA, 5)\nnumbers\n\n[1]  1 NA  5"
+  },
+  {
+    "objectID": "class_notes/2023-01-17_RLang/index.html#vectors",
+    "href": "class_notes/2023-01-17_RLang/index.html#vectors",
+    "title": "Basics of R Syntax",
+    "section": "Vectors",
+    "text": "Vectors\nVectors are basically 1 dimensional lists of values.1 You can have numeric, character or logical vectors in R, but you can’t mix types. One way to create vectors is with the c() (for concatenate) function. There needs to be a comma , between every value that you add to a vector.\n\ndigital_words <- c(\n  \"-dle\",\n  \"BFFR\",\n  \"chief twit\",\n  \"chronically online\",\n  \"crypto rug pull\",\n  \"touch grass\",\n  \"-verse\"\n)\nprint(digital_words)\n\n[1] \"-dle\"               \"BFFR\"               \"chief twit\"        \n[4] \"chronically online\" \"crypto rug pull\"    \"touch grass\"       \n[7] \"-verse\"            \n\n\n\ndigital_word_votes <- c(\n  84,\n  14,\n  4,\n  30,\n  8,\n  64,\n  8\n)\nprint(digital_word_votes)\n\n[1] 84 14  4 30  8 64  8\n\n\nYou can also create vectors of sequential vectors with the : operator.\n\n1:10\n\n [1]  1  2  3  4  5  6  7  8  9 10\n\n\n\n\nMore vector creating possibilities\n\nThere are a lot of functions for creating vectors.\n\nseq(from = 1, to = 5, length = 10)\n\n [1] 1.000000 1.444444 1.888889 2.333333 2.777778 3.222222 3.666667 4.111111\n [9] 4.555556 5.000000\n\n\n\nseq_along(digital_words)\n\n[1] 1 2 3 4 5 6 7\n\n\n\nrep(c(\"a\", \"b\"), times = 3)\n\n[1] \"a\" \"b\" \"a\" \"b\" \"a\" \"b\"\n\n\n\nrep(c(\"a\", \"b\"), each = 3)\n\n[1] \"a\" \"a\" \"a\" \"b\" \"b\" \"b\"\n\n\n\n\nVector Arithmetic\nYou can do arithmetic on a whole vector of numbers. digital_word_votes is a vector of how many votes each word got. We can get the sum like so:\n\ntotal_votes <- sum(digital_word_votes)\ntotal_votes\n\n[1] 212\n\n\nThen, we can convert those vote counts to proportions by dividing them by the total.\n\ndigital_word_votes / total_votes\n\n[1] 0.39622642 0.06603774 0.01886792 0.14150943 0.03773585 0.30188679 0.03773585\n\n\nAnd we can convert that to percentages by multiplying by 100.\n\n(digital_word_votes / total_votes) * 100\n\n[1] 39.622642  6.603774  1.886792 14.150943  3.773585 30.188679  3.773585"
+  },
+  {
+    "objectID": "class_notes/2023-01-17_RLang/index.html#indexing",
+    "href": "class_notes/2023-01-17_RLang/index.html#indexing",
+    "title": "Basics of R Syntax",
+    "section": "Indexing",
+    "text": "Indexing\nIf you’ve never programmed before, this part will make sense, and if you haven’t programmed before, this part will be confusing.\nIf you have a vector, and you want to get the first value from it, you put square brackets [] after the variable name, and put 1 inside.\n\nprint(digital_words)\n\n[1] \"-dle\"               \"BFFR\"               \"chief twit\"        \n[4] \"chronically online\" \"crypto rug pull\"    \"touch grass\"       \n[7] \"-verse\"            \n\ndigital_words[1]\n\n[1] \"-dle\"\n\n\nIf you want a range of values from a vector, you can give it a vector of numeric indices.\n\ndigital_words[2:5]\n\n[1] \"BFFR\"               \"chief twit\"         \"chronically online\"\n[4] \"crypto rug pull\"   \n\n\n\nLogical Indexing\nAlso really useful is the ability to do logical indexing. For example, if we wanted to see which digital words got ten or fewer votes, we can do\n\ndigital_word_votes <= 10\n\n[1] FALSE FALSE  TRUE FALSE  TRUE FALSE  TRUE\n\n\nWe can use this sequence of TRUE and FALSE values to get the actual words from the digital_words vector.\n\ndigital_words[digital_word_votes <= 10]\n\n[1] \"chief twit\"      \"crypto rug pull\" \"-verse\""
+  },
+  {
+    "objectID": "class_notes/2023-01-17_RLang/index.html#data-frames",
+    "href": "class_notes/2023-01-17_RLang/index.html#data-frames",
+    "title": "Basics of R Syntax",
+    "section": "Data Frames",
+    "text": "Data Frames\nThe most common kind of data structure we’re going to be working with are Data Frames. These are two dimensional structures with rows and columns. The data types within each column all need to be the same.\n\nword_df <- data.frame(\n  type = \"digital\",\n  word = digital_words,\n  votes = digital_word_votes  \n)\nprint(word_df)\n\n     type               word votes\n1 digital               -dle    84\n2 digital               BFFR    14\n3 digital         chief twit     4\n4 digital chronically online    30\n5 digital    crypto rug pull     8\n6 digital        touch grass    64\n7 digital             -verse     8\n\n\n\nNavigating data frames\nTo navigate data frames, there are a few handy functions. First, in RStudio you can launch a viewer with View()\n\nView(word_df)\n\nKeeping things inside the Quarto notebook, other useful functions are summary(), nrow(), ncol() and colnames().\n\nsummary(word_df)\n\n     type               word               votes      \n Length:7           Length:7           Min.   : 4.00  \n Class :character   Class :character   1st Qu.: 8.00  \n Mode  :character   Mode  :character   Median :14.00  \n                                       Mean   :30.29  \n                                       3rd Qu.:47.00  \n                                       Max.   :84.00  \n\nnrow(word_df)\n\n[1] 7\n\nncol(word_df)\n\n[1] 3\n\ncolnames(word_df)\n\n[1] \"type\"  \"word\"  \"votes\"\n\n\n\n\nIndexing Data Frames\nTo get all of the data from a single column of a data frame, we can put $ after the data frame variable name, then the name of the column.\n\nword_df$word\n\n[1] \"-dle\"               \"BFFR\"               \"chief twit\"        \n[4] \"chronically online\" \"crypto rug pull\"    \"touch grass\"       \n[7] \"-verse\"            \n\n\nWe’re going to have more, interesting ways to get specific rows from a data frame later on in the course, but for now if you want to subset just the rows that have 10 or fewer votes, we can use subset.\n\nsubset(word_df, votes <= 10)\n\n     type            word votes\n3 digital      chief twit     4\n5 digital crypto rug pull     8\n7 digital          -verse     8\n\n\n\n\nPipe Preview\n\nThe “pipe” (|>) is going to play a big role in our R workflow. What it does is take whatever is on its left hand side and inserts it as the first argument to the function on the left hand side. Here’s a preview.\n\nword_df |> \n  subset(votes <= 10)\n\n     type            word votes\n3 digital      chief twit     4\n5 digital crypto rug pull     8\n7 digital          -verse     8"
+  },
+  {
+    "objectID": "class_notes/2023-01-17_RLang/index.html#packages",
+    "href": "class_notes/2023-01-17_RLang/index.html#packages",
+    "title": "Basics of R Syntax",
+    "section": "Packages",
+    "text": "Packages\nPackages get installed once with install.pacakges()\n\n# Only needs to be run once ever, or when updating\ninstall.packages(\"tidyverse\")\n\nBut they need to be loaded every time with library()\n\n# Needs to be run every time\nlibrary(tidyverse)\n\n── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──\n✔ ggplot2 3.4.0      ✔ purrr   1.0.0 \n✔ tibble  3.1.8      ✔ dplyr   1.0.10\n✔ tidyr   1.2.1      ✔ stringr 1.4.1 \n✔ readr   2.1.3      ✔ forcats 0.5.2 \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\n\n\nIf you try to load a package that you haven’t installed yet, you’ll get this error:\n\nlibrary(fake_library)\n\nError in library(fake_library): there is no package called 'fake_library'"
+  },
+  {
     "objectID": "class_notes/2023-01-12_gh/index.html",
     "href": "class_notes/2023-01-12_gh/index.html",
     "title": "Github Onboarding with RStudio",
@@ -88,7 +144,7 @@
     "href": "index.html",
     "title": "Quantitative Methods in Linguistics",
     "section": "",
-    "text": "This is the course website for Lin611: Quantitative Methods in Linguistics, taught in the Spring semester of 2023. Notes from in-class will be listed below. Other important information:\n\nPlease read the syllabus\nThe course textbook is Winter, B. (2019). Statistics for linguists: An introduction using R. Routledge. ISBN 978-1-138-05608-4\nKeep an eye on the course Canvas Shell for announcements and assignments.\n\n\n\n\n\n\n\n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\n\n\n\nPlan for Onboarding Day\n\n\n\n\n\n\n\n\n\n\n\n\nJan 12, 2023\n\n\nJosef Fruehwald\n\n\n\n\n\n\n  \n\n\n\n\nGithub Onboarding with RStudio\n\n\n\n\n\n\n\n\n\n\n\n\nJan 12, 2023\n\n\nJosef Fruehwald\n\n\n\n\n\n\n  \n\n\n\n\nWelcome Day\n\n\n\n\n\n\n\n\n\n\n\n\nJan 10, 2023\n\n\nJosef Fruehwald\n\n\n\n\n\n\nNo matching items\n\nReuseCC-BY-SA 4.0"
+    "text": "This is the course website for Lin611: Quantitative Methods in Linguistics, taught in the Spring semester of 2023. Notes from in-class will be listed below. Other important information:\n\nPlease read the syllabus\nThe course textbook is Winter, B. (2019). Statistics for linguists: An introduction using R. Routledge. ISBN 978-1-138-05608-4\nKeep an eye on the course Canvas Shell for announcements and assignments.\n\n\n\n\n\n\n\n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\n\n\n\nBasics of R Syntax\n\n\n\n\n\n\n\n\n\n\n\n\nJan 17, 2023\n\n\nJosef Fruehwald\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPlan for Onboarding Day\n\n\n\n\n\n\n\n\n\n\n\n\nJan 12, 2023\n\n\nJosef Fruehwald\n\n\n\n\n\n\n  \n\n\n\n\nGithub Onboarding with RStudio\n\n\n\n\n\n\n\n\n\n\n\n\nJan 12, 2023\n\n\nJosef Fruehwald\n\n\n\n\n\n\n  \n\n\n\n\nWelcome Day\n\n\n\n\n\n\n\n\n\n\n\n\nJan 10, 2023\n\n\nJosef Fruehwald\n\n\n\n\n\n\nNo matching items\n\nReuseCC-BY-SA 4.0"
   },
   {
     "objectID": "syllabus.html",
@@ -207,7 +263,7 @@
     "href": "class_notes.html",
     "title": "Class Notes",
     "section": "",
-    "text": "Plan for Onboarding Day\n\n\n\n\n\n\n\nBlock 1\n\n\nOnboarding\n\n\n\n\n\n\n\n\n\n\n\nJan 12, 2023\n\n\nJosef Fruehwald\n\n\n\n\n\n\n  \n\n\n\n\nGithub Onboarding with RStudio\n\n\n\n\n\n\n\nOnboarding\n\n\n\n\n\n\n\n\n\n\n\nJan 12, 2023\n\n\nJosef Fruehwald\n\n\n\n\n\n\n  \n\n\n\n\nWelcome Day\n\n\n\n\n\n\n\n\n\n\n\n\nJan 10, 2023\n\n\nJosef Fruehwald\n\n\n\n\n\n\nNo matching items\n\nReuseCC-BY-SA 4.0"
+    "text": "Basics of R Syntax\n\n\n\n\n\n\n\nR basics\n\n\n\n\n\n\n\n\n\n\n\nJan 17, 2023\n\n\nJosef Fruehwald\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPlan for Onboarding Day\n\n\n\n\n\n\n\nBlock 1\n\n\nOnboarding\n\n\n\n\n\n\n\n\n\n\n\nJan 12, 2023\n\n\nJosef Fruehwald\n\n\n\n\n\n\n  \n\n\n\n\nGithub Onboarding with RStudio\n\n\n\n\n\n\n\nOnboarding\n\n\n\n\n\n\n\n\n\n\n\nJan 12, 2023\n\n\nJosef Fruehwald\n\n\n\n\n\n\n  \n\n\n\n\nWelcome Day\n\n\n\n\n\n\n\n\n\n\n\n\nJan 10, 2023\n\n\nJosef Fruehwald\n\n\n\n\n\n\nNo matching items\n\nReuseCC-BY-SA 4.0"
   },
   {
     "objectID": "schedule.html",

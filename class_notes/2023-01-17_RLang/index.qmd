@@ -1,0 +1,352 @@
+---
+title: "Basics of R Syntax"
+author: Josef Fruehwald
+date: 2023-01-17
+categories:
+  - "R basics"
+error: true
+order: 97
+---
+
+## Running R Code in a Quarto Notebook
+
+To run R code in a Quarto notebook, you need to insert a "code chunk". In visual editor mode, you can do that by typing the forward slash (`/`) and start typing in "R Code Chunk". In the source editor mode, you have to have a line with ```` ```{r} ```` (three "backticks" followed by "r" in curly braces), then a few blank lines followed by another ```` ``` ````
+
+```{r}
+#| echo: fenced
+1+1
+```
+
+To actually run the code, you can either click on the green play button, or press the appropriate hotkey for your system (COMMAND+RETURN on a mac, CTRL+ENTER on windows).
+
+## Mathematical Operations
+
+### Addition
+
+```{r}
+1 + 4
+```
+
+### Subtraction
+
+```{r}
+1 - 4
+```
+
+### Multiplication
+
+```{r}
+5 * 4
+```
+
+### Division
+
+```{r}
+5 / 4
+```
+
+### Exponentiation
+
+```{r}
+5 ^ 4
+```
+
+### Orders of Operation
+
+Honestly, instead of gambling on how R may or may not interpret PEMDAS, just add parentheses `( )` around every operation in the order you want it to happen.
+
+```{r}
+(5 ^ (2 * 2)) / 6
+```
+
+## Assignment
+
+To assign values to a variable in R, you can use *either* `<-` or `->`. Most style guides shun `->`, but I actually wind up using it a lot.
+
+```{r}
+my_variable <- 4 * 5
+print(my_variable)
+```
+
+```{r}
+my_variable / 2
+```
+
+## Data Types
+
+### Numeric
+
+When using a number in R, we can only use digits and dots (`.`). If we try to enter "one hundred thousand" with a comma separator, we'll get an error.
+
+```{r}
+big_number <- 100,000
+```
+
+We also can't use any percent signs (`%`) or currency symbols (`$`, `£`, `€`)
+
+### Characters
+
+When we type in text without any quotes, R will assume it's a variable or function that's already been defined and go looking for it.
+
+```{r}
+large <- 100000
+large
+```
+
+If the variable hasn't been created already, we'll get an error.
+
+```{r}
+small
+```
+
+If we enter text inside of quotation marks, either single quotes `'` or double quotes `"`, R will instead treat the text as a *value* that we could, for example, assign to a variable, or just print out.
+
+```{r}
+"small"
+```
+
+```{r}
+tiny_synonym <- "small"
+tiny_synonym
+```
+
+::: {.callout-note appearance="simple"}
+#### Common Error
+
+You will *often* get confused about this and get the `Error: object '' not found` message. Even if you do this for `r 2023-2008` years, you will still sometimes enter plain text when you meant to put it in quotes, and put text in quotes you meant to enter without. It's always annoying, but doesn't mean you're bad at doing this.
+:::
+
+### Logical
+
+There are two specialized values that you could call "True/False" or "Logical" or "Boolean" values
+
+```{r}
+# fullnames
+TRUE
+FALSE
+```
+
+```{r}
+# Short Forms
+T
+F
+```
+
+These are often created using logical comparisons
+
+```{r}
+large  <- 100000
+medium <-    600
+
+large < medium
+```
+
+```{r}
+short_word <- "to"
+
+nchar(short_word) == 2
+```
+
+### NA
+
+When you have a missing value, that's given a special `NA` value.
+
+```{r}
+numbers <- c(1, NA, 5)
+numbers
+```
+
+## Vectors
+
+Vectors are basically 1 dimensional lists of values.[^1] You can have numeric, character or logical vectors in R, but you can't mix types. One way to create vectors is with the `c()` (for **c**oncatenate) function. There needs to be a comma `,` between every value that you add to a vector.
+
+[^1]: The reason they aren't called "lists" is because there's another kind of data object called a list that has different properties.
+
+```{r}
+digital_words <- c(
+  "-dle",
+  "BFFR",
+  "chief twit",
+  "chronically online",
+  "crypto rug pull",
+  "touch grass",
+  "-verse"
+)
+print(digital_words)
+```
+
+```{r}
+digital_word_votes <- c(
+  84,
+  14,
+  4,
+  30,
+  8,
+  64,
+  8
+)
+print(digital_word_votes)
+```
+
+You can also create vectors of sequential vectors with the `:` operator.
+
+```{r}
+1:10
+```
+
+<details>
+
+<summary>More vector creating possibilities</summary>
+
+There are a lot of functions for creating vectors.
+
+```{r}
+seq(from = 1, to = 5, length = 10)
+```
+
+```{r}
+seq_along(digital_words)
+```
+
+```{r}
+rep(c("a", "b"), times = 3)
+```
+
+```{r}
+rep(c("a", "b"), each = 3)
+```
+
+</details>
+
+### Vector Arithmetic
+
+You can do arithmetic on a whole vector of numbers. `digital_word_votes` is a vector of how many votes each word got. We can get the sum like so:
+
+```{r}
+total_votes <- sum(digital_word_votes)
+total_votes
+```
+
+Then, we can convert those vote counts to proportions by dividing them by the total.
+
+```{r}
+digital_word_votes / total_votes
+```
+
+And we can convert that to percentages by multiplying by 100.
+
+```{r}
+(digital_word_votes / total_votes) * 100
+```
+
+## Indexing
+
+If you've never programmed before, this part will make sense, and if you haven't programmed before, this part will be confusing.
+
+If you have a vector, and you want to get the first value from it, you put square brackets `[]` after the variable name, and put `1` inside.
+
+```{r}
+print(digital_words)
+digital_words[1]
+```
+
+If you want a *range* of values from a vector, you can give it a vector of numeric indices.
+
+```{r}
+digital_words[2:5]
+```
+
+### Logical Indexing
+
+Also *really* useful is the ability to do logical indexing. For example, if we wanted to see which digital words got ten or fewer votes, we can do
+
+```{r}
+digital_word_votes <= 10
+```
+
+We can use this sequence of `TRUE` and `FALSE` values to get the actual words from the `digital_words` vector.
+
+```{r}
+digital_words[digital_word_votes <= 10]
+```
+
+## Data Frames
+
+The *most* common kind of data structure we're going to be working with are Data Frames. These are two dimensional structures with rows and columns. The data types within each column all need to be the same.
+
+```{r}
+word_df <- data.frame(
+  type = "digital",
+  word = digital_words,
+  votes = digital_word_votes  
+)
+print(word_df)
+```
+
+### Navigating data frames
+
+To navigate data frames, there are a few handy functions. First, in RStudio you can launch a viewer with `View()`
+
+```{r}
+#| eval: false
+View(word_df)
+```
+
+Keeping things inside the Quarto notebook, other useful functions are `summary()`, `nrow()`, `ncol()` and `colnames()`.
+
+```{r}
+summary(word_df)
+nrow(word_df)
+ncol(word_df)
+colnames(word_df)
+```
+
+### Indexing Data Frames
+
+To get all of the data from a single column of a data frame, we can put `$` after the data frame variable name, then the name of the column.
+
+```{r}
+word_df$word
+```
+
+We're going to have more, interesting ways to get specific rows from a data frame later on in the course, but for now if you want to subset just the rows that have 10 or fewer votes, we can use `subset`.
+
+```{r}
+subset(word_df, votes <= 10)
+```
+
+<details>
+
+<summary>Pipe Preview</summary>
+
+The "pipe" (`|>`) is going to play a big role in our R workflow. What it does is take whatever is on its left hand side and inserts it as the first argument to the function on the left hand side. Here's a preview.
+
+```{r}
+word_df |> 
+  subset(votes <= 10)
+```
+
+</details>
+
+## Packages
+
+Packages get installed once with `install.pacakges()`
+
+```{r}
+#| eval: false
+# Only needs to be run once ever, or when updating
+install.packages("tidyverse")
+```
+
+But they need to be *loaded* every time with `library()`
+
+```{r}
+# Needs to be run every time
+library(tidyverse)
+```
+
+If you try to load a package that you haven't installed yet, you'll get this error:
+
+```{r}
+library(fake_library)
+```
