@@ -37,9 +37,9 @@ format:
     license: "CC-BY-SA 4.0"
     smooth-scroll: true
     link-external-newwindow: true
-    link-external-icon: true
     include-in-header: google_font.html
     mainfont: "Atkinson Hyperlegible"
+    code-link: true
   pdf:
     license: "CC-BY-SA 4.0"
 

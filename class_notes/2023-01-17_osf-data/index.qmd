@@ -1,0 +1,75 @@
+---
+title: "Downloading OSF Data"
+author: "Josef Fruehwald"
+date: 2023-01-17
+categories:
+  - osf
+  - data download
+code-tools: true
+---
+
+The data for winter's Statistics for Linguistics textbook is all available on the Open Science Framework at <https://osf.io/34mq9/> You can download the files as you need them and upload them into your blog files, or you can download the whole thing at once with this quarto notebook and the [`osfr`](https://docs.ropensci.org/osfr/) package.
+
+I'm effectively just running through their sample documentation from the about page.
+
+## Step 1 - Install `osfr` and load it
+
+This will check to see of `osfr` is installed. If it is, it will load it. If not, it will install it, then load it. This may start printing out scary looking things like `g++ -std=gnu++14 -I"/usr/share/R/include"` and so forth. That is ok.
+
+```{r}
+osfr_exists <- require("osfr")
+if(!osfr_exists){
+  install.packages("osfr")
+  library(osfr)
+}
+```
+
+## Step 2 - Download the data
+
+The little string of letters and numbers comes from the osf link. I've included some `if()`s in there to be defensive, just in case you re-run the code so you won't accidentally delete or overwrite anything.
+
+```{r}
+# I'm just being defensive here,
+# in case you've run the script before.
+data_exists <- dir.exists("data")
+if(!data_exists){
+  dir.create(path = "data")
+}
+```
+
+```{r}
+data_files <- list.files("data")
+if(length(data_files) != 17){
+  osf_retrieve_node('34mq9') |> 
+    osf_ls_files(
+      "materials/data", 
+      n_max = Inf
+    ) |> 
+    osf_download(
+      path = "data",
+      conflicts = "skip"
+    )
+}
+```
+
+## Step 3 - Load the data into your blog post.
+
+There are two ways to go about loading the data into a quarto notebook for your work-through blog post.
+
+### Way 1
+
+I've assumed you've run the `download_data.qmd` code from the main workthrough blog directory. So, from any given blog post in `posts/XX_chapter/index.qmd` file, you'd need to type
+
+```{r}
+#| eval: false
+nettle_df <- read.csv("../../data/nettle_1999_climate.csv")
+```
+
+### Way 2
+
+In the file browser pane in RStudio, if you navigate to the `data` directory, click on the "⚙️ More" drop down menu. Then select *Copy Folder Path to Clipboard*. For me, this copies `~/work_through_blog/data` to the clipboard. You can then use this inside `read.csv()` like so:
+
+```{r}
+#| eval: false
+nettle_df <- read.csv("~/work_through_blog/data/nettle_1999_climate.csv")
+```
