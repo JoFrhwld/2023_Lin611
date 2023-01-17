@@ -30,6 +30,12 @@ website:
         - about.qmd
         - schedule.qmd
   page-navigation: true
+  favicon: assets/logo.png
+  twitter-card: 
+    image: assets/logo2.png
+  open-graph:
+    image: assets/logo2.png
+  
 format:
   html:
     theme: darkly
