@@ -1,0 +1,154 @@
+---
+title: "Starting with the tidyverse"
+date: 2023-01-24
+---
+
+Let's start by loading the tidyverse.
+
+```{r}
+library(tidyverse)
+```
+
+## Tidyverse functions as verbs
+
+Most tidyverse functions are written to be *verbs*, taje a data frame as their first argument, and also return a data frame.
+
+```{r}
+# a data frame
+mtcars <- as_tibble(mtcars)
+mtcars
+```
+
+```{r}
+# filter the dataframe to 
+# only the rows with cyl==6
+filter(mtcars, cyl == 6)
+```
+
+```{r}
+# count how many rows 
+# have these values of gears
+count(mtcars, gear)
+```
+
+## Piping
+
+Since tidyverse functions take data frames as input, and produce data frames as output, you might want to combine them.
+
+*What are the counts of `gear` for cars with `cyl==6`?*
+
+```{r}
+count(
+  filter(
+    mtcars, 
+    cyl == 6
+    ), 
+  gear
+  )
+```
+
+A problem here is that you have to write, and read your functions inside out. Wouldn't it be great if we could write code that looks like:
+
+> First take the `mtcars` data, and then filter it by `cyl==6`, then get the count of gears.
+
+That's where the pipe `|>` comes in. The pipe takes everything to its left, and inserts it as the first argument to the function on its right.
+
+```{r}
+#| eval: false
+# this
+mtcars |> filter(cyl == 6)
+
+# is equivalent to this
+filter(mtcars, cyl == 6)
+```
+
+This lets us chain tidyverse verbs together.
+
+```{r}
+mtcars |> 
+  filter(cyl == 6) |> 
+  count(gear)
+```
+
+::: callout-note
+## Work it out
+
+The dataframe `starwars` contains demographic and personal data for many characters from the Star Wars universe. Using `dplyr` verbs like
+
+-   [`filter()`](https://dplyr.tidyverse.org/reference/filter.html)
+
+-   [`count()`](https://dplyr.tidyverse.org/reference/count.html)
+
+-   [`arrange()`](https://dplyr.tidyverse.org/reference/arrange.html)
+
+-   [`slice()`](https://dplyr.tidyverse.org/reference/slice.html)
+
+-   [`select()`](https://dplyr.tidyverse.org/reference/select.html)
+
+1.  Find out which planet is the most common homeworld for humans.
+2.  Find out who was the tallest Droid.
+:::
+
+## Grouping and summarizing
+
+To find out average horsepower across all of the cars in `mtcars`, we can use `summarise()`
+
+```{r}
+mtcars |> 
+  summarise(hp = mean(hp))
+```
+
+If we wanted to find out the average horsepower by the number of cylinders, we can `group_by()` and then `summarise()`.
+
+```{r}
+mtcars |> 
+  group_by(cyl) |> 
+  summarise(hp = mean(hp))
+```
+
+## Mutating
+
+To add new columns to a data frame, we can use `mutate()`. Inside of mutate, we can make reference to any column in the dataframe.
+
+```{r}
+## horsepower by cylinder?
+mtcars |> 
+  mutate(hp_by_cyl = hp/cyl)
+```
+
+::: callout-note
+## Work it out
+
+This will load all tokens of "uh" and "um" from the Philadelphia Neighborhood Corpus.
+
+```{r}
+um <- read_tsv("https://bit.ly/3JdeSbx")
+```
+
+The column `word` codes whether it was "um" or "uh" or some combo that was spoken. Other important columns are
+
+-   `start_time`, `end_time`: the start and end times for the whole word
+
+-   `vowel_start`, `vowel_end`: The start and end time of the vowel in the word.
+
+-   `nasal_start`, `nasal_end`: The start and end times of the nasal, for the word `UM`.
+
+-   `next_seg`: the transcription of the following segment. `"sp"` means "pause"
+
+-   `next_seg_start`, `next_seg_end` the start and end times of the following segment
+
+```{r}
+um
+```
+
+Using dplyr verbs like
+
+-   `mutate()`
+
+-   `group_by()`
+
+-   `summarise()`
+
+1.  Figure out the average duration of the vowel for each kind of `word`.
+2.  Figure out the average duration of the vowel for each kind of `word` when the following segment is a pause versus when it isn't.
+:::
