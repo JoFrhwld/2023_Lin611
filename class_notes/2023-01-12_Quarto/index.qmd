@@ -5,6 +5,7 @@ date: 2023-01-12
 categories:
   - "Block 1"
   - "Onboarding"
+order: 03  
 ---
 
 ## Configure RStudio to communicate with Github

@@ -6,6 +6,7 @@ categories:
   - osf
   - data download
 code-tools: true
+order: 04
 ---
 
 The data for winter's Statistics for Linguistics textbook is all available on the Open Science Framework at <https://osf.io/34mq9/> You can download the files as you need them and upload them into your blog files, or you can download the whole thing at once with this quarto notebook and the [`osfr`](https://docs.ropensci.org/osfr/) package.

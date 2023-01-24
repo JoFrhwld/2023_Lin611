@@ -4,6 +4,7 @@ author: "Josef Fruehwald"
 date: 2023-01-10
 format: html
 editor: visual
+order: 01
 ---
 
 ## R vs RStudio vs Quarto
@@ -12,7 +13,7 @@ editor: visual
 
 R (on the left) is a programming language, which looks at (👀) R scipt files (the box with .r) and interprets them. RStudio is an IDE (Integrated Development Environment) that provides a more pleasant interface to working with R.
 
-Quarto (not pictured) is a program that interprets Quarto documents (the box with .qmd) and renders them as html files. We\'ll be doing this all inside of RStudio.
+Quarto (not pictured) is a program that interprets Quarto documents (the box with .qmd) and renders them as html files. We'll be doing this all inside of RStudio.
 
 ## Examples from inside class
 
