@@ -21,7 +21,7 @@ A useful diagram for understanding joins <https://r4ds.hadley.nz/joins.html#fig-
 ```{r}
 #| message: false
 um <- read_tsv("https://bit.ly/3JdeSbx")
-demo <- read_csv("data/demographics.csv")
+demo <- read_csv("https://bit.ly/3wOfcGx")
 ```
 
 Join these two datasets together (`dplyr::left_join()`) and find out
