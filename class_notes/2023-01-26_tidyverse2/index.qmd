@@ -1,0 +1,118 @@
+---
+title: "Continuing with the tidyverse"
+date: 2023-01-26
+resources: 
+  - data/demographics.csv
+order: 07  
+---
+
+## Joins
+
+```{r}
+#| message: false
+library(tidyverse)
+```
+
+A useful diagram for understanding joins <https://r4ds.hadley.nz/joins.html#fig-join-left>
+
+::: callout-note
+## Work it out
+
+```{r}
+#| message: false
+um <- read_tsv("https://bit.ly/3JdeSbx")
+demo <- read_csv("data/demographics.csv")
+```
+
+Join these two datasets together (`dplyr::left_join()`) and find out
+
+1.  Which filled pause did people born before 1930 use the most?
+
+2.  Which filled pause did people born after 1980 use the most?
+
+Think of using functions like
+
+-   `dplyr::filter()`
+
+-   `dplyr::count()`
+
+-   `dplyr::arrange()`
+:::
+
+## Pivots
+
+```{r}
+#| eval: false
+install.packages("nasapower")
+```
+
+```{r}
+library(nasapower)
+```
+
+### Getting monthly temperature data
+
+```{r}
+#| message: false
+lex_temp <- 
+  get_power(
+    community = "ag",
+    temporal_api = "monthly",
+    pars = "T2M",
+    dates = c("1985-01-01", "2021-12-31"),
+    lonlat = c(-84.501640,  38.047989)
+  )
+```
+
+Here is monthly temperature data for Lexington according to NASA
+
+```{r}
+lex_temp
+```
+
+### Pivoting long
+
+```{r}
+lex_long <- 
+  lex_temp |> 
+  pivot_longer(
+    cols = JAN:DEC,
+    names_to = "month",
+    values_to = "temp"
+  )
+
+lex_long
+```
+
+### Pivoting wide
+
+You can do data operations, and then pivot the data back to wide.
+
+```{r}
+lex_long |> 
+  mutate(decade = floor(YEAR / 10)) |> 
+  group_by(decade, month) |> 
+  summarise(mean_temp = mean(temp)) |> 
+  pivot_wider(
+    names_from = month,
+    values_from = mean_temp
+  )
+  
+```
+
+::: callout-note
+## Work it out
+
+With the "UM" data
+
+1.  Calculate the average duration of the vowel for each person for each word. Think of using functions like
+    -   `dplyr::mutate()`
+
+    -   `dplyr::group_by()`
+
+    -   `dplyr::summarise()`
+2.  Figure out *how many times longer* the vowel is in "UM" than for "UH" for each person. Think of using functions like
+    -   `tidyr::pivot_wider()`
+
+    -   `dplyr::mutate()`
+:::
