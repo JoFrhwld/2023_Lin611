@@ -4,7 +4,7 @@
     "href": "class_notes/2023-01-26_tidyverse2/index.html",
     "title": "Continuing with the tidyverse",
     "section": "",
-    "text": "library(tidyverse)\n\nA useful diagram for understanding joins https://r4ds.hadley.nz/joins.html#fig-join-left\n\n\n\n\n\n\nWork it out\n\n\n\n\num <- read_tsv(\"https://bit.ly/3JdeSbx\")\ndemo <- read_csv(\"data/demographics.csv\")\n\nJoin these two datasets together (dplyr::left_join()) and find out\n\nWhich filled pause did people born before 1930 use the most?\nWhich filled pause did people born after 1980 use the most?\n\nThink of using functions like\n\ndplyr::filter()\ndplyr::count()\ndplyr::arrange()"
+    "text": "library(tidyverse)\n\nA useful diagram for understanding joins https://r4ds.hadley.nz/joins.html#fig-join-left\n\n\n\n\n\n\nWork it out\n\n\n\n\num <- read_tsv(\"https://bit.ly/3JdeSbx\")\ndemo <- read_csv(\"https://bit.ly/3wOfcGx\")\n\nJoin these two datasets together (dplyr::left_join()) and find out\n\nWhich filled pause did people born before 1930 use the most?\nWhich filled pause did people born after 1980 use the most?\n\nThink of using functions like\n\ndplyr::filter()\ndplyr::count()\ndplyr::arrange()"
   },
   {
     "objectID": "class_notes/2023-01-26_tidyverse2/index.html#pivots",
