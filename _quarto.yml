@@ -5,6 +5,7 @@ project:
 website:
   title: "Lin611 - Spring 2023"
   navbar:
+    logo: "assets/logo.png"
     left:
       - href: syllabus.qmd
         text: "Syllabus"
@@ -38,8 +39,9 @@ website:
   
 format:
   html:
-    theme: darkly
-    css: styles.css
+    theme: 
+      dark: [darkly, custom_dark.scss]
+      light: [flatly, custom_light.scss]
     license: "CC-BY-SA 4.0"
     smooth-scroll: true
     link-external-newwindow: true

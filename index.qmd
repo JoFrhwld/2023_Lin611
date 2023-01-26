@@ -11,7 +11,11 @@ page-layout: full
 title-block-banner: true
 ---
 
-This is the course website for Lin611: Quantitative Methods in Linguistics, taught in the Spring semester of 2023. Notes from in-class will be listed below. Other important information:
+This is the course website for Lin611: Quantitative Methods in Linguistics, taught in the Spring semester of 2023.
+
+![](assets/logo2.png){fig-alt="The Lin611 logo image" fig-align="center"}
+
+Notes from in-class will be listed below. Other important information:
 
 -   Please read the [syllabus](syllabus.qmd)
 

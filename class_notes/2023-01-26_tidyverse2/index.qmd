@@ -90,9 +90,13 @@ You can do data operations, and then pivot the data back to wide.
 
 ```{r}
 lex_long |> 
+  # converting year to a decade value
   mutate(decade = floor(YEAR / 10)) |> 
+  # grouping by decade and month
   group_by(decade, month) |> 
+  # getting average temperature within groups
   summarise(mean_temp = mean(temp)) |> 
+  # pivoting wide
   pivot_wider(
     names_from = month,
     values_from = mean_temp
@@ -115,4 +119,47 @@ With the "UM" data
     -   `tidyr::pivot_wider()`
 
     -   `dplyr::mutate()`
+:::
+
+## Untidy data examples
+
+Source: `{untidydata}` by Joseph Casillas
+
+```{r}
+#| eval: false
+
+install.packages("devtools")
+devtools::install_github("jvcasillas/untidydata")
+```
+
+```{r}
+library(untidydata)
+```
+
+This is just the `nettle` dataset all over again, but starts out "long"
+
+```{r}
+language_diversity
+```
+
+::: callout-note
+## Work it out
+
+Using a `pivot _*()` functions, convert the `untidydata::language_diversity` data to the format we've seen the Nettle data in.
+:::
+
+## Stretch goals
+
+Here's Spanish vowel data, also from `{untidydata}`.
+
+```{r}
+spanish_vowels
+```
+
+The `spanish_vowels$label` column has three different variable smushed together: speaker id, speaker gender, vowel class. This is good *file naming* convention. Poor *data column* convention.
+
+::: callout-note
+## Work it out
+
+Look over the docs for `tidyr::separate()` and try to get the speaker id, speaker gender, and vowel class separated out into their own columns.
 :::
