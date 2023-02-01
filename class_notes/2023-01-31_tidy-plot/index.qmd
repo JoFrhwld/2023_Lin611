@@ -1,0 +1,426 @@
+---
+title: "Tidying and Plotting"
+date: 2023-01-31
+editor: visual
+---
+
+## Recap
+
+```{r}
+#| message: false
+library(tidyverse)
+library(nasapower)
+```
+
+Grabbing monthly temperature averages for Lexington. Untidy data.
+
+```{r}
+lex_temp <- 
+  get_power(
+    community = "ag",
+    temporal_api = "monthly",
+    pars = "T2M",
+    dates = c("1985-01-01", "2021-12-31"),
+    lonlat = c(-84.501640,  38.047989)
+  )
+```
+
+Untidy because each row has 12 different observations (1 for each month). Column names `JAN` through `DEC` should be variables.
+
+```{r}
+#| eval: false
+lex_temp
+```
+
+```{r}
+#| echo: false
+rmarkdown::paged_table(lex_temp)
+```
+
+Pivoting from wide to long
+
+```{r}
+#| eval: false
+lex_temp |>
+  pivot_longer(
+    # which columns should go long?
+    cols = JAN:DEC,
+    # where should the column names go?
+    names_to = "month",
+    # where shoild the column values go?
+    values_to = "temp"
+  )
+```
+
+```{r}
+#| echo: false
+lex_temp |>
+  pivot_longer(
+    # which columns should go long?
+    cols = JAN:DEC,
+    # where should the column names go?
+    names_to = "month",
+    # where shoild the column values go?
+    values_to = "temp"
+  ) |> 
+  rmarkdown::paged_table()
+```
+
+## Getting untidy data
+
+Example untidy (linguistic!) data can be found in Joseph Casillas' package on github.
+
+```{r}
+#| eval: false
+install.packages("devtools")
+devtools::install_github("jvcasillas/untidydata")
+```
+
+```{r}
+library(untidydata)
+```
+
+Vowel formant estimates for spanish vowels. The data column `label` follows good file naming protocol, but poor data column protocol. Three different variables smushed together into one:
+
+-   speaker id
+
+-   speaker gender
+
+-   vowel class
+
+```{r}
+#| eval: false
+spanish_vowels
+```
+
+```{r}
+#| echo: false
+spanish_vowels |> 
+  rmarkdown::paged_table()
+```
+
+These three columns can be separated out with the `tidyr::separate()` function.
+
+```{r}
+tidy_vowels <-
+  spanish_vowels |>
+  separate(
+    # which column to separate
+    col = label,
+    # how to separate them
+    sep = "-",
+    # what to call the new columns
+    into = c("id", "gender", "vowel")
+  )
+```
+
+```{r}
+#| eval: false
+tidy_vowels
+```
+
+```{r}
+#| echo: false
+tidy_vowels |> 
+  rmarkdown::paged_table()
+```
+
+## Plotting
+
+Making a ggplot vowel plot from `tidy_vowels`.
+
+`{ggplot2}` resources
+
+-   <https://r4ds.hadley.nz/data-visualize.html>
+
+-   <https://ggplot2-book.org/>
+
+These plots are built by adding "layers"
+
+### Data Layer
+
+-   The `aes()` function is used to **map** data variables to plot aesthetics.
+
+```{r}
+tidy_vowels |> 
+  ggplot(aes(x = f2, y = f1))
+```
+
+### Geometry layer
+
+"geometries" are the visual components of plots.
+
+```{r}
+tidy_vowels |>
+  ggplot(aes(x = f2, y = f1)) +
+    geom_point()
+```
+
+We can **set** certain visual components of geometries.
+
+```{r}
+tidy_vowels |>
+  ggplot(aes(x = f2, y = f1)) +
+    geom_point(
+      color = "#BE3455",
+      size = 4,
+      # alpha is transparency
+      alpha = 0.6,
+      shape = "square"
+    )
+```
+
+We can also **map** data to the visual components.
+
+```{r}
+tidy_vowels |>
+  ggplot(
+    aes(
+      x = f2, 
+      y = f1,
+      color = vowel
+    )
+  ) +
+    geom_point()
+```
+
+### Statistic layers
+
+We can add "statistic" layers to plots as well.
+
+```{r}
+tidy_vowels |>
+  ggplot(
+    aes(
+      x = f2, 
+      y = f1,
+      color = vowel
+    )
+  ) +
+    geom_point()+
+    # Doesn't really make sense
+    stat_smooth()
+```
+
+```{r}
+tidy_vowels |>
+  ggplot(
+    aes(
+      x = f2, 
+      y = f1,
+      color = vowel
+    )
+  ) +
+    geom_point()+
+    stat_ellipse()
+```
+
+### Scale layers
+
+We can adjust the "scales" of the spatial axes and other aesthetic mappings with scale layers.
+
+```{r}
+# this might need installing
+library(khroma)
+```
+
+```{r}
+tidy_vowels |>
+  ggplot(
+    aes(
+      x = f2, 
+      y = f1,
+      color = vowel
+    )
+  ) +
+    geom_point()+
+    stat_ellipse()+
+    # reverse x and y
+    scale_y_continuous(trans = "reverse")+
+    scale_x_continuous(trans = "reverse")+
+    scale_color_vibrant()
+```
+
+### Titles
+
+The `ggplot2::labs()` layer will do you.
+
+```{r}
+tidy_vowels |>
+  ggplot(
+    aes(
+      x = f2, 
+      y = f1,
+      color = vowel
+    )
+  ) +
+    geom_point()+
+    stat_ellipse()+
+    # reverse x and y
+    scale_y_continuous(trans = "reverse")+
+    scale_x_continuous(trans = "reverse")+
+    scale_color_vibrant()+
+    labs(title = "vowels",
+         x = "F2 (hz)",
+         y = "F1 (hz)",
+         color = "vowel\nclass")
+```
+
+### Faceting
+
+You can make small multiples with `ggplot2::facet_wrap()` or `ggplot2::facet_grid()`.
+
+```{r}
+tidy_vowels |>
+  ggplot(
+    aes(
+      x = f2, 
+      y = f1,
+      color = vowel
+    )
+  ) +
+    geom_point()+
+    stat_ellipse()+
+    # reverse x and y
+    scale_y_continuous(trans = "reverse")+
+    scale_x_continuous(trans = "reverse")+
+    scale_color_vibrant()+
+    labs(title = "vowels",
+         x = "F2 (hz)",
+         y = "F1 (hz)",
+         color = "vowel\nclass")+
+    facet_wrap(~gender)
+```
+
+### Theming
+
+ggplot2 has a number of built in themes
+
+```{r}
+tidy_vowels |>
+  ggplot(
+    aes(
+      x = f2, 
+      y = f1,
+      color = vowel
+    )
+  ) +
+    geom_point()+
+    stat_ellipse()+
+    # reverse x and y
+    scale_y_continuous(trans = "reverse")+
+    scale_x_continuous(trans = "reverse")+
+    scale_color_vibrant()+
+    labs(title = "vowels",
+         x = "F2 (hz)",
+         y = "F1 (hz)",
+         color = "vowel\nclass")+
+    facet_wrap(~gender) +
+    theme_minimal()
+```
+
+You can get additional fine-grained control with `ggplot2::theme()`
+
+```{r}
+tidy_vowels |>
+  ggplot(
+    aes(
+      x = f2, 
+      y = f1,
+      color = vowel
+    )
+  ) +
+    geom_point()+
+    stat_ellipse()+
+    # reverse x and y
+    scale_y_continuous(trans = "reverse")+
+    scale_x_continuous(trans = "reverse")+
+    scale_color_vibrant()+
+    labs(title = "vowels",
+         x = "F2 (hz)",
+         y = "F1 (hz)",
+         color = "vowel\nclass")+
+    facet_wrap(~gender) +
+    theme_minimal() +
+    theme(
+      legend.position = "top",
+      aspect.ratio = 1
+      )
+```
+
+### Combining with tidy workflows
+
+To label each vowel cluster with its vowel class, we need to calculate the F1 and F2 means for each vowel for each gender.
+
+```{r}
+vowel_means <- 
+  tidy_vowels |>
+  group_by(vowel, gender) |>
+  summarise(f1= mean(f1), f2 = mean(f2))
+```
+
+Now add a `geom_label()` layer on after the `geom_point()` layer.
+
+```{r}
+tidy_vowels |>
+  ggplot(
+    aes(
+      x = f2, 
+      y = f1,
+      color = vowel
+    )
+  ) +
+    geom_point()+
+    geom_label(
+      data = vowel_means,
+      aes(label = vowel)
+    )+
+    stat_ellipse()+
+    # reverse x and y
+    scale_y_continuous(trans = "reverse")+
+    scale_x_continuous(trans = "reverse")+
+    scale_color_vibrant()+
+    labs(title = "vowels",
+         x = "F2 (hz)",
+         y = "F1 (hz)",
+         color = "vowel\nclass")+
+    facet_wrap(~gender) +
+    theme_minimal() +
+    theme(
+      legend.position = "top",
+      aspect.ratio = 1
+      )
+```
+
+Strictly speaking, the legend isn't necessary anymore with the direct labels. I'll drop it with the `guides()` layer. I've placed it after the `scale_` layers, just for code clarity.
+
+```{r}
+tidy_vowels |>
+  ggplot(
+    aes(
+      x = f2, 
+      y = f1,
+      color = vowel
+    )
+  ) +
+    geom_point()+
+    geom_label(
+      data = vowel_means,
+      aes(label = vowel)
+    )+
+    stat_ellipse()+
+    # reverse x and y
+    scale_y_continuous(trans = "reverse")+
+    scale_x_continuous(trans = "reverse")+
+    scale_color_vibrant()+
+    guides(color = "none")+
+    labs(title = "vowels",
+         x = "F2 (hz)",
+         y = "F1 (hz)",
+         color = "vowel\nclass")+
+    facet_wrap(~gender) +
+    theme_minimal() +
+    theme(
+      aspect.ratio = 1
+      )
+```

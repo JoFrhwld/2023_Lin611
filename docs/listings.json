@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/class_notes/2023-01-31_tidy-plot/index.html",
       "/class_notes/2023-01-26_tidyverse2/index.html",
       "/class_notes/2023-01-23_tidyverse/index.html",
       "/class_notes/2023-01-17_osf-data/index.html",
@@ -14,6 +15,7 @@
   {
     "listing": "/class_notes.html",
     "items": [
+      "/class_notes/2023-01-31_tidy-plot/index.html",
       "/class_notes/2023-01-26_tidyverse2/index.html",
       "/class_notes/2023-01-23_tidyverse/index.html",
       "/class_notes/2023-01-17_osf-data/index.html",
