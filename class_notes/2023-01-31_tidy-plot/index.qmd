@@ -2,6 +2,7 @@
 title: "Tidying and Plotting"
 date: 2023-01-31
 editor: visual
+order: 08
 ---
 
 ## Recap

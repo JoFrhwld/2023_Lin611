@@ -1,0 +1,65 @@
+---
+title: "Tidy Vowel Normalization"
+date: 2023-02-02
+order: 09
+bibliography: references.bib
+---
+
+## Setup and plot original data
+
+```{r}
+#| message: false
+library(tidyverse)
+library(khroma)
+theme_set(theme_minimal())
+```
+
+```{r}
+library(untidydata)
+```
+
+```{r}
+tidy_vowels <-
+  spanish_vowels |>
+  separate(
+    col = label,
+    sep = "-",
+    into = c("id", "gender", "vowel")
+  ) |> 
+  # Recoding gender labels
+  mutate(
+    gender = case_when(
+      gender == "female" ~ "women",
+      gender == "male" ~ "men"
+    )
+  )
+```
+
+```{r}
+tidy_vowels |> 
+  ggplot(aes(f2, f1, color = gender)) +
+    stat_density2d()+
+    scale_x_continuous(trans = "reverse")+
+    scale_y_continuous(trans = "reverse")+
+    scale_color_brewer(palette = "Dark2")
+```
+
+## Unnormalized vowels
+
+```{r}
+tidy_vowels |> 
+  ggplot(aes(x = gender))+
+    geom_violin(aes(y = f1, fill = "f1"))+
+    geom_violin(aes(y = f2, fill = "f2")) +
+    scale_y_continuous(trans = "log10")+
+    scale_fill_bright()+
+    labs(y = "frequency (hz)")
+```
+
+## Normalizing
+
+### z-scoring a.k.a. "Lobanov"
+
+### Log-mean
+
+Log-mean normalization, following @barreda2021.

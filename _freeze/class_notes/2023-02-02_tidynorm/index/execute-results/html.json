@@ -1,0 +1,16 @@
+{
+  "hash": "5945724e3195aaab1d67e3ee4ed9c7b1",
+  "result": {
+    "markdown": "---\ntitle: \"Tidy Vowel Normalization\"\ndate: 2023-02-02\norder: 09\nbibliography: references.bib\n---\n\n\n## Setup and plot original data\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(tidyverse)\nlibrary(khroma)\ntheme_set(theme_minimal())\n```\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(untidydata)\n```\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\ntidy_vowels <-\n  spanish_vowels |>\n  separate(\n    col = label,\n    sep = \"-\",\n    into = c(\"id\", \"gender\", \"vowel\")\n  ) |> \n  # Recoding gender labels\n  mutate(\n    gender = case_when(\n      gender == \"female\" ~ \"women\",\n      gender == \"male\" ~ \"men\"\n    )\n  )\n```\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\ntidy_vowels |> \n  ggplot(aes(f2, f1, color = gender)) +\n    stat_density2d()+\n    scale_x_continuous(trans = \"reverse\")+\n    scale_y_continuous(trans = \"reverse\")+\n    scale_color_brewer(palette = \"Dark2\")\n```\n\n::: {.cell-output-display}\n![](index_files/figure-html/unnamed-chunk-4-1.png){width=672}\n:::\n:::\n\n\n## Unnormalized vowels\n\n\n::: {.cell}\n\n```{.r .cell-code}\ntidy_vowels |> \n  ggplot(aes(x = gender))+\n    geom_violin(aes(y = f1, fill = \"f1\"))+\n    geom_violin(aes(y = f2, fill = \"f2\")) +\n    scale_y_continuous(trans = \"log10\")+\n    scale_fill_bright()+\n    labs(y = \"frequency (hz)\")\n```\n\n::: {.cell-output-display}\n![](index_files/figure-html/unnamed-chunk-5-1.png){width=672}\n:::\n:::\n\n\n## Normalizing\n\n### z-scoring a.k.a. \"Lobanov\"\n\n### Log-mean\n\nLog-mean normalization, following @barreda2021.\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
