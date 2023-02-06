@@ -1,0 +1,16 @@
+{
+  "hash": "5d53cccddf0b3415ec8f45421592f274",
+  "result": {
+    "markdown": "---\ntitle: \"Distributions\"\ndate: 2023-02-07\n---\n\n::: {.cell}\n\n```{.r .cell-code}\ninstall.packages(\"droll\")\n```\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(droll)\nlibrary(tidyverse)\n```\n\n::: {.cell-output .cell-output-stderr}\n```\n── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──\n✔ ggplot2 3.4.0     ✔ purrr   1.0.1\n✔ tibble  3.1.8     ✔ dplyr   1.1.0\n✔ tidyr   1.3.0     ✔ stringr 1.5.0\n✔ readr   2.1.3     ✔ forcats 0.5.2\n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\n```\n:::\n\n```{.r .cell-code}\ntheme_set(\n  theme_bw()\n)\n```\n:::\n\n\nSimulating 100 groups rolling a d6 10 times\n\n\n::: {.cell}\n\n```{.r .cell-code}\nset.seed(611)\n\nnsim <- 1000\n\nroll_sims <- \n  tibble(\n    sim = seq(1,nsim)\n  ) |> \n  ## This will simulate 10 rolls of a d6,\n  ## once per simulation.\n  mutate(\n    rolls = map(\n      sim, \\(x) rroll(10, d6)\n    )\n  ) |> \n  ## This counts how many times 1 and 6\n  ## came up in each simulation\n  mutate(\n    one_and_six = map_dbl(\n      rolls, \\(r)sum(r %in% c(1, 6))\n    )\n  ) \n\nroll_sims |> \n  ggplot(aes(one_and_six))+\n    stat_bin(binwidth = 1)+\n    scale_x_continuous(\n      breaks = c(0,5,10)\n    )+\n    expand_limits(x=c(0,10))\n```\n\n::: {.cell-output-display}\n![](index_files/figure-html/unnamed-chunk-3-1.png){width=672}\n:::\n:::\n\n\nGetting the *theoretical* distribution\n\n\n::: {.cell}\n\n```{.r .cell-code}\ntibble(\n  one_and_six = seq(0, 10),\n  prob = dbinom(\n    one_and_six, \n    size = 10,\n    prob = 2/6\n  ),\n  n = prob * 1000\n) |> \n  ggplot(aes(one_and_six, n))+\n    geom_col()+\n    scale_x_continuous(\n      breaks = c(0,5,10)\n    )\n```\n\n::: {.cell-output-display}\n![](index_files/figure-html/unnamed-chunk-4-1.png){width=672}\n:::\n:::\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
