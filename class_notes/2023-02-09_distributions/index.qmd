@@ -1,0 +1,16 @@
+---
+title: "Distributions 2"
+date: 2023-02-09
+---
+
+```{r}
+library(tidyverse)
+```
+
+```{r}
+emo <- read_csv("https://raw.githubusercontent.com/bodowinter/applied_statistics_book_data/master/warriner_2013_emotional_valence.csv")
+```
+
+```{r}
+um <- read_tsv("https://bit.ly/3JdeSbx")
+```
