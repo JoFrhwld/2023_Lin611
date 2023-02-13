@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.313">
+<meta name="generator" content="quarto-1.2.335">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Josef Fruehwald">
 <meta name="dcterms.date" content="2023-02-09">
@@ -91,7 +91,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../class_notes/2023-02-07_distributions/index.html" rel="prev">
+<link href="../../class_notes/2023-02-02_tidynorm/index.html" rel="prev">
 <link href="../../assets/logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
@@ -125,10 +125,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&amp;family=Comfortaa:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 <meta property="og:title" content="Lin611 - Spring 2023 - Distributions 2">
+<meta property="og:description" content="Our dice rolling experiment is an example of a discrete probability distribution. This code chunk plots the predicted probability of observing \(n\) ⚀ or ⚅ on 10 rolls.">
 <meta property="og:image" content="../../assets/logo2.png">
 <meta property="og:site-name" content="Lin611 - Spring 2023">
 <meta name="twitter:title" content="Lin611 - Spring 2023 - Distributions 2">
+<meta name="twitter:description" content="Our dice rolling experiment is an example of a discrete probability distribution. This code chunk plots the predicted probability of observing \(n\) ⚀ or ⚅ on 10 rolls.">
 <meta name="twitter:image" content="../../assets/logo2.png">
 <meta name="twitter:card" content="summary_large_image">
 </head>
@@ -175,14 +178,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav><nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }"><div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Distributions</h1>
+      <h1 class="quarto-secondary-nav-title">Distributions 2</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
     </div>
   </nav></header><!-- content --><header id="title-block-header" class="quarto-title-block default page-columns page-full"><div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title d-none d-lg-block">Distributions</h1>
+      <h1 class="title d-none d-lg-block">Distributions 2</h1>
                       </div>
   </div>
     
@@ -271,11 +274,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../class_notes/2023-02-07_distributions/index.html" class="sidebar-item-text sidebar-link">Distributions</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="../../class_notes/2023-02-09_distributions/index.html" class="sidebar-item-text sidebar-link active">Distributions 2</a>
   </div>
 </li>
@@ -284,7 +282,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </ul>
 </div>
 </nav><!-- margin-sidebar --><div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
+   
+  <ul>
+<li><a href="#discrete-probability-distributions" id="toc-discrete-probability-distributions" class="nav-link active" data-scroll-target="#discrete-probability-distributions">Discrete Probability distributions</a></li>
+  <li><a href="#normal-distribution" id="toc-normal-distribution" class="nav-link" data-scroll-target="#normal-distribution">Normal Distribution</a></li>
+  <li>
+<a href="#real-data" id="toc-real-data" class="nav-link" data-scroll-target="#real-data">Real Data</a>
+  <ul class="collapse">
+<li><a href="#some-definitions" id="toc-some-definitions" class="nav-link" data-scroll-target="#some-definitions">Some definitions</a></li>
+  </ul>
+</li>
+  </ul></nav>
     </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content"><div class="cell">
@@ -326,10 +335,261 @@ dbl (11): start_time, end_time, vowel_start, vowel_end, nasal_start, nasal_e...
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 </div>
 </div>
+<section id="discrete-probability-distributions" class="level2"><h2 class="anchored" data-anchor-id="discrete-probability-distributions">Discrete Probability distributions</h2>
+<p>Our dice rolling experiment is an example of a discrete probability distribution. This code chunk plots the predicted probability of observing <span class="math inline">\(n\)</span> ⚀ or ⚅ on 10 rolls.</p>
+<div class="cell">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## Define how many rolls</span></span>
+<span><span class="va">nrolls</span> <span class="op">&lt;-</span> <span class="fl">10</span></span>
+<span></span>
+<span><span class="co">## get the probability in a dataframe</span></span>
+<span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span></span>
+<span>  <span class="co">## possible observations</span></span>
+<span>  observed <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="va">nrolls</span>,</span>
+<span>  <span class="co">## dbinom for the probability distribution</span></span>
+<span>  prob <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">dbinom</a></span><span class="op">(</span></span>
+<span>    <span class="co">## possible observations</span></span>
+<span>    x <span class="op">=</span> <span class="va">observed</span>,</span>
+<span>    <span class="co">## number of rolls</span></span>
+<span>    size <span class="op">=</span> <span class="va">nrolls</span>,</span>
+<span>    <span class="co">## probability of success</span></span>
+<span>    prob <span class="op">=</span> <span class="fl">2</span><span class="op">/</span><span class="fl">6</span></span>
+<span>  <span class="op">)</span></span>
+<span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="co">## the plotting code</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">observed</span>, y <span class="op">=</span> <span class="va">prob</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_col</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>If we have more rolls, the range of probability density, relative to the whole range of possible observations, decreases.</p>
+<div class="cell">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## Define how many rolls</span></span>
+<span><span class="va">nrolls</span> <span class="op">&lt;-</span> <span class="fl">1000</span></span>
+<span></span>
+<span><span class="co">## get the probability in a dataframe</span></span>
+<span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span></span>
+<span>  <span class="co">## possible observations</span></span>
+<span>  observed <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="va">nrolls</span>,</span>
+<span>  <span class="co">## dbinom for the probability distribution</span></span>
+<span>  prob <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">dbinom</a></span><span class="op">(</span></span>
+<span>    <span class="co">## possible observations</span></span>
+<span>    x <span class="op">=</span> <span class="va">observed</span>,</span>
+<span>    <span class="co">## number of rolls</span></span>
+<span>    size <span class="op">=</span> <span class="va">nrolls</span>,</span>
+<span>    <span class="co">## probability of success</span></span>
+<span>    prob <span class="op">=</span> <span class="fl">2</span><span class="op">/</span><span class="fl">6</span></span>
+<span>  <span class="op">)</span></span>
+<span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="co">## the plotting code</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">observed</span>, y <span class="op">=</span> <span class="va">prob</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_col</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>We can simulate the experiment, varying the number of groups who rolled different number of n times. Increasing the number of groups rolling a die fills in the density distribution more, but only increasing the number of <em>rolls</em> per group narrows the density range.</p>
+<div class="cell">
+<details><summary>complicated code just to make the plot</summary><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">611</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/expand_grid.html">expand_grid</a></span><span class="op">(</span></span>
+<span>  nrolls <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">100</span>, <span class="fl">1000</span><span class="op">)</span>,</span>
+<span>  groups <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">50</span>, <span class="fl">500</span><span class="op">)</span>,</span>
+<span>  min <span class="op">=</span> <span class="fl">0</span></span>
+<span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
+<span>    expected <span class="op">=</span> <span class="va">nrolls</span> <span class="op">*</span> <span class="op">(</span><span class="fl">2</span><span class="op">/</span><span class="fl">6</span><span class="op">)</span></span>
+<span>  <span class="op">)</span><span class="op">-&gt;</span> <span class="va">blank</span></span>
+<span></span>
+<span><span class="co">## Create all combinations of rolls</span></span>
+<span><span class="co">## and number of groups</span></span>
+<span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/expand_grid.html">expand_grid</a></span><span class="op">(</span></span>
+<span>  nrolls <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">100</span>, <span class="fl">1000</span><span class="op">)</span>,</span>
+<span>  groups <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">50</span>, <span class="fl">500</span><span class="op">)</span></span>
+<span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="co">## We didn't learn about code like this,</span></span>
+<span>  <span class="co">## using it just to make the graph</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
+<span>    roll_df <span class="op">=</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map2.html">map2</a></span><span class="op">(</span></span>
+<span>      <span class="va">nrolls</span>, </span>
+<span>      <span class="va">groups</span>, </span>
+<span>      \<span class="op">(</span><span class="va">roll</span>, <span class="va">group</span><span class="op">)</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>obs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">rbinom</a></span><span class="op">(</span>n <span class="op">=</span> <span class="va">group</span>, size <span class="op">=</span> <span class="va">roll</span>, prob <span class="op">=</span> <span class="fl">2</span><span class="op">/</span><span class="fl">6</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unnest.html">unnest</a></span><span class="op">(</span><span class="va">roll_df</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">obs</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">stat_bin</a></span><span class="op">(</span>binwidth <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>             <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes_eval.html">after_stat</a></span><span class="op">(</span><span class="va">ndensity</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_blank.html">geom_blank</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">blank</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">nrolls</span>, y <span class="op">=</span> <span class="fl">0</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_blank.html">geom_blank</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">blank</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">min</span>, y <span class="op">=</span> <span class="fl">0</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_vline</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">blank</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>xintercept <span class="op">=</span> <span class="va">expected</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"steelblue"</span><span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_grid.html">facet_grid</a></span><span class="op">(</span><span class="va">groups</span><span class="op">~</span><span class="va">nrolls</span>, </span>
+<span>               label <span class="op">=</span> <span class="va">label_both</span>,</span>
+<span>               scales <span class="op">=</span> <span class="st">"free"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+</div>
+<details><summary>complicated code just to make the plot</summary><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># tibble(</span></span>
+<span><span class="co">#   rand = rbinom(n = 500, size = nrolls, prob = 2/6)</span></span>
+<span><span class="co"># ) |&gt; </span></span>
+<span><span class="co">#   ggplot(aes(x = rand)) +</span></span>
+<span><span class="co">#     stat_bin(binwidth = 1)+</span></span>
+<span><span class="co">#     geom_vline(xintercept = (2/6) * nrolls, color = "red")+</span></span>
+<span><span class="co">#     expand_limits(x = c(0, nrolls))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section><section id="normal-distribution" class="level2"><h2 class="anchored" data-anchor-id="normal-distribution">Normal Distribution</h2>
+<p>The “Normal Distribution” or “Gaussian Distribution” is a continuous probability density function. Rather than the height of the curve representing the “point probability” of a value, it represents an area that sums to 1. To get the probability of a value falling within a range of the normal distribution, you sum the area under the curve.</p>
+<div class="cell">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span></span>
+<span>  x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="op">-</span><span class="fl">4</span>, <span class="fl">4</span>, length <span class="op">=</span> <span class="fl">100</span><span class="op">)</span>,</span>
+<span>  dens <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">dnorm</a></span><span class="op">(</span><span class="va">x</span>, mean <span class="op">=</span> <span class="fl">0</span>, sd <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
+<span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">x</span>, y <span class="op">=</span> <span class="va">dens</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_ribbon.html">geom_area</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<details><summary>complex code just to make the plot</summary><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">one_sd_prob</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span>, digits <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span><span class="va">two_four_prob</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span><span class="fl">4</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span>, digits <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span></span>
+<span>  x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="op">-</span><span class="fl">4</span>, <span class="fl">4</span>, length <span class="op">=</span> <span class="fl">100</span><span class="op">)</span>,</span>
+<span>  dens <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">dnorm</a></span><span class="op">(</span><span class="va">x</span>, mean <span class="op">=</span> <span class="fl">0</span>, sd <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
+<span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">x</span>, y <span class="op">=</span> <span class="va">dens</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_ribbon.html">geom_area</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotate.html">annotate</a></span><span class="op">(</span></span>
+<span>      ymin <span class="op">=</span> <span class="op">-</span><span class="cn">Inf</span>,</span>
+<span>      ymax <span class="op">=</span> <span class="cn">Inf</span>,</span>
+<span>      xmin <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>,</span>
+<span>      xmax <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>      geom <span class="op">=</span> <span class="st">"rect"</span>,</span>
+<span>      alpha <span class="op">=</span> <span class="fl">0.3</span>,</span>
+<span>      fill <span class="op">=</span> <span class="st">"steelblue"</span></span>
+<span>    <span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotate.html">annotate</a></span><span class="op">(</span></span>
+<span>      x <span class="op">=</span> <span class="fl">0</span>,</span>
+<span>      y <span class="op">=</span> <span class="fl">0.2</span>,</span>
+<span>      label <span class="op">=</span> </span>
+<span>        <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_wrap.html">str_wrap</a></span><span class="op">(</span></span>
+<span>          <span class="fu">glue</span><span class="fu">::</span><span class="fu"><a href="https://glue.tidyverse.org/reference/glue.html">glue</a></span><span class="op">(</span><span class="st">"Area under the curve between -1 and 1 = {one_sd_prob}"</span><span class="op">)</span>,</span>
+<span>          <span class="fl">15</span></span>
+<span>        <span class="op">)</span>,</span>
+<span>      geom <span class="op">=</span> <span class="st">"label"</span>,</span>
+<span>      color <span class="op">=</span> <span class="st">"steelblue"</span></span>
+<span>    <span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotate.html">annotate</a></span><span class="op">(</span></span>
+<span>      ymin <span class="op">=</span> <span class="op">-</span><span class="cn">Inf</span>,</span>
+<span>      ymax <span class="op">=</span> <span class="cn">Inf</span>,</span>
+<span>      xmin <span class="op">=</span> <span class="fl">2</span>,</span>
+<span>      xmax <span class="op">=</span> <span class="fl">4</span>,</span>
+<span>      geom <span class="op">=</span> <span class="st">"rect"</span>,</span>
+<span>      alpha <span class="op">=</span> <span class="fl">0.3</span>,</span>
+<span>      fill <span class="op">=</span> <span class="st">"#BE3455"</span></span>
+<span>    <span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotate.html">annotate</a></span><span class="op">(</span></span>
+<span>      x <span class="op">=</span> <span class="fl">3</span>,</span>
+<span>      y <span class="op">=</span> <span class="fl">0.2</span>,</span>
+<span>      label <span class="op">=</span> </span>
+<span>        <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_wrap.html">str_wrap</a></span><span class="op">(</span></span>
+<span>          <span class="fu">glue</span><span class="fu">::</span><span class="fu"><a href="https://glue.tidyverse.org/reference/glue.html">glue</a></span><span class="op">(</span><span class="st">"Area under the curve between 2 and 4 = {two_four_prob}"</span><span class="op">)</span>,</span>
+<span>          <span class="fl">15</span></span>
+<span>        <span class="op">)</span>,</span>
+<span>      geom <span class="op">=</span> <span class="st">"label"</span>,</span>
+<span>      color <span class="op">=</span> <span class="st">"#BE3455"</span></span>
+<span>    <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>One way to view how much area is under the curve, as you move from left to right, is to look at the “cumulative probability function”</p>
+<div class="cell">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span></span>
+<span>  prob <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span></span>
+<span>    q <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="op">-</span><span class="fl">4</span>, <span class="fl">4</span>, length <span class="op">=</span> <span class="fl">100</span><span class="op">)</span>,</span>
+<span>    mean <span class="op">=</span> <span class="fl">0</span>,</span>
+<span>    sd <span class="op">=</span> <span class="fl">1</span></span>
+<span>  <span class="op">)</span>,</span>
+<span>  x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="op">-</span><span class="fl">4</span>, <span class="fl">4</span>, length <span class="op">=</span> <span class="fl">100</span><span class="op">)</span></span>
+<span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">x</span>, y <span class="op">=</span> <span class="va">prob</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_ribbon.html">geom_area</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section><section id="real-data" class="level2"><h2 class="anchored" data-anchor-id="real-data">Real Data</h2>
+<p>Real data is often a bit off from being normal, but might be normal-ish</p>
+<div class="cell">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">emo_xbar</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">emo</span><span class="op">$</span><span class="va">Val</span><span class="op">)</span></span>
+<span><span class="va">emo_sd</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">emo</span><span class="op">$</span><span class="va">Val</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">emo</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Val</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_density.html">stat_density</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_function.html">stat_function</a></span><span class="op">(</span></span>
+<span>      fun <span class="op">=</span> <span class="va">dnorm</span>,</span>
+<span>      args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>mean <span class="op">=</span> <span class="va">emo_xbar</span>, sd <span class="op">=</span> <span class="va">emo_sd</span><span class="op">)</span>,</span>
+<span>      color <span class="op">=</span> <span class="st">"steelblue"</span>,</span>
+<span>      linewidth <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotate.html">annotate</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">7</span>, y <span class="op">=</span> <span class="fl">0.3</span>,</span>
+<span>             label <span class="op">=</span> <span class="st">"empirical density"</span>,</span>
+<span>             geom <span class="op">=</span> <span class="st">"label"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotate.html">annotate</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">2.5</span>, y <span class="op">=</span> <span class="fl">0.2</span>,</span>
+<span>             label <span class="op">=</span> <span class="st">"normal density"</span>,</span>
+<span>             geom <span class="op">=</span> <span class="st">"label"</span>,</span>
+<span>             color <span class="op">=</span> <span class="st">"steelblue"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<section id="some-definitions" class="level3"><h3 class="anchored" data-anchor-id="some-definitions">Some definitions</h3>
+<dl>
+<dt>mean</dt>
+<dd>
+<p>The sum of all values, divided by the number of observations</p>
+</dd>
+<dt>median</dt>
+<dd>
+<p>The value at which 50% of the data is less than it, and 50% is more.</p>
+</dd>
+</dl>
+<p>The mean and median are the same for symmetrical distributions, like the normal distribution.</p>
+<div class="cell">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">emo</span><span class="op">$</span><span class="va">Val</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5.063847</code></pre>
+</div>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">emo</span><span class="op">$</span><span class="va">Val</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5.2</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">Val</span> <span class="op">~</span> <span class="fl">1</span>, data <span class="op">=</span> <span class="va">emo</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">model</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = Val ~ 1, data = emo)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-3.8038 -0.8138  0.1362  0.8862  3.4662 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  5.06385    0.01081   468.5   &lt;2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 1.275 on 13914 degrees of freedom</code></pre>
+</div>
+</div>
 
 
-
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div quarto-reuse="quarto-reuse" class="quarto-appendix-contents"><div>CC-BY-SA 4.0</div></div></section></div></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section></section><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div quarto-reuse="quarto-reuse" class="quarto-appendix-contents"><div>CC-BY-SA 4.0</div></div></section></div></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -591,8 +851,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
 });
 </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="../../class_notes/2023-02-07_distributions/index.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Distributions</span>
+      <a href="../../class_notes/2023-02-02_tidynorm/index.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Tidy Vowel Normalization</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
