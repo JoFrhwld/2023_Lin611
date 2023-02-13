@@ -1,0 +1,35 @@
+---
+title: "Linear Models"
+date: 2023-02-14
+order: 11
+---
+
+## The formula for a line
+
+Cast your mind back to algebra days. You might remember the formula for a line being $y=mx + b$. We're going to be working with that basic concept, except moving around some of the variables and renaming them.
+
+$$
+y = \text{intercept} + (\text{slope}\times x)
+$$
+
+$$
+y = b_0 + bx
+$$
+
+![](assets/line_01.png)
+
+![](assets/line_31.png)
+
+![](assets/line_305.png)
+
+## Plan
+
+-   Review lines and their geometry
+
+-   Lines as models
+
+-   Residuals
+
+-   Sum of Squared Residuals
+
+-   $r^2$
