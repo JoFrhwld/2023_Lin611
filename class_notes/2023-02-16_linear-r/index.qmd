@@ -1,0 +1,19 @@
+---
+title: "Linear Models in R"
+date: 2023-02-16
+order: 12
+---
+
+Grab the data
+
+```{r}
+library(tidyverse)
+```
+
+```{r}
+freq <- read_csv("https://raw.githubusercontent.com/bodowinter/applied_statistics_book_data/master/ELP_frequency.csv")
+```
+
+```{r}
+mod <- lm(RT ~ Log10Freq, data = freq)
+```
