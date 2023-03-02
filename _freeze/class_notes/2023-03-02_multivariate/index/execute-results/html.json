@@ -1,0 +1,14 @@
+{
+  "hash": "e7904d58ab7212f27ed7ee6f3fbec34b",
+  "result": {
+    "markdown": "---\ntitle: \"Starting Multivariate Models\"\ndate: 2023-3-2\norder: 12\n---\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(tidyverse)\nlibrary(broom)\n```\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\nword_rt <- read_csv(\"https://raw.githubusercontent.com/bodowinter/applied_statistics_book_data/master/ELP_length_frequency.csv\")\n```\n\n::: {.cell-output .cell-output-stderr}\n```\nRows: 33075 Columns: 4\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr (1): Word\ndbl (3): Log10Freq, length, RT\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n```\n:::\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

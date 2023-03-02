@@ -5,8 +5,8 @@
 <meta name="generator" content="quarto-1.2.335">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Josef Fruehwald">
-<meta name="dcterms.date" content="2023-01-12">
-<title>Lin611 - Spring 2023 - Github Onboarding with RStudio</title>
+<meta name="dcterms.date" content="2023-03-02">
+<title>Lin611 - Spring 2023 - Starting Multivariate Models</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -91,8 +91,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../class_notes/2023-01-12_Quarto/index.html" rel="next">
-<link href="../../class_notes/2023-01-10/index.html" rel="prev">
+<link href="../../class_notes/2023-02-16_linear-r/index.html" rel="prev">
 <link href="../../assets/logo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
@@ -104,9 +103,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
-<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -128,12 +125,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&amp;family=Comfortaa:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
-<meta property="og:title" content="Lin611 - Spring 2023 - Github Onboarding with RStudio">
-<meta property="og:description" content="Instruction boxes with  should be done on github, and instruction boxes with  should be done in RStudio.">
+<meta property="og:title" content="Lin611 - Spring 2023 - Starting Multivariate Models">
 <meta property="og:image" content="../../assets/logo2.png">
 <meta property="og:site-name" content="Lin611 - Spring 2023">
-<meta name="twitter:title" content="Lin611 - Spring 2023 - Github Onboarding with RStudio">
-<meta name="twitter:description" content="Instruction boxes with  should be done on github, and instruction boxes with  should be done in RStudio.">
+<meta name="twitter:title" content="Lin611 - Spring 2023 - Starting Multivariate Models">
 <meta name="twitter:image" content="../../assets/logo2.png">
 <meta name="twitter:card" content="summary_large_image">
 </head>
@@ -180,18 +175,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav><nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }"><div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Github Onboarding with RStudio</h1>
+      <h1 class="quarto-secondary-nav-title">Starting Multivariate Models</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
     </div>
   </nav></header><!-- content --><header id="title-block-header" class="quarto-title-block default page-columns page-full"><div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title d-none d-lg-block">Github Onboarding with RStudio</h1>
-                                <div class="quarto-categories">
-                <div class="quarto-category">Onboarding</div>
-              </div>
-                  </div>
+      <h1 class="title d-none d-lg-block">Starting Multivariate Models</h1>
+                      </div>
   </div>
     
   
@@ -207,7 +199,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">January 12, 2023</p>
+        <p class="date">March 2, 2023</p>
       </div>
     </div>
     
@@ -239,7 +231,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../class_notes/2023-01-12_gh/index.html" class="sidebar-item-text sidebar-link active">Github Onboarding with RStudio</a>
+  <a href="../../class_notes/2023-01-12_gh/index.html" class="sidebar-item-text sidebar-link">Github Onboarding with RStudio</a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -294,7 +286,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../class_notes/2023-03-02_multivariate/index.html" class="sidebar-item-text sidebar-link">Starting Multivariate Models</a>
+  <a href="../../class_notes/2023-03-02_multivariate/index.html" class="sidebar-item-text sidebar-link active">Starting Multivariate Models</a>
   </div>
 </li>
       </ul>
@@ -302,212 +294,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </ul>
 </div>
 </nav><!-- margin-sidebar --><div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
-   
-  <ul>
-<li><a href="#step-1-create-a-github-account" id="toc-step-1-create-a-github-account" class="nav-link active" data-scroll-target="#step-1-create-a-github-account">Step 1: Create a Github Account</a></li>
-  <li><a href="#step-2-configure-git-in-rstudio" id="toc-step-2-configure-git-in-rstudio" class="nav-link" data-scroll-target="#step-2-configure-git-in-rstudio">Step 2: Configure Git in RStudio</a></li>
-  <li>
-<a href="#step-3-configure-rstudio-to-communicate-with-github" id="toc-step-3-configure-rstudio-to-communicate-with-github" class="nav-link" data-scroll-target="#step-3-configure-rstudio-to-communicate-with-github">Step 3: Configure RStudio to Communicate with Github</a>
-  <ul class="collapse">
-<li><a href="#rstudio-configuration" id="toc-rstudio-configuration" class="nav-link" data-scroll-target="#rstudio-configuration">RStudio Configuration</a></li>
-  <li><a href="#github-configuration" id="toc-github-configuration" class="nav-link" data-scroll-target="#github-configuration">Github Configuration</a></li>
-  </ul>
-</li>
-  <li><a href="#configured" id="toc-configured" class="nav-link" data-scroll-target="#configured">Configured</a></li>
-  </ul></nav>
+        
     </div>
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content"><p>Instruction boxes with <i class="fa-brands fa-github" aria-label="github"></i> should be done on github, and instruction boxes with <i class="fa-brands fa-r-project" aria-label="r-project"></i> should be done in RStudio.</p>
-<section id="step-1-create-a-github-account" class="level2"><h2 class="anchored" data-anchor-id="step-1-create-a-github-account">Step 1: Create a Github Account</h2>
-<p>Go over to Github and create a free account.</p>
-<div class="callout-tip callout callout-style-simple no-icon callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
+<main class="content quarto-banner-title-block" id="quarto-document-content"><div class="cell">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://broom.tidymodels.org/">broom</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="callout-caption-container flex-fill">
-<i class="fa-brands fa-github" aria-label="github"></i>
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<dl>
-<dt>Go To</dt>
-<dd>
-<p><a href="https://github.com/" class="uri">https://github.com/</a></p>
-</dd>
-</dl>
-</div>
-</div>
-<p>As suggested in <a href="https://happygitwithr.com/github-acct.html">Happy Git Chapter 4</a>, it would make sense to register an account username that aligns with your professional identity.</p>
-<p>After you’ve created your free account, if you are affiliated with a university, I would also suggest applying for the education benefits here: <a href="https://education.github.com/" class="uri">https://education.github.com/</a>. There are a few nice, but not mandatory, perks.</p>
-</section><section id="step-2-configure-git-in-rstudio" class="level2"><h2 class="anchored" data-anchor-id="step-2-configure-git-in-rstudio">Step 2: Configure Git in RStudio</h2>
-<p>Now, you need to tell Git a little bit about yourself on the computer/server you’re using RStudio on.</p>
-<div class="callout-tip callout callout-style-simple no-icon callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-<i class="fa-brands fa-r-project" aria-label="r-project"></i>
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<dl>
-<dt>Go To</dt>
-<dd>
-<p>Wherever you are using RStudio ( could be Posit Workbench, Posit Cloud, RStudio Server, or RStudio Desktop)</p>
-</dd>
-<dt>Then Go To</dt>
-<dd>
-<p>The Console (a.k.a the R Prompt)</p>
-</dd>
-</dl>
-</div>
-</div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="github_onboarding_assets/rstudio_console.png" class="img-fluid figure-img" alt="A screenshot of RStudio. The console is in its default pane on the left hand side. An arrow has been drawn onto the screenshot pointing at the"></p>
-<p></p><figcaption class="figure-caption">The Console in RStudio is here.</figcaption><p></p>
-</figure>
-</div>
-<p>Next, we need to tell the local version of Git who you are, specifically your username (which should match your Github username) and your email address (which should match the email address you registered for Github with).</p>
-<div class="callout-tip callout callout-style-simple no-icon callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-<i class="fa-brands fa-r-project" aria-label="r-project"></i>, <i class="fa-brands fa-git" aria-label="git"></i>
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>In the code below, <code>USERNAME</code> should be replaced with your Github username and <code>EMAIL</code> should be replaced with the email you registered your github account with.</p>
 <div class="cell">
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>Run this in the R Console:</strong></pre>
-</div>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/system.html">system</a></span><span class="op">(</span><span class="st">'git config --global user.name "USERNAME"'</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/system.html">system</a></span><span class="op">(</span><span class="st">'git config --global user.email "EMAIL"'</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-</div>
-</div>
-</section><section id="step-3-configure-rstudio-to-communicate-with-github" class="level2"><h2 class="anchored" data-anchor-id="step-3-configure-rstudio-to-communicate-with-github">Step 3: Configure RStudio to Communicate with Github</h2>
-<p>In order to be able to push commits from RStudio to Github, you’ll need to set up secure communication between wherever you are using RStudio and Github. I’ll walk you through how to do this with SSH credentials. (See also <a href="https://happygitwithr.com/https-pat.html">Happy Git with R</a> for personal access tokens via HTTPS).</p>
-<section id="rstudio-configuration" class="level3"><h3 class="anchored" data-anchor-id="rstudio-configuration">RStudio Configuration</h3>
-<div class="callout-tip callout callout-style-simple no-icon callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-<i class="fa-brands fa-r-project" aria-label="r-project"></i>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">word_rt</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/bodowinter/applied_statistics_book_data/master/ELP_length_frequency.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 33075 Columns: 4
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr (1): Word
+dbl (3): Log10Freq, length, RT
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 </div>
 </div>
-<div class="callout-body-container callout-body">
-<dl>
-<dt>Go To:</dt>
-<dd>
-<p>The Tools menu, then Global Options</p>
-</dd>
-</dl>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="github_onboarding_assets/global_options.png" class="img-fluid figure-img" style="width:76.0%" alt="A screenshot of an RStudio session with Tools>Global Options selected"></p>
-</figure>
-</div>
-<dl>
-<dt>Then Go To:</dt>
-<dd>
-<p>Git/SVN from the left hand side option selector. Its icon is a cardboard box</p>
-</dd>
-</dl>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="github_onboarding_assets/git_svn.png" class="img-fluid figure-img" style="width:75.0%" alt="A screenshot of RStudio's global options menu, with Git/SVN selected"></p>
-</figure>
-</div>
-<dl>
-<dt>Then Go To</dt>
-<dd>
-<p>Create SSH Key</p>
-</dd>
-</dl>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="github_onboarding_assets/create_ssh_key.png" class="img-fluid figure-img" style="width:75.0%" alt="A screenshot of the RStudio Git/SVN options menu, with Create SSH Key selected"></p>
-</figure>
-</div>
-<dl>
-<dt>Then</dt>
-<dd>
-<p>The default options should be fine to use. The passphrase here is <em><strong>for the ssh key</strong>.</em> It should <u><strong><em>not</em></strong></u> be your Github password, or the password for logging into Posit Workbench or Posit Cloud. Once you’re ready, click Create.</p>
-</dd>
-<dt>Then</dt>
-<dd>
-<p>After creating the SSH key, you should see the option “View Public Key”. Click on it, and copy the text that appears.</p>
-</dd>
-</dl>
-</div>
-</div>
-<p>This concludes everything necessary on the RStudio side of things. You should probably keep the session open so that you can come back to re-copy your public key.</p>
-</section><section id="github-configuration" class="level3"><h3 class="anchored" data-anchor-id="github-configuration">Github Configuration</h3>
-<p>Now, you’ll need to go over to github to add the public key to your profile.</p>
-<div class="callout-tip callout callout-style-simple no-icon callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-<i class="fa-brands fa-github" aria-label="github"></i>
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<dl>
-<dt>Go To</dt>
-<dd>
-<p>Your Github Profile Settings</p>
-</dd>
-</dl>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="github_onboarding_assets/github_settings.png" class="img-fluid figure-img" style="width:75.0%" alt="Screenshot of a logged-in github session, with the user's profile setting selected"></p>
-</figure>
-</div>
-<dl>
-<dt>Then Go To</dt>
-<dd>
-<p>SSH and GPG keys from the left side menu</p>
-</dd>
-</dl>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="github_onboarding_assets/ssh_gpg.png" class="img-fluid figure-img" style="width:75.0%" alt="A screenshot of the github profile settings page with SSH and GPG keys selected"></p>
-</figure>
-</div>
-<dl>
-<dt>Then</dt>
-<dd>
-<p>Click on the New SSH key button</p>
-</dd>
-</dl>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="github_onboarding_assets/new_ssh_key.png" class="img-fluid figure-img" style="width:75.0%" alt="Screenshot of the Github SSH and GPG Keys settings, with New SSH Key selected"></p>
-</figure>
-</div>
-<dl>
-<dt>Then</dt>
-<dd>
-<p>Give this key an informative name so you can remember which computer it’s coming from.</p>
-</dd>
-<dt>Then</dt>
-<dd>
-<p>Paste the text you copied from RStudio into the Key box and click Add SSH Key.</p>
-</dd>
-</dl>
-</div>
-</div>
-</section></section><section id="configured" class="level2"><h2 class="anchored" data-anchor-id="configured">Configured</h2>
-<p>Now, wherever you are using RStudio from should be able to push commits to your Github account.</p>
 
 
-</section><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div quarto-reuse="quarto-reuse" class="quarto-appendix-contents"><div>CC-BY-SA 4.0</div></div></section></div></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div quarto-reuse="quarto-reuse" class="quarto-appendix-contents"><div>CC-BY-SA 4.0</div></div></section></div></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -769,14 +579,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
 });
 </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="../../class_notes/2023-01-10/index.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Welcome Day</span>
+      <a href="../../class_notes/2023-02-16_linear-r/index.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Linear Models in R</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../class_notes/2023-01-12_Quarto/index.html" class="pagination-link">
-        <span class="nav-page-text">Plan for Onboarding Day</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->

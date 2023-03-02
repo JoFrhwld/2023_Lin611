@@ -1,0 +1,15 @@
+---
+title: "Starting Multivariate Models"
+date: 2023-3-2
+order: 12
+---
+
+```{r}
+#| message: false
+library(tidyverse)
+library(broom)
+```
+
+```{r}
+word_rt <- read_csv("https://raw.githubusercontent.com/bodowinter/applied_statistics_book_data/master/ELP_length_frequency.csv")
+```
