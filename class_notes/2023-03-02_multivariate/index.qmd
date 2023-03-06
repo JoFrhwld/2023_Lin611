@@ -1,15 +1,139 @@
 ---
 title: "Starting Multivariate Models"
 date: 2023-3-2
-order: 12
+order: 13
 ---
 
 ```{r}
 #| message: false
 library(tidyverse)
 library(broom)
+library(marginaleffects)
 ```
 
 ```{r}
 word_rt <- read_csv("https://raw.githubusercontent.com/bodowinter/applied_statistics_book_data/master/ELP_length_frequency.csv")
+```
+
+## Plots
+
+Making plots of the data before we start modelling:
+
+```{r}
+word_rt |>
+  ggplot(aes(Log10Freq, RT)) +
+    #geom_point()
+    stat_bin_2d()
+```
+
+Looks like a negative effect of word frequency on reaction time
+
+```{r}
+word_rt |>
+  ggplot(aes(length, RT)) +
+    stat_bin_2d()
+```
+
+Looks like a positive effect of word length on reaction time.
+
+```{r}
+word_rt |>
+  ggplot(aes(Log10Freq, length)) +
+    stat_bin_2d()+
+    stat_smooth()
+```
+
+Looks like word frequency and word length are slightly collinear.
+
+## Not ideal (modelling without centering and scaling)
+
+`lm` fits the model.
+
+```{r}
+model_0 <- lm(RT ~ Log10Freq + length, data = word_rt)
+```
+
+```{r}
+tidy(model_0)
+```
+
+The `(Intercept)` value is the predicted value of RT when both `Log10Freq` and `length` are 0. Not a likely combination of values.
+
+Goodness of fit:
+
+```{r}
+glance(model_0)
+```
+
+## Scaling and Centering
+
+We'll center both predictors on their means, and scale by the standard deviation:
+
+```{r}
+word_rt |>
+  mutate(
+    log_freq_z = (Log10Freq - mean(Log10Freq))/sd(Log10Freq),
+    len_z = (length - mean(length))/sd(length)
+  ) ->
+  word_rt_scaled
+```
+
+Let's actually fit three models,
+
+1.  One for just frequency
+2.  One for just length
+3.  One for frequency *and* length
+
+```{r}
+model_f <- lm(RT ~ log_freq_z, data = word_rt_scaled)
+model_l <- lm(RT ~ len_z, data = word_rt_scaled)
+model_fl <- lm(RT ~ len_z + log_freq_z, data = word_rt_scaled)
+```
+
+We can examine all of these models goodness of fits together.
+
+```{r}
+list(
+  freq = model_f,
+  length = model_l,
+  freq_length = model_fl
+) |>
+  map_dfr(glance, .id = "model") |> 
+  select(model, r.squared, adj.r.squared, AIC, BIC)
+```
+
+The first thing to notice is that even though we've centered and scaled the data, the goodness of fit metrics for the `freq_length` mode, (r-squared and adjusted r-squared) are identical to the original multivariate model.
+
+Also, the goodness of fit always gets better when we add a new predictor, but the adjusted r squared, AIC and BIC try to balance out the complexity of the model and the goodness of fit.
+
+## Evaluating the model
+
+We can merge information from the model onto the original data with `augment()`.
+
+```{r}
+augment(model_fl, word_rt_scaled) |>
+  ggplot(aes(.fitted, .resid))+
+    geom_point()
+```
+
+We can also look at the predicted values with `marginaleffects::predictions()`
+
+```{r}
+predictions(model_fl, 
+            newdata = datagrid(log_freq_z = c(-1, 0, 1),
+                               len_z = c(-1, 0, 1))) |>
+  tibble()->
+  predictions_fl
+```
+
+```{r}
+predictions_fl |> 
+  ggplot(aes(log_freq_z, estimate))+
+    geom_line(aes(color = factor(len_z)))
+```
+
+```{r}
+predictions_fl |> 
+  ggplot(aes(len_z, estimate))+
+    geom_line(aes(color = factor(log_freq_z)))
 ```
