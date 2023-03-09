@@ -1,0 +1,30 @@
+---
+title: "Categorical Predictors"
+---
+
+```{r}
+library(tidyverse)
+library(forcats)
+library(marginaleffects)
+```
+
+```{r}
+um_uh <- read_tsv("https://bit.ly/3JdeSbx") 
+```
+
+```{r}
+um_uh
+```
+
+```{r}
+um_uh |> 
+  mutate(
+    vowel_dur = vowel_end - vowel_start,
+        fol_pause = case_when(
+          next_seg == "sp" ~ "pause", 
+          .default = "no pause"
+        )
+  ) |> 
+  select(idstring, word, fol_pause, vowel_dur) -> 
+  pause_data
+```
