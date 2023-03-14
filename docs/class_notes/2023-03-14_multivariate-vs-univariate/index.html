@@ -332,6 +332,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#univariate-model-recap." id="toc-univariate-model-recap." class="nav-link" data-scroll-target="#univariate-model-recap.">Univariate model recap.</a></li>
   </ul></li>
   <li><a href="#fitting-the-multivariate-model" id="toc-fitting-the-multivariate-model" class="nav-link" data-scroll-target="#fitting-the-multivariate-model">Fitting the multivariate model</a></li>
+  <li><a href="#remaining-questions" id="toc-remaining-questions" class="nav-link" data-scroll-target="#remaining-questions">Remaining Questions:</a>
+  <ul class="collapse">
+  <li><a href="#could-we-have-predicted-what-the-slopes-were-going-to-be-in-the-multivariate-model" id="toc-could-we-have-predicted-what-the-slopes-were-going-to-be-in-the-multivariate-model" class="nav-link" data-scroll-target="#could-we-have-predicted-what-the-slopes-were-going-to-be-in-the-multivariate-model">Could we have predicted what the slopes were going to be in the multivariate model?</a></li>
+  <li><a href="#did-the-univariate-models-miscalculate-the-relationship-between-bill-length-species-and-bill-depth" id="toc-did-the-univariate-models-miscalculate-the-relationship-between-bill-length-species-and-bill-depth" class="nav-link" data-scroll-target="#did-the-univariate-models-miscalculate-the-relationship-between-bill-length-species-and-bill-depth">Did the univariate models miscalculate the relationship between bill length, species, and bill depth?</a></li>
+  <li><a href="#how-do-i-visualize-fitted-multivariate-models" id="toc-how-do-i-visualize-fitted-multivariate-models" class="nav-link" data-scroll-target="#how-do-i-visualize-fitted-multivariate-models">How do I visualize fitted multivariate models?</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -386,19 +392,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-1" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-1" data-code-annotation="1" data-code-lines="1">General data processing</span>
+<span data-code-annotation="1" data-code-cell="annotated-cell-1" data-code-lines="1">General data processing</span>
 </dd>
 <dt data-target-cell="annotated-cell-1" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-1" data-code-annotation="2" data-code-lines="3,4,5,6">Data visualization</span>
+<span data-code-annotation="2" data-code-cell="annotated-cell-1" data-code-lines="3,4,5,6">Data visualization</span>
 </dd>
 <dt data-target-cell="annotated-cell-1" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-1" data-code-annotation="3" data-code-lines="8">The penguins data</span>
+<span data-code-annotation="3" data-code-cell="annotated-cell-1" data-code-lines="8">The penguins data</span>
 </dd>
 <dt data-target-cell="annotated-cell-1" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-1" data-code-annotation="4" data-code-lines="10,11">Model investigation</span>
+<span data-code-annotation="4" data-code-cell="annotated-cell-1" data-code-lines="10,11">Model investigation</span>
 </dd>
 </dl>
 </div>
@@ -416,19 +422,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-2" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-2" data-code-annotation="1" data-code-lines="1">The original penguins data.</span>
+<span data-code-annotation="1" data-code-cell="annotated-cell-2" data-code-lines="1">The original penguins data.</span>
 </dd>
 <dt data-target-cell="annotated-cell-2" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-2" data-code-annotation="2" data-code-lines="2">Selecting just the data columns we’re focused on.</span>
+<span data-code-annotation="2" data-code-cell="annotated-cell-2" data-code-lines="2">Selecting just the data columns we’re focused on.</span>
 </dd>
 <dt data-target-cell="annotated-cell-2" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-2" data-code-annotation="3" data-code-lines="3">Dropping rows that have <code>NA</code> values.</span>
+<span data-code-annotation="3" data-code-cell="annotated-cell-2" data-code-lines="3">Dropping rows that have <code>NA</code> values.</span>
 </dd>
 <dt data-target-cell="annotated-cell-2" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-2" data-code-annotation="4" data-code-lines="4">The new data frame.</span>
+<span data-code-annotation="4" data-code-cell="annotated-cell-2" data-code-lines="4">The new data frame.</span>
 </dd>
 </dl>
 </div>
@@ -438,48 +444,54 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="preparing-to-model">Preparing to model</h2>
 <p>It’s always a good idea to take a look at how each of the variables (outcome and predictor) are distributed.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="annotated-cell-5"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-5-1"><a href="#annotated-cell-5-1" aria-hidden="true" tabindex="-1"></a>penguin_focus <span class="sc">|&gt;</span> </span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="1">1</button><span id="annotated-cell-5-2" class="code-annotation-target"><a href="#annotated-cell-5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(bill_length_mm)) <span class="sc">+</span></span>
-<span id="annotated-cell-5-3"><a href="#annotated-cell-5-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_bin</span>()</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="annotated-cell-3"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-3-1"><a href="#annotated-cell-3-1" aria-hidden="true" tabindex="-1"></a>penguin_focus <span class="sc">|&gt;</span> </span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="1">1</button><span id="annotated-cell-3-2" class="code-annotation-target"><a href="#annotated-cell-3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(bill_depth_mm)) <span class="sc">+</span></span>
+<span id="annotated-cell-3-3"><a href="#annotated-cell-3-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_bin</span>() <span class="sc">+</span></span>
+<span id="annotated-cell-3-4"><a href="#annotated-cell-3-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Bill Depth Histogram (outcome)"</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-5" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-3" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-5" data-code-annotation="1" data-code-lines="2,3">Plotting a histogram of <code>bill_length_mm</code></span>
+<span data-code-annotation="1" data-code-cell="annotated-cell-3" data-code-lines="2,3">Plotting a histogram of <code>bill_depth_mm</code>.</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="576"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="annotated-cell-4"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-4-1"><a href="#annotated-cell-4-1" aria-hidden="true" tabindex="-1"></a>penguin_focus <span class="sc">|&gt;</span> </span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="1">1</button><span id="annotated-cell-4-2" class="code-annotation-target"><a href="#annotated-cell-4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(bill_length_mm)) <span class="sc">+</span></span>
+<span id="annotated-cell-4-3"><a href="#annotated-cell-4-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_bin</span>() <span class="sc">+</span></span>
+<span id="annotated-cell-4-4"><a href="#annotated-cell-4-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Bill Length Histogram (predictor)"</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-4" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-annotation="1" data-code-cell="annotated-cell-4" data-code-lines="2,3">Plotting a histogram of <code>bill_length_mm</code></span>
 </dd>
 </dl>
 </div>
 <div class="cell-output-display">
 <p><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="576"></p>
 </div>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Bill Length Histogram (predictor)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>$title
-[1] "Bill Length Histogram (predictor)"
-
-attr(,"class")
-[1] "labels"</code></pre>
 </div>
-</div>
-<!-- -->
-<ol type="1">
-<li>Plotting a histogram of <code>bill_depth_mm</code>.</li>
-</ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="annotated-cell-7"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-7-1"><a href="#annotated-cell-7-1" aria-hidden="true" tabindex="-1"></a>penguin_focus <span class="sc">|&gt;</span> </span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="1">1</button><span id="annotated-cell-7-2" class="code-annotation-target"><a href="#annotated-cell-7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(species, <span class="at">fill =</span> species))<span class="sc">+</span></span>
-<span id="annotated-cell-7-3"><a href="#annotated-cell-7-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_count</span>()<span class="sc">+</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="2">2</button><span id="annotated-cell-7-4" class="code-annotation-target"><a href="#annotated-cell-7-4" aria-hidden="true" tabindex="-1"></a>    khroma<span class="sc">::</span><span class="fu">scale_fill_bright</span>() <span class="sc">+</span></span>
-<span id="annotated-cell-7-5"><a href="#annotated-cell-7-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Species Counts (predictor)"</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="annotated-cell-5"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-5-1"><a href="#annotated-cell-5-1" aria-hidden="true" tabindex="-1"></a>penguin_focus <span class="sc">|&gt;</span> </span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="1">1</button><span id="annotated-cell-5-2" class="code-annotation-target"><a href="#annotated-cell-5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(species, <span class="at">fill =</span> species))<span class="sc">+</span></span>
+<span id="annotated-cell-5-3"><a href="#annotated-cell-5-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_count</span>()<span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="2">2</button><span id="annotated-cell-5-4" class="code-annotation-target"><a href="#annotated-cell-5-4" aria-hidden="true" tabindex="-1"></a>    khroma<span class="sc">::</span><span class="fu">scale_fill_bright</span>() <span class="sc">+</span></span>
+<span id="annotated-cell-5-5"><a href="#annotated-cell-5-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Species Counts (predictor)"</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-7" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-5" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-7" data-code-annotation="1" data-code-lines="2,3">Plotting counts of each species.</span>
+<span data-code-annotation="1" data-code-cell="annotated-cell-5" data-code-lines="2,3">Plotting counts of each species.</span>
 </dd>
-<dt data-target-cell="annotated-cell-7" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-5" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-7" data-code-annotation="2" data-code-lines="4">Setting a color scheme for species that we’ll reuse later.</span>
+<span data-code-annotation="2" data-code-cell="annotated-cell-5" data-code-lines="4">Setting a color scheme for species that we’ll reuse later.</span>
 </dd>
 </dl>
 </div>
@@ -489,41 +501,41 @@ attr(,"class")
 </div>
 <p>Let’s “normalize” the <code>bill_length_mm</code> data for modeling by z-scoring it.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="annotated-cell-8"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-8-1"><a href="#annotated-cell-8-1" aria-hidden="true" tabindex="-1"></a>penguin_focus <span class="sc">|&gt;</span> </span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="1">1</button><span id="annotated-cell-8-2" class="code-annotation-target"><a href="#annotated-cell-8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="2">2</button><span id="annotated-cell-8-3" class="code-annotation-target"><a href="#annotated-cell-8-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">bill_length_z =</span> (bill_length_mm <span class="sc">-</span></span>
-<span id="annotated-cell-8-4"><a href="#annotated-cell-8-4" aria-hidden="true" tabindex="-1"></a>                       <span class="fu">mean</span>(bill_length_mm)) <span class="sc">/</span></span>
-<span id="annotated-cell-8-5"><a href="#annotated-cell-8-5" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">sd</span>(bill_length_mm)</span>
-<span id="annotated-cell-8-6"><a href="#annotated-cell-8-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="ot">-&gt;</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="3">3</button><span id="annotated-cell-8-7" class="code-annotation-target"><a href="#annotated-cell-8-7" aria-hidden="true" tabindex="-1"></a>  penguin_focus</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="annotated-cell-6"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-6-1"><a href="#annotated-cell-6-1" aria-hidden="true" tabindex="-1"></a>penguin_focus <span class="sc">|&gt;</span> </span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="1">1</button><span id="annotated-cell-6-2" class="code-annotation-target"><a href="#annotated-cell-6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="2">2</button><span id="annotated-cell-6-3" class="code-annotation-target"><a href="#annotated-cell-6-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">bill_length_z =</span> (bill_length_mm <span class="sc">-</span></span>
+<span id="annotated-cell-6-4"><a href="#annotated-cell-6-4" aria-hidden="true" tabindex="-1"></a>                       <span class="fu">mean</span>(bill_length_mm)) <span class="sc">/</span></span>
+<span id="annotated-cell-6-5"><a href="#annotated-cell-6-5" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">sd</span>(bill_length_mm)</span>
+<span id="annotated-cell-6-6"><a href="#annotated-cell-6-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="ot">-&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-6" data-target-annotation="3">3</button><span id="annotated-cell-6-7" class="code-annotation-target"><a href="#annotated-cell-6-7" aria-hidden="true" tabindex="-1"></a>  penguin_focus</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-8" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-6" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-8" data-code-annotation="1" data-code-lines="2"><code>mutate()</code> adds new columns.</span>
+<span data-code-annotation="1" data-code-cell="annotated-cell-6" data-code-lines="2"><code>mutate()</code> adds new columns.</span>
 </dd>
-<dt data-target-cell="annotated-cell-8" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-6" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-8" data-code-annotation="2" data-code-lines="3,4,5">We’re subtracting the mean and dividing by the standard deviation. <span class="math inline">\(\frac{x-\text{mean}(x)}{\text{sd}(x)}\)</span></span>
+<span data-code-annotation="2" data-code-cell="annotated-cell-6" data-code-lines="3,4,5">We’re subtracting the mean and dividing by the standard deviation. <span class="math inline">\(\frac{x-\text{mean}(x)}{\text{sd}(x)}\)</span></span>
 </dd>
-<dt data-target-cell="annotated-cell-8" data-target-annotation="3">3</dt>
+<dt data-target-cell="annotated-cell-6" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-8" data-code-annotation="3" data-code-lines="7">Assigning the result back out.</span>
+<span data-code-annotation="3" data-code-cell="annotated-cell-6" data-code-lines="7">Assigning the result back out.</span>
 </dd>
 </dl>
 </div>
 </div>
 <p>Let’s look at the z-scored histogram</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="annotated-cell-9"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-9-1"><a href="#annotated-cell-9-1" aria-hidden="true" tabindex="-1"></a>penguin_focus <span class="sc">|&gt;</span> </span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="1">1</button><span id="annotated-cell-9-2" class="code-annotation-target"><a href="#annotated-cell-9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(bill_length_z)) <span class="sc">+</span></span>
-<span id="annotated-cell-9-3"><a href="#annotated-cell-9-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_bin</span>()<span class="sc">+</span></span>
-<span id="annotated-cell-9-4"><a href="#annotated-cell-9-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Bill Length (z-scored)"</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="annotated-cell-7"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-7-1"><a href="#annotated-cell-7-1" aria-hidden="true" tabindex="-1"></a>penguin_focus <span class="sc">|&gt;</span> </span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="1">1</button><span id="annotated-cell-7-2" class="code-annotation-target"><a href="#annotated-cell-7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(bill_length_z)) <span class="sc">+</span></span>
+<span id="annotated-cell-7-3"><a href="#annotated-cell-7-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">stat_bin</span>()<span class="sc">+</span></span>
+<span id="annotated-cell-7-4"><a href="#annotated-cell-7-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Bill Length (z-scored)"</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-9" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-7" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-9" data-code-annotation="1" data-code-lines="2,3">Plotting a histogram of <code>bill_length_z</code>.</span>
+<span data-code-annotation="1" data-code-cell="annotated-cell-7" data-code-lines="2,3">Plotting a histogram of <code>bill_length_z</code>.</span>
 </dd>
 </dl>
 </div>
@@ -539,34 +551,34 @@ attr(,"class")
 <h3 class="anchored" data-anchor-id="bill-length-model">Bill Length Model</h3>
 <p>We’ll start with a univariate (one variable) model, predicting <code>bill_depth_mm</code> with <code>bill_length_z</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="annotated-cell-10"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="1">1</button><span id="annotated-cell-10-1" class="code-annotation-target"><a href="#annotated-cell-10-1" aria-hidden="true" tabindex="-1"></a>mod_len <span class="ot">&lt;-</span> <span class="fu">lm</span>(</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="2">2</button><span id="annotated-cell-10-2" class="code-annotation-target"><a href="#annotated-cell-10-2" aria-hidden="true" tabindex="-1"></a>   bill_depth_mm <span class="sc">~</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="3">3</button><span id="annotated-cell-10-3" class="code-annotation-target"><a href="#annotated-cell-10-3" aria-hidden="true" tabindex="-1"></a>     bill_length_z,</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="4">4</button><span id="annotated-cell-10-4" class="code-annotation-target"><a href="#annotated-cell-10-4" aria-hidden="true" tabindex="-1"></a>   <span class="at">data =</span> penguin_focus)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="annotated-cell-8"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="1">1</button><span id="annotated-cell-8-1" class="code-annotation-target"><a href="#annotated-cell-8-1" aria-hidden="true" tabindex="-1"></a>mod_len <span class="ot">&lt;-</span> <span class="fu">lm</span>(</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="2">2</button><span id="annotated-cell-8-2" class="code-annotation-target"><a href="#annotated-cell-8-2" aria-hidden="true" tabindex="-1"></a>   bill_depth_mm <span class="sc">~</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="3">3</button><span id="annotated-cell-8-3" class="code-annotation-target"><a href="#annotated-cell-8-3" aria-hidden="true" tabindex="-1"></a>     bill_length_z,</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="4">4</button><span id="annotated-cell-8-4" class="code-annotation-target"><a href="#annotated-cell-8-4" aria-hidden="true" tabindex="-1"></a>   <span class="at">data =</span> penguin_focus)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-10" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-8" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-10" data-code-annotation="1" data-code-lines="1">Fitting a linear model</span>
+<span data-code-annotation="1" data-code-cell="annotated-cell-8" data-code-lines="1">Fitting a linear model</span>
 </dd>
-<dt data-target-cell="annotated-cell-10" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-8" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-10" data-code-annotation="2" data-code-lines="2"><code>bill_depth_mm</code> is our outcome variable</span>
+<span data-code-annotation="2" data-code-cell="annotated-cell-8" data-code-lines="2"><code>bill_depth_mm</code> is our outcome variable</span>
 </dd>
-<dt data-target-cell="annotated-cell-10" data-target-annotation="3">3</dt>
+<dt data-target-cell="annotated-cell-8" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-10" data-code-annotation="3" data-code-lines="3"><code>bill_length_z</code> is our predictor variable</span>
+<span data-code-annotation="3" data-code-cell="annotated-cell-8" data-code-lines="3"><code>bill_length_z</code> is our predictor variable</span>
 </dd>
-<dt data-target-cell="annotated-cell-10" data-target-annotation="4">4</dt>
+<dt data-target-cell="annotated-cell-8" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-10" data-code-annotation="4" data-code-lines="4">Using the <code>penguin_focus</code> data</span>
+<span data-code-annotation="4" data-code-cell="annotated-cell-8" data-code-lines="4">Using the <code>penguin_focus</code> data</span>
 </dd>
 </dl>
 </div>
 </div>
 <p>We can look at the model parameters in a dataframe format using <code>broom::tidy</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(mod_len)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(mod_len)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 5
   term          estimate std.error statistic   p.value
@@ -578,35 +590,35 @@ attr(,"class")
 <p>The estimated effect of <code>bill_length_z</code> is -0.464, meaning that for every 1 standard deviation increase in bill length, we expect bill depth to decrease by -0.464 millimeters.</p>
 <p>We can get the bill depth values this model predicts with the <code>marginaleffects::predictions()</code> function.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="annotated-cell-12"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-12" data-target-annotation="1">1</button><span id="annotated-cell-12-1" class="code-annotation-target"><a href="#annotated-cell-12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">predictions</span>(</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-12" data-target-annotation="2">2</button><span id="annotated-cell-12-2" class="code-annotation-target"><a href="#annotated-cell-12-2" aria-hidden="true" tabindex="-1"></a>  mod_len,</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-12" data-target-annotation="3">3</button><span id="annotated-cell-12-3" class="code-annotation-target"><a href="#annotated-cell-12-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">newdata =</span> <span class="fu">datagrid</span>(</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-12" data-target-annotation="4">4</button><span id="annotated-cell-12-4" class="code-annotation-target"><a href="#annotated-cell-12-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">bill_length_z =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>)</span>
-<span id="annotated-cell-12-5"><a href="#annotated-cell-12-5" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="annotated-cell-12-6"><a href="#annotated-cell-12-6" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span> </span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-12" data-target-annotation="5">5</button><span id="annotated-cell-12-7" class="code-annotation-target"><a href="#annotated-cell-12-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>()<span class="ot">-&gt;</span></span>
-<span id="annotated-cell-12-8"><a href="#annotated-cell-12-8" aria-hidden="true" tabindex="-1"></a>  pred_len</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="annotated-cell-10"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="1">1</button><span id="annotated-cell-10-1" class="code-annotation-target"><a href="#annotated-cell-10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">predictions</span>(</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="2">2</button><span id="annotated-cell-10-2" class="code-annotation-target"><a href="#annotated-cell-10-2" aria-hidden="true" tabindex="-1"></a>  mod_len,</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="3">3</button><span id="annotated-cell-10-3" class="code-annotation-target"><a href="#annotated-cell-10-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">newdata =</span> <span class="fu">datagrid</span>(</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="4">4</button><span id="annotated-cell-10-4" class="code-annotation-target"><a href="#annotated-cell-10-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">bill_length_z =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>)</span>
+<span id="annotated-cell-10-5"><a href="#annotated-cell-10-5" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="annotated-cell-10-6"><a href="#annotated-cell-10-6" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span> </span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="5">5</button><span id="annotated-cell-10-7" class="code-annotation-target"><a href="#annotated-cell-10-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>()<span class="ot">-&gt;</span></span>
+<span id="annotated-cell-10-8"><a href="#annotated-cell-10-8" aria-hidden="true" tabindex="-1"></a>  pred_len</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-12" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-10" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-12" data-code-annotation="1" data-code-lines="1"><code>predictions()</code> is from the <code>{marginaleffects}</code> package.</span>
+<span data-code-annotation="1" data-code-cell="annotated-cell-10" data-code-lines="1"><code>predictions()</code> is from the <code>{marginaleffects}</code> package.</span>
 </dd>
-<dt data-target-cell="annotated-cell-12" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-10" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-12" data-code-annotation="2" data-code-lines="2">This is the model we want to get predictions from.</span>
+<span data-code-annotation="2" data-code-cell="annotated-cell-10" data-code-lines="2">This is the model we want to get predictions from.</span>
 </dd>
-<dt data-target-cell="annotated-cell-12" data-target-annotation="3">3</dt>
+<dt data-target-cell="annotated-cell-10" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-12" data-code-annotation="3" data-code-lines="3">We want to get predicted values at specific points/combinations of predictors, so we use the <code>newdata</code> argument. <code>datagrid()</code> is another function from <code>{marginaleffects}</code> that will create a data frame.</span>
+<span data-code-annotation="3" data-code-cell="annotated-cell-10" data-code-lines="3">We want to get predicted values at specific points/combinations of predictors, so we use the <code>newdata</code> argument. <code>datagrid()</code> is another function from <code>{marginaleffects}</code> that will create a data frame.</span>
 </dd>
-<dt data-target-cell="annotated-cell-12" data-target-annotation="4">4</dt>
+<dt data-target-cell="annotated-cell-10" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-12" data-code-annotation="4" data-code-lines="4">We want to get predicted <code>bill_depth_mm</code> values for some representative <code>bill_length_z</code> values.</span>
+<span data-code-annotation="4" data-code-cell="annotated-cell-10" data-code-lines="4">We want to get predicted <code>bill_depth_mm</code> values for some representative <code>bill_length_z</code> values.</span>
 </dd>
-<dt data-target-cell="annotated-cell-12" data-target-annotation="5">5</dt>
+<dt data-target-cell="annotated-cell-10" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-cell="annotated-cell-12" data-code-annotation="5" data-code-lines="7">The output of <code>predictions()</code> isn’t quite what we want for making a plot, so we convert it with <code>tibble()</code>.</span>
+<span data-code-annotation="5" data-code-cell="annotated-cell-10" data-code-lines="7">The output of <code>predictions()</code> isn’t quite what we want for making a plot, so we convert it with <code>tibble()</code>.</span>
 </dd>
 </dl>
 </div>
@@ -616,8 +628,8 @@ attr(,"class")
 The <code>pred_len</code> dataframe
 </summary>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>pred_len <span class="sc">|&gt;</span> </span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  rmarkdown<span class="sc">::</span><span class="fu">paged_table</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pred_len <span class="sc">|&gt;</span> </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  rmarkdown<span class="sc">::</span><span class="fu">paged_table</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
 <div data-pagedtable="false">
@@ -630,49 +642,49 @@ The <code>pred_len</code> dataframe
 </details>
 <p>We can plot these predicted values over top the original data. One thing to know is that the line we plot here is identical to what we’d get if we just added <code>stat_smooth(method = lm)</code> to the plot.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="annotated-cell-14"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="1">1</button><span id="annotated-cell-14-1" class="code-annotation-target"><a href="#annotated-cell-14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
-<span id="annotated-cell-14-2"><a href="#annotated-cell-14-2" aria-hidden="true" tabindex="-1"></a>  penguin_focus,</span>
-<span id="annotated-cell-14-3"><a href="#annotated-cell-14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(bill_length_z, bill_depth_mm)</span>
-<span id="annotated-cell-14-4"><a href="#annotated-cell-14-4" aria-hidden="true" tabindex="-1"></a>)<span class="sc">+</span></span>
-<span id="annotated-cell-14-5"><a href="#annotated-cell-14-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="2">2</button><span id="annotated-cell-14-6" class="code-annotation-target"><a href="#annotated-cell-14-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(</span>
-<span id="annotated-cell-14-7"><a href="#annotated-cell-14-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> pred_len,</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="3">3</button><span id="annotated-cell-14-8" class="code-annotation-target"><a href="#annotated-cell-14-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">y =</span> estimate),</span>
-<span id="annotated-cell-14-9"><a href="#annotated-cell-14-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"steelblue"</span></span>
-<span id="annotated-cell-14-10"><a href="#annotated-cell-14-10" aria-hidden="true" tabindex="-1"></a>  )<span class="sc">+</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="4">4</button><span id="annotated-cell-14-11" class="code-annotation-target"><a href="#annotated-cell-14-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_ribbon</span>(</span>
-<span id="annotated-cell-14-12"><a href="#annotated-cell-14-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> pred_len,</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="5">5</button><span id="annotated-cell-14-13" class="code-annotation-target"><a href="#annotated-cell-14-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(</span>
-<span id="annotated-cell-14-14"><a href="#annotated-cell-14-14" aria-hidden="true" tabindex="-1"></a>      <span class="at">ymin =</span> conf.low,</span>
-<span id="annotated-cell-14-15"><a href="#annotated-cell-14-15" aria-hidden="true" tabindex="-1"></a>      <span class="at">ymax =</span> conf.high</span>
-<span id="annotated-cell-14-16"><a href="#annotated-cell-14-16" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="6">6</button><span id="annotated-cell-14-17" class="code-annotation-target"><a href="#annotated-cell-14-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="fl">0.3</span></span>
-<span id="annotated-cell-14-18"><a href="#annotated-cell-14-18" aria-hidden="true" tabindex="-1"></a>  )</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="annotated-cell-12"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-12" data-target-annotation="1">1</button><span id="annotated-cell-12-1" class="code-annotation-target"><a href="#annotated-cell-12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
+<span id="annotated-cell-12-2"><a href="#annotated-cell-12-2" aria-hidden="true" tabindex="-1"></a>  penguin_focus,</span>
+<span id="annotated-cell-12-3"><a href="#annotated-cell-12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(bill_length_z, bill_depth_mm)</span>
+<span id="annotated-cell-12-4"><a href="#annotated-cell-12-4" aria-hidden="true" tabindex="-1"></a>)<span class="sc">+</span></span>
+<span id="annotated-cell-12-5"><a href="#annotated-cell-12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-12" data-target-annotation="2">2</button><span id="annotated-cell-12-6" class="code-annotation-target"><a href="#annotated-cell-12-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(</span>
+<span id="annotated-cell-12-7"><a href="#annotated-cell-12-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> pred_len,</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-12" data-target-annotation="3">3</button><span id="annotated-cell-12-8" class="code-annotation-target"><a href="#annotated-cell-12-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">y =</span> estimate),</span>
+<span id="annotated-cell-12-9"><a href="#annotated-cell-12-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"steelblue"</span></span>
+<span id="annotated-cell-12-10"><a href="#annotated-cell-12-10" aria-hidden="true" tabindex="-1"></a>  )<span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-12" data-target-annotation="4">4</button><span id="annotated-cell-12-11" class="code-annotation-target"><a href="#annotated-cell-12-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_ribbon</span>(</span>
+<span id="annotated-cell-12-12"><a href="#annotated-cell-12-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> pred_len,</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-12" data-target-annotation="5">5</button><span id="annotated-cell-12-13" class="code-annotation-target"><a href="#annotated-cell-12-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(</span>
+<span id="annotated-cell-12-14"><a href="#annotated-cell-12-14" aria-hidden="true" tabindex="-1"></a>      <span class="at">ymin =</span> conf.low,</span>
+<span id="annotated-cell-12-15"><a href="#annotated-cell-12-15" aria-hidden="true" tabindex="-1"></a>      <span class="at">ymax =</span> conf.high</span>
+<span id="annotated-cell-12-16"><a href="#annotated-cell-12-16" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-12" data-target-annotation="6">6</button><span id="annotated-cell-12-17" class="code-annotation-target"><a href="#annotated-cell-12-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="fl">0.3</span></span>
+<span id="annotated-cell-12-18"><a href="#annotated-cell-12-18" aria-hidden="true" tabindex="-1"></a>  )</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-14" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-12" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-14" data-code-annotation="1" data-code-lines="1,2,4,5">Scatterplot of the full data.</span>
+<span data-code-annotation="1" data-code-cell="annotated-cell-12" data-code-lines="1,2,4,5">Scatterplot of the full data.</span>
 </dd>
-<dt data-target-cell="annotated-cell-14" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-12" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-14" data-code-annotation="2" data-code-lines="6,7">Adding a line to represent the predicted values, which are in the <code>pred_len</code> dataframe.</span>
+<span data-code-annotation="2" data-code-cell="annotated-cell-12" data-code-lines="6,7">Adding a line to represent the predicted values, which are in the <code>pred_len</code> dataframe.</span>
 </dd>
-<dt data-target-cell="annotated-cell-14" data-target-annotation="3">3</dt>
+<dt data-target-cell="annotated-cell-12" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-14" data-code-annotation="3" data-code-lines="8">In <code>pred_len</code>, the predicted bill depth is in the <code>estimate</code> column.</span>
+<span data-code-annotation="3" data-code-cell="annotated-cell-12" data-code-lines="8">In <code>pred_len</code>, the predicted bill depth is in the <code>estimate</code> column.</span>
 </dd>
-<dt data-target-cell="annotated-cell-14" data-target-annotation="4">4</dt>
+<dt data-target-cell="annotated-cell-12" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-14" data-code-annotation="4" data-code-lines="11,12">Adding a confidence interval onto the predicted values with <code>geom_ribbon()</code>.</span>
+<span data-code-annotation="4" data-code-cell="annotated-cell-12" data-code-lines="11,12">Adding a confidence interval onto the predicted values with <code>geom_ribbon()</code>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-14" data-target-annotation="5">5</dt>
+<dt data-target-cell="annotated-cell-12" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-cell="annotated-cell-14" data-code-annotation="5" data-code-lines="13,14,15,16">The width of <code>geom_ribbon()</code> is determined by the <code>ymax</code> and <code>ymin</code> aesthetics, and the high and low points of the confidence interval are in the <code>conf.low</code> and <code>conf.high</code> columns of <code>pred_len</code>.</span>
+<span data-code-annotation="5" data-code-cell="annotated-cell-12" data-code-lines="13,14,15,16">The width of <code>geom_ribbon()</code> is determined by the <code>ymax</code> and <code>ymin</code> aesthetics, and the high and low points of the confidence interval are in the <code>conf.low</code> and <code>conf.high</code> columns of <code>pred_len</code>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-14" data-target-annotation="6">6</dt>
+<dt data-target-cell="annotated-cell-12" data-target-annotation="6">6</dt>
 <dd>
-<span data-code-cell="annotated-cell-14" data-code-annotation="6" data-code-lines="17">Setting a transparency on the confidence interval.</span>
+<span data-code-annotation="6" data-code-cell="annotated-cell-12" data-code-lines="17">Setting a transparency on the confidence interval.</span>
 </dd>
 </dl>
 </div>
@@ -686,35 +698,35 @@ The <code>pred_len</code> dataframe
 <h3 class="anchored" data-anchor-id="species-model.">Species Model.</h3>
 <p>Now, let’s fit a model looking at just an effect of <code>Species</code>. I’ve left the alphabetically first penguin species, Adelie, as the reference level.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="annotated-cell-15"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="1">1</button><span id="annotated-cell-15-1" class="code-annotation-target"><a href="#annotated-cell-15-1" aria-hidden="true" tabindex="-1"></a>mod_species <span class="ot">&lt;-</span> <span class="fu">lm</span>(</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="2">2</button><span id="annotated-cell-15-2" class="code-annotation-target"><a href="#annotated-cell-15-2" aria-hidden="true" tabindex="-1"></a>  bill_depth_mm <span class="sc">~</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="3">3</button><span id="annotated-cell-15-3" class="code-annotation-target"><a href="#annotated-cell-15-3" aria-hidden="true" tabindex="-1"></a>    species,</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="4">4</button><span id="annotated-cell-15-4" class="code-annotation-target"><a href="#annotated-cell-15-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> penguin_focus</span>
-<span id="annotated-cell-15-5"><a href="#annotated-cell-15-5" aria-hidden="true" tabindex="-1"></a>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="annotated-cell-13"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-13" data-target-annotation="1">1</button><span id="annotated-cell-13-1" class="code-annotation-target"><a href="#annotated-cell-13-1" aria-hidden="true" tabindex="-1"></a>mod_species <span class="ot">&lt;-</span> <span class="fu">lm</span>(</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-13" data-target-annotation="2">2</button><span id="annotated-cell-13-2" class="code-annotation-target"><a href="#annotated-cell-13-2" aria-hidden="true" tabindex="-1"></a>  bill_depth_mm <span class="sc">~</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-13" data-target-annotation="3">3</button><span id="annotated-cell-13-3" class="code-annotation-target"><a href="#annotated-cell-13-3" aria-hidden="true" tabindex="-1"></a>    species,</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-13" data-target-annotation="4">4</button><span id="annotated-cell-13-4" class="code-annotation-target"><a href="#annotated-cell-13-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> penguin_focus</span>
+<span id="annotated-cell-13-5"><a href="#annotated-cell-13-5" aria-hidden="true" tabindex="-1"></a>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-15" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-13" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-15" data-code-annotation="1" data-code-lines="1">We’re fitting a linear model.</span>
+<span data-code-annotation="1" data-code-cell="annotated-cell-13" data-code-lines="1">We’re fitting a linear model.</span>
 </dd>
-<dt data-target-cell="annotated-cell-15" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-13" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-15" data-code-annotation="2" data-code-lines="2">Our outcome variable is <code>bill_depth_mm</code>.</span>
+<span data-code-annotation="2" data-code-cell="annotated-cell-13" data-code-lines="2">Our outcome variable is <code>bill_depth_mm</code>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-15" data-target-annotation="3">3</dt>
+<dt data-target-cell="annotated-cell-13" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-15" data-code-annotation="3" data-code-lines="3">Our predictor variable is <code>species</code>.</span>
+<span data-code-annotation="3" data-code-cell="annotated-cell-13" data-code-lines="3">Our predictor variable is <code>species</code>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-15" data-target-annotation="4">4</dt>
+<dt data-target-cell="annotated-cell-13" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-15" data-code-annotation="4" data-code-lines="4">We’re drawing the data from <code>penguin_focus</code>.</span>
+<span data-code-annotation="4" data-code-cell="annotated-cell-13" data-code-lines="4">We’re drawing the data from <code>penguin_focus</code>.</span>
 </dd>
 </dl>
 </div>
 </div>
 <p>And again, we can look at the model parameters with <code>broom::tidy</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(mod_species)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(mod_species)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 5
   term             estimate std.error statistic  p.value
@@ -727,35 +739,35 @@ The <code>pred_len</code> dataframe
 <p>So, the predicted bill depth for our reference level (Adelie) is 18.35 millimeters. Chinstraps are estimated to have deeper bills by 0.07mm (not significant), and Gentoos are estimated to have less deep bills by -3.36mm.</p>
 <p>Let’s get the predicted bill depths from our model to plot over our data.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="annotated-cell-17"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-17" data-target-annotation="1">1</button><span id="annotated-cell-17-1" class="code-annotation-target"><a href="#annotated-cell-17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">predictions</span>(</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-17" data-target-annotation="2">2</button><span id="annotated-cell-17-2" class="code-annotation-target"><a href="#annotated-cell-17-2" aria-hidden="true" tabindex="-1"></a>  mod_species,</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-17" data-target-annotation="3">3</button><span id="annotated-cell-17-3" class="code-annotation-target"><a href="#annotated-cell-17-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">newdata =</span> <span class="fu">datagrid</span>(</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-17" data-target-annotation="4">4</button><span id="annotated-cell-17-4" class="code-annotation-target"><a href="#annotated-cell-17-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">species =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span>, <span class="st">"Chinstrap"</span>, <span class="st">"Gentoo"</span>)</span>
-<span id="annotated-cell-17-5"><a href="#annotated-cell-17-5" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="annotated-cell-17-6"><a href="#annotated-cell-17-6" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span> </span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-17" data-target-annotation="5">5</button><span id="annotated-cell-17-7" class="code-annotation-target"><a href="#annotated-cell-17-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>()<span class="ot">-&gt;</span></span>
-<span id="annotated-cell-17-8"><a href="#annotated-cell-17-8" aria-hidden="true" tabindex="-1"></a>  pred_species</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="annotated-cell-15"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="1">1</button><span id="annotated-cell-15-1" class="code-annotation-target"><a href="#annotated-cell-15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">predictions</span>(</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="2">2</button><span id="annotated-cell-15-2" class="code-annotation-target"><a href="#annotated-cell-15-2" aria-hidden="true" tabindex="-1"></a>  mod_species,</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="3">3</button><span id="annotated-cell-15-3" class="code-annotation-target"><a href="#annotated-cell-15-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">newdata =</span> <span class="fu">datagrid</span>(</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="4">4</button><span id="annotated-cell-15-4" class="code-annotation-target"><a href="#annotated-cell-15-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">species =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span>, <span class="st">"Chinstrap"</span>, <span class="st">"Gentoo"</span>)</span>
+<span id="annotated-cell-15-5"><a href="#annotated-cell-15-5" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="annotated-cell-15-6"><a href="#annotated-cell-15-6" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span> </span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="5">5</button><span id="annotated-cell-15-7" class="code-annotation-target"><a href="#annotated-cell-15-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>()<span class="ot">-&gt;</span></span>
+<span id="annotated-cell-15-8"><a href="#annotated-cell-15-8" aria-hidden="true" tabindex="-1"></a>  pred_species</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-17" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-15" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-17" data-code-annotation="1" data-code-lines="1"><code>predictions()</code> from <code>{marginaleffects}</code>.</span>
+<span data-code-annotation="1" data-code-cell="annotated-cell-15" data-code-lines="1"><code>predictions()</code> from <code>{marginaleffects}</code>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-17" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-15" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-17" data-code-annotation="2" data-code-lines="2">We’re getting predictions from our <code>mod_species</code> model.</span>
+<span data-code-annotation="2" data-code-cell="annotated-cell-15" data-code-lines="2">We’re getting predictions from our <code>mod_species</code> model.</span>
 </dd>
-<dt data-target-cell="annotated-cell-17" data-target-annotation="3">3</dt>
+<dt data-target-cell="annotated-cell-15" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-17" data-code-annotation="3" data-code-lines="3">We’re getting predicted values for this <code>newdata</code> generated by <code>datagrid</code>.</span>
+<span data-code-annotation="3" data-code-cell="annotated-cell-15" data-code-lines="3">We’re getting predicted values for this <code>newdata</code> generated by <code>datagrid</code>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-17" data-target-annotation="4">4</dt>
+<dt data-target-cell="annotated-cell-15" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-17" data-code-annotation="4" data-code-lines="4">We want predicted values for these specific species.</span>
+<span data-code-annotation="4" data-code-cell="annotated-cell-15" data-code-lines="4">We want predicted values for these specific species.</span>
 </dd>
-<dt data-target-cell="annotated-cell-17" data-target-annotation="5">5</dt>
+<dt data-target-cell="annotated-cell-15" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-cell="annotated-cell-17" data-code-annotation="5" data-code-lines="7">Conversion to a dataframe.</span>
+<span data-code-annotation="5" data-code-cell="annotated-cell-15" data-code-lines="7">Conversion to a dataframe.</span>
 </dd>
 </dl>
 </div>
@@ -765,8 +777,8 @@ The <code>pred_len</code> dataframe
 <code>pred_species</code>
 </summary>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>pred_species <span class="sc">|&gt;</span> </span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  rmarkdown<span class="sc">::</span><span class="fu">paged_table</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>pred_species <span class="sc">|&gt;</span> </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  rmarkdown<span class="sc">::</span><span class="fu">paged_table</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
 <div data-pagedtable="false">
@@ -779,60 +791,60 @@ The <code>pred_len</code> dataframe
 </details>
 <p>To plot the original data by species, I’ll create a “beeswarm” plot, and add the predicted values on top with a “pointrange”</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="annotated-cell-19"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-19" data-target-annotation="1">1</button><span id="annotated-cell-19-1" class="code-annotation-target"><a href="#annotated-cell-19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
-<span id="annotated-cell-19-2"><a href="#annotated-cell-19-2" aria-hidden="true" tabindex="-1"></a>  penguin_focus,</span>
-<span id="annotated-cell-19-3"><a href="#annotated-cell-19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(</span>
-<span id="annotated-cell-19-4"><a href="#annotated-cell-19-4" aria-hidden="true" tabindex="-1"></a>    species,</span>
-<span id="annotated-cell-19-5"><a href="#annotated-cell-19-5" aria-hidden="true" tabindex="-1"></a>    bill_depth_mm,</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-19" data-target-annotation="2">2</button><span id="annotated-cell-19-6" class="code-annotation-target"><a href="#annotated-cell-19-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> species</span>
-<span id="annotated-cell-19-7"><a href="#annotated-cell-19-7" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="annotated-cell-19-8"><a href="#annotated-cell-19-8" aria-hidden="true" tabindex="-1"></a>)<span class="sc">+</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-19" data-target-annotation="3">3</button><span id="annotated-cell-19-9" class="code-annotation-target"><a href="#annotated-cell-19-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_beeswarm</span>(</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-19" data-target-annotation="4">4</button><span id="annotated-cell-19-10" class="code-annotation-target"><a href="#annotated-cell-19-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="fl">0.5</span>,</span>
-<span id="annotated-cell-19-11"><a href="#annotated-cell-19-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">shape =</span> <span class="dv">1</span></span>
-<span id="annotated-cell-19-12"><a href="#annotated-cell-19-12" aria-hidden="true" tabindex="-1"></a>  )<span class="sc">+</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-19" data-target-annotation="5">5</button><span id="annotated-cell-19-13" class="code-annotation-target"><a href="#annotated-cell-19-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_pointrange</span>(</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-19" data-target-annotation="6">6</button><span id="annotated-cell-19-14" class="code-annotation-target"><a href="#annotated-cell-19-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> pred_species,</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-19" data-target-annotation="7">7</button><span id="annotated-cell-19-15" class="code-annotation-target"><a href="#annotated-cell-19-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(</span>
-<span id="annotated-cell-19-16"><a href="#annotated-cell-19-16" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> estimate,</span>
-<span id="annotated-cell-19-17"><a href="#annotated-cell-19-17" aria-hidden="true" tabindex="-1"></a>      <span class="at">ymin =</span> conf.low,</span>
-<span id="annotated-cell-19-18"><a href="#annotated-cell-19-18" aria-hidden="true" tabindex="-1"></a>      <span class="at">ymax =</span> conf.high</span>
-<span id="annotated-cell-19-19"><a href="#annotated-cell-19-19" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="annotated-cell-19-20"><a href="#annotated-cell-19-20" aria-hidden="true" tabindex="-1"></a>  )<span class="sc">+</span> </span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-19" data-target-annotation="8">8</button><span id="annotated-cell-19-21" class="code-annotation-target"><a href="#annotated-cell-19-21" aria-hidden="true" tabindex="-1"></a>  khroma<span class="sc">::</span><span class="fu">scale_color_bright</span>()</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="annotated-cell-17"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-17" data-target-annotation="1">1</button><span id="annotated-cell-17-1" class="code-annotation-target"><a href="#annotated-cell-17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
+<span id="annotated-cell-17-2"><a href="#annotated-cell-17-2" aria-hidden="true" tabindex="-1"></a>  penguin_focus,</span>
+<span id="annotated-cell-17-3"><a href="#annotated-cell-17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(</span>
+<span id="annotated-cell-17-4"><a href="#annotated-cell-17-4" aria-hidden="true" tabindex="-1"></a>    species,</span>
+<span id="annotated-cell-17-5"><a href="#annotated-cell-17-5" aria-hidden="true" tabindex="-1"></a>    bill_depth_mm,</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-17" data-target-annotation="2">2</button><span id="annotated-cell-17-6" class="code-annotation-target"><a href="#annotated-cell-17-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> species</span>
+<span id="annotated-cell-17-7"><a href="#annotated-cell-17-7" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="annotated-cell-17-8"><a href="#annotated-cell-17-8" aria-hidden="true" tabindex="-1"></a>)<span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-17" data-target-annotation="3">3</button><span id="annotated-cell-17-9" class="code-annotation-target"><a href="#annotated-cell-17-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_beeswarm</span>(</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-17" data-target-annotation="4">4</button><span id="annotated-cell-17-10" class="code-annotation-target"><a href="#annotated-cell-17-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="fl">0.5</span>,</span>
+<span id="annotated-cell-17-11"><a href="#annotated-cell-17-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">shape =</span> <span class="dv">1</span></span>
+<span id="annotated-cell-17-12"><a href="#annotated-cell-17-12" aria-hidden="true" tabindex="-1"></a>  )<span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-17" data-target-annotation="5">5</button><span id="annotated-cell-17-13" class="code-annotation-target"><a href="#annotated-cell-17-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_pointrange</span>(</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-17" data-target-annotation="6">6</button><span id="annotated-cell-17-14" class="code-annotation-target"><a href="#annotated-cell-17-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> pred_species,</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-17" data-target-annotation="7">7</button><span id="annotated-cell-17-15" class="code-annotation-target"><a href="#annotated-cell-17-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(</span>
+<span id="annotated-cell-17-16"><a href="#annotated-cell-17-16" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> estimate,</span>
+<span id="annotated-cell-17-17"><a href="#annotated-cell-17-17" aria-hidden="true" tabindex="-1"></a>      <span class="at">ymin =</span> conf.low,</span>
+<span id="annotated-cell-17-18"><a href="#annotated-cell-17-18" aria-hidden="true" tabindex="-1"></a>      <span class="at">ymax =</span> conf.high</span>
+<span id="annotated-cell-17-19"><a href="#annotated-cell-17-19" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="annotated-cell-17-20"><a href="#annotated-cell-17-20" aria-hidden="true" tabindex="-1"></a>  )<span class="sc">+</span> </span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-17" data-target-annotation="8">8</button><span id="annotated-cell-17-21" class="code-annotation-target"><a href="#annotated-cell-17-21" aria-hidden="true" tabindex="-1"></a>  khroma<span class="sc">::</span><span class="fu">scale_color_bright</span>()</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-19" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-17" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-19" data-code-annotation="1" data-code-lines="1,2,3,4,5">Setting up the plot of the original data.</span>
+<span data-code-annotation="1" data-code-cell="annotated-cell-17" data-code-lines="1,2,3,4,5">Setting up the plot of the original data.</span>
 </dd>
-<dt data-target-cell="annotated-cell-19" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-17" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-19" data-code-annotation="2" data-code-lines="6">Strictly speaking, coloring the data by <code>species</code> is redundant for this plot, but we’re sticking to a common color scheme across all plots.</span>
+<span data-code-annotation="2" data-code-cell="annotated-cell-17" data-code-lines="6">Strictly speaking, coloring the data by <code>species</code> is redundant for this plot, but we’re sticking to a common color scheme across all plots.</span>
 </dd>
-<dt data-target-cell="annotated-cell-19" data-target-annotation="3">3</dt>
+<dt data-target-cell="annotated-cell-17" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-19" data-code-annotation="3" data-code-lines="9"><code>ggbeeswarm::geom_beeswarm()</code> is one way to try to deal with plotting a continuous variable against a categorical variable.</span>
+<span data-code-annotation="3" data-code-cell="annotated-cell-17" data-code-lines="9"><code>ggbeeswarm::geom_beeswarm()</code> is one way to try to deal with plotting a continuous variable against a categorical variable.</span>
 </dd>
-<dt data-target-cell="annotated-cell-19" data-target-annotation="4">4</dt>
+<dt data-target-cell="annotated-cell-17" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-19" data-code-annotation="4" data-code-lines="10,11">I’m making the data points small and open circles so that they’ll be visually distinct from the points we use to plot the predicted values.</span>
+<span data-code-annotation="4" data-code-cell="annotated-cell-17" data-code-lines="10,11">I’m making the data points small and open circles so that they’ll be visually distinct from the points we use to plot the predicted values.</span>
 </dd>
-<dt data-target-cell="annotated-cell-19" data-target-annotation="5">5</dt>
+<dt data-target-cell="annotated-cell-17" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-cell="annotated-cell-19" data-code-annotation="5" data-code-lines="13"><code>geom_pointrange()</code> plot a point to represent the estimated value, and a “whisker” to represent the confidence interval.</span>
+<span data-code-annotation="5" data-code-cell="annotated-cell-17" data-code-lines="13"><code>geom_pointrange()</code> plot a point to represent the estimated value, and a “whisker” to represent the confidence interval.</span>
 </dd>
-<dt data-target-cell="annotated-cell-19" data-target-annotation="6">6</dt>
+<dt data-target-cell="annotated-cell-17" data-target-annotation="6">6</dt>
 <dd>
-<span data-code-cell="annotated-cell-19" data-code-annotation="6" data-code-lines="14">Our predicted values are in <code>pred_species</code>.</span>
+<span data-code-annotation="6" data-code-cell="annotated-cell-17" data-code-lines="14">Our predicted values are in <code>pred_species</code>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-19" data-target-annotation="7">7</dt>
+<dt data-target-cell="annotated-cell-17" data-target-annotation="7">7</dt>
 <dd>
-<span data-code-cell="annotated-cell-19" data-code-annotation="7" data-code-lines="15,16,17,18,19">The predicted value is in the <code>estimate</code> column, and the high and low points for the confidence intervals are in <code>conf.high</code> and <code>conf.low</code>.</span>
+<span data-code-annotation="7" data-code-cell="annotated-cell-17" data-code-lines="15,16,17,18,19">The predicted value is in the <code>estimate</code> column, and the high and low points for the confidence intervals are in <code>conf.high</code> and <code>conf.low</code>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-19" data-target-annotation="8">8</dt>
+<dt data-target-cell="annotated-cell-17" data-target-annotation="8">8</dt>
 <dd>
-<span data-code-cell="annotated-cell-19" data-code-annotation="8" data-code-lines="21">Re-using our consistent color scheme.</span>
+<span data-code-annotation="8" data-code-cell="annotated-cell-17" data-code-lines="21">Re-using our consistent color scheme.</span>
 </dd>
 </dl>
 </div>
@@ -854,36 +866,36 @@ The <code>pred_len</code> dataframe
 <h2 class="anchored" data-anchor-id="fitting-the-multivariate-model">Fitting the multivariate model</h2>
 <p>Now, let’s see what we get when we fit a multivatiate model, including <em>both</em> bill length and species in the model.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="annotated-cell-20"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-20" data-target-annotation="1">1</button><span id="annotated-cell-20-1" class="code-annotation-target"><a href="#annotated-cell-20-1" aria-hidden="true" tabindex="-1"></a>mod_len_species <span class="ot">&lt;-</span> <span class="fu">lm</span>(</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-20" data-target-annotation="2">2</button><span id="annotated-cell-20-2" class="code-annotation-target"><a href="#annotated-cell-20-2" aria-hidden="true" tabindex="-1"></a>  bill_depth_mm <span class="sc">~</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-20" data-target-annotation="3">3</button><span id="annotated-cell-20-3" class="code-annotation-target"><a href="#annotated-cell-20-3" aria-hidden="true" tabindex="-1"></a>    bill_length_z <span class="sc">+</span></span>
-<span id="annotated-cell-20-4"><a href="#annotated-cell-20-4" aria-hidden="true" tabindex="-1"></a>    species,</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-20" data-target-annotation="4">4</button><span id="annotated-cell-20-5" class="code-annotation-target"><a href="#annotated-cell-20-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> penguin_focus</span>
-<span id="annotated-cell-20-6"><a href="#annotated-cell-20-6" aria-hidden="true" tabindex="-1"></a>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="annotated-cell-18"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-18" data-target-annotation="1">1</button><span id="annotated-cell-18-1" class="code-annotation-target"><a href="#annotated-cell-18-1" aria-hidden="true" tabindex="-1"></a>mod_len_species <span class="ot">&lt;-</span> <span class="fu">lm</span>(</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-18" data-target-annotation="2">2</button><span id="annotated-cell-18-2" class="code-annotation-target"><a href="#annotated-cell-18-2" aria-hidden="true" tabindex="-1"></a>  bill_depth_mm <span class="sc">~</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-18" data-target-annotation="3">3</button><span id="annotated-cell-18-3" class="code-annotation-target"><a href="#annotated-cell-18-3" aria-hidden="true" tabindex="-1"></a>    bill_length_z <span class="sc">+</span></span>
+<span id="annotated-cell-18-4"><a href="#annotated-cell-18-4" aria-hidden="true" tabindex="-1"></a>    species,</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-18" data-target-annotation="4">4</button><span id="annotated-cell-18-5" class="code-annotation-target"><a href="#annotated-cell-18-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> penguin_focus</span>
+<span id="annotated-cell-18-6"><a href="#annotated-cell-18-6" aria-hidden="true" tabindex="-1"></a>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-20" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-18" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-20" data-code-annotation="1" data-code-lines="1">We’re fitting a linear model</span>
+<span data-code-annotation="1" data-code-cell="annotated-cell-18" data-code-lines="1">We’re fitting a linear model</span>
 </dd>
-<dt data-target-cell="annotated-cell-20" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-18" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-20" data-code-annotation="2" data-code-lines="2">Our outcome variable is <code>bill_depth_mm</code></span>
+<span data-code-annotation="2" data-code-cell="annotated-cell-18" data-code-lines="2">Our outcome variable is <code>bill_depth_mm</code></span>
 </dd>
-<dt data-target-cell="annotated-cell-20" data-target-annotation="3">3</dt>
+<dt data-target-cell="annotated-cell-18" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-20" data-code-annotation="3" data-code-lines="3,4">Our predictor variables are <code>bill_length_z</code> <em>and</em> <code>species</code></span>
+<span data-code-annotation="3" data-code-cell="annotated-cell-18" data-code-lines="3,4">Our predictor variables are <code>bill_length_z</code> <em>and</em> <code>species</code></span>
 </dd>
-<dt data-target-cell="annotated-cell-20" data-target-annotation="4">4</dt>
+<dt data-target-cell="annotated-cell-18" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-20" data-code-annotation="4" data-code-lines="5">We’re drawing the data from the <code>penguin_focus</code> dataframe.</span>
+<span data-code-annotation="4" data-code-cell="annotated-cell-18" data-code-lines="5">We’re drawing the data from the <code>penguin_focus</code> dataframe.</span>
 </dd>
 </dl>
 </div>
 </div>
 <p>Let’s look at our model parameters now!</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(mod_len_species)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(mod_len_species)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 5
   term             estimate std.error statistic   p.value
@@ -894,15 +906,16 @@ The <code>pred_len</code> dataframe
 4 speciesGentoo       -5.11    0.191     -26.7  3.65e- 85</code></pre>
 </div>
 </div>
+<p>The estimated effects of bill length and species in this multivariate model are <em>really</em> different from each separate univariate model. Let’s look at them right next to each other, comparing the multivariate model to the “glued together” univariate model estimates.</p>
 <div class="cell">
 <div class="cell-output-display">
 
-<div id="dwtptcpyod" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="ezxtwfgaxm" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#dwtptcpyod .gt_table {
+#ezxtwfgaxm .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -927,7 +940,7 @@ The <code>pred_len</code> dataframe
   border-left-color: #D3D3D3;
 }
 
-#dwtptcpyod .gt_heading {
+#ezxtwfgaxm .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -939,12 +952,12 @@ The <code>pred_len</code> dataframe
   border-right-color: #D3D3D3;
 }
 
-#dwtptcpyod .gt_caption {
+#ezxtwfgaxm .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#dwtptcpyod .gt_title {
+#ezxtwfgaxm .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -956,7 +969,7 @@ The <code>pred_len</code> dataframe
   border-bottom-width: 0;
 }
 
-#dwtptcpyod .gt_subtitle {
+#ezxtwfgaxm .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -968,13 +981,13 @@ The <code>pred_len</code> dataframe
   border-top-width: 0;
 }
 
-#dwtptcpyod .gt_bottom_border {
+#ezxtwfgaxm .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#dwtptcpyod .gt_col_headings {
+#ezxtwfgaxm .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -989,7 +1002,7 @@ The <code>pred_len</code> dataframe
   border-right-color: #D3D3D3;
 }
 
-#dwtptcpyod .gt_col_heading {
+#ezxtwfgaxm .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1009,7 +1022,7 @@ The <code>pred_len</code> dataframe
   overflow-x: hidden;
 }
 
-#dwtptcpyod .gt_column_spanner_outer {
+#ezxtwfgaxm .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1021,15 +1034,15 @@ The <code>pred_len</code> dataframe
   padding-right: 4px;
 }
 
-#dwtptcpyod .gt_column_spanner_outer:first-child {
+#ezxtwfgaxm .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#dwtptcpyod .gt_column_spanner_outer:last-child {
+#ezxtwfgaxm .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#dwtptcpyod .gt_column_spanner {
+#ezxtwfgaxm .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1041,7 +1054,7 @@ The <code>pred_len</code> dataframe
   width: 100%;
 }
 
-#dwtptcpyod .gt_group_heading {
+#ezxtwfgaxm .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1067,7 +1080,7 @@ The <code>pred_len</code> dataframe
   text-align: left;
 }
 
-#dwtptcpyod .gt_empty_group_heading {
+#ezxtwfgaxm .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1082,15 +1095,15 @@ The <code>pred_len</code> dataframe
   vertical-align: middle;
 }
 
-#dwtptcpyod .gt_from_md > :first-child {
+#ezxtwfgaxm .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#dwtptcpyod .gt_from_md > :last-child {
+#ezxtwfgaxm .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#dwtptcpyod .gt_row {
+#ezxtwfgaxm .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1109,7 +1122,7 @@ The <code>pred_len</code> dataframe
   overflow-x: hidden;
 }
 
-#dwtptcpyod .gt_stub {
+#ezxtwfgaxm .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1122,7 +1135,7 @@ The <code>pred_len</code> dataframe
   padding-right: 5px;
 }
 
-#dwtptcpyod .gt_stub_row_group {
+#ezxtwfgaxm .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1136,11 +1149,11 @@ The <code>pred_len</code> dataframe
   vertical-align: top;
 }
 
-#dwtptcpyod .gt_row_group_first td {
+#ezxtwfgaxm .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#dwtptcpyod .gt_summary_row {
+#ezxtwfgaxm .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1150,16 +1163,16 @@ The <code>pred_len</code> dataframe
   padding-right: 5px;
 }
 
-#dwtptcpyod .gt_first_summary_row {
+#ezxtwfgaxm .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#dwtptcpyod .gt_first_summary_row.thick {
+#ezxtwfgaxm .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#dwtptcpyod .gt_last_summary_row {
+#ezxtwfgaxm .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1169,7 +1182,7 @@ The <code>pred_len</code> dataframe
   border-bottom-color: #D3D3D3;
 }
 
-#dwtptcpyod .gt_grand_summary_row {
+#ezxtwfgaxm .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1179,7 +1192,7 @@ The <code>pred_len</code> dataframe
   padding-right: 5px;
 }
 
-#dwtptcpyod .gt_first_grand_summary_row {
+#ezxtwfgaxm .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1189,11 +1202,11 @@ The <code>pred_len</code> dataframe
   border-top-color: #D3D3D3;
 }
 
-#dwtptcpyod .gt_striped {
+#ezxtwfgaxm .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#dwtptcpyod .gt_table_body {
+#ezxtwfgaxm .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1202,7 +1215,7 @@ The <code>pred_len</code> dataframe
   border-bottom-color: #D3D3D3;
 }
 
-#dwtptcpyod .gt_footnotes {
+#ezxtwfgaxm .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1216,7 +1229,7 @@ The <code>pred_len</code> dataframe
   border-right-color: #D3D3D3;
 }
 
-#dwtptcpyod .gt_footnote {
+#ezxtwfgaxm .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -1225,7 +1238,7 @@ The <code>pred_len</code> dataframe
   padding-right: 5px;
 }
 
-#dwtptcpyod .gt_sourcenotes {
+#ezxtwfgaxm .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1239,7 +1252,7 @@ The <code>pred_len</code> dataframe
   border-right-color: #D3D3D3;
 }
 
-#dwtptcpyod .gt_sourcenote {
+#ezxtwfgaxm .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1247,64 +1260,64 @@ The <code>pred_len</code> dataframe
   padding-right: 5px;
 }
 
-#dwtptcpyod .gt_left {
+#ezxtwfgaxm .gt_left {
   text-align: left;
 }
 
-#dwtptcpyod .gt_center {
+#ezxtwfgaxm .gt_center {
   text-align: center;
 }
 
-#dwtptcpyod .gt_right {
+#ezxtwfgaxm .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#dwtptcpyod .gt_font_normal {
+#ezxtwfgaxm .gt_font_normal {
   font-weight: normal;
 }
 
-#dwtptcpyod .gt_font_bold {
+#ezxtwfgaxm .gt_font_bold {
   font-weight: bold;
 }
 
-#dwtptcpyod .gt_font_italic {
+#ezxtwfgaxm .gt_font_italic {
   font-style: italic;
 }
 
-#dwtptcpyod .gt_super {
+#ezxtwfgaxm .gt_super {
   font-size: 65%;
 }
 
-#dwtptcpyod .gt_footnote_marks {
+#ezxtwfgaxm .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#dwtptcpyod .gt_asterisk {
+#ezxtwfgaxm .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#dwtptcpyod .gt_indent_1 {
+#ezxtwfgaxm .gt_indent_1 {
   text-indent: 5px;
 }
 
-#dwtptcpyod .gt_indent_2 {
+#ezxtwfgaxm .gt_indent_2 {
   text-indent: 10px;
 }
 
-#dwtptcpyod .gt_indent_3 {
+#ezxtwfgaxm .gt_indent_3 {
   text-indent: 15px;
 }
 
-#dwtptcpyod .gt_indent_4 {
+#ezxtwfgaxm .gt_indent_4 {
   text-indent: 20px;
 }
 
-#dwtptcpyod .gt_indent_5 {
+#ezxtwfgaxm .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1339,68 +1352,631 @@ The <code>pred_len</code> dataframe
 </div>
 </div>
 </div>
+<ul>
+<li>The effect of <code>bill_length_z</code> has gone from negative in the univariate model to positive in the multivariate model, meaning we’re now predicting that as bill length gets longer, bill depth gets deeper.</li>
+<li>Chinstraps have gone from having a predicted bill depth that’s just about the same as Adelies in the univariate model to a predicted shorter bill depth.</li>
+<li>Gentoos predicted to have a less deep bill than Adelies in both models, but the difference is predicted to be larger in the multivariate model.</li>
+</ul>
+<p>Why are the estimates so different between the multivariate and univariate models? Let’s get predicted values to plot over the data.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(mod_len) <span class="sc">|&gt;</span> </span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(term <span class="sc">==</span> <span class="st">"bill_length_mm"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(term, estimate)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 0 × 2
-# … with 2 variables: term &lt;chr&gt;, estimate &lt;dbl&gt;</code></pre>
+<div class="sourceCode cell-code" id="annotated-cell-20"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-20" data-target-annotation="1">1</button><span id="annotated-cell-20-1" class="code-annotation-target"><a href="#annotated-cell-20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">predictions</span>(</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-20" data-target-annotation="2">2</button><span id="annotated-cell-20-2" class="code-annotation-target"><a href="#annotated-cell-20-2" aria-hidden="true" tabindex="-1"></a>  mod_len_species,</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-20" data-target-annotation="3">3</button><span id="annotated-cell-20-3" class="code-annotation-target"><a href="#annotated-cell-20-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">newdata =</span> <span class="fu">datagrid</span>(</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-20" data-target-annotation="4">4</button><span id="annotated-cell-20-4" class="code-annotation-target"><a href="#annotated-cell-20-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">bill_length_z =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>),</span>
+<span id="annotated-cell-20-5"><a href="#annotated-cell-20-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">species =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span>, <span class="st">"Chinstrap"</span>, <span class="st">"Gentoo"</span>)</span>
+<span id="annotated-cell-20-6"><a href="#annotated-cell-20-6" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="annotated-cell-20-7"><a href="#annotated-cell-20-7" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span> </span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-20" data-target-annotation="5">5</button><span id="annotated-cell-20-8" class="code-annotation-target"><a href="#annotated-cell-20-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>() <span class="ot">-&gt;</span></span>
+<span id="annotated-cell-20-9"><a href="#annotated-cell-20-9" aria-hidden="true" tabindex="-1"></a>  pred_len_species</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-20" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-annotation="1" data-code-cell="annotated-cell-20" data-code-lines="1"><code>predictions()</code> from <code>{marginaleffects}</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-20" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-annotation="2" data-code-cell="annotated-cell-20" data-code-lines="2">We’re getting predictions from our multivariate <code>mod_len_species</code> model.</span>
+</dd>
+<dt data-target-cell="annotated-cell-20" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-annotation="3" data-code-cell="annotated-cell-20" data-code-lines="3">We’re going to get predictions for the newdata generated by <code>datagrid()</code>. This time, because we’re creating two columns, <code>datagrid()</code> is going to create a row for every combination of values in <code>bill_length_z</code> and <code>species</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-20" data-target-annotation="4">4</dt>
+<dd>
+<span data-code-annotation="4" data-code-cell="annotated-cell-20" data-code-lines="4,5">We want predictions for representative values of <code>bill_length_z</code> and <code>species</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-20" data-target-annotation="5">5</dt>
+<dd>
+<span data-code-annotation="5" data-code-cell="annotated-cell-20" data-code-lines="8">Conversion to a dataframe.</span>
+</dd>
+</dl>
 </div>
 </div>
+<details>
+<summary>
+<code>pred_len_species</code>
+</summary>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(mod_len_species) <span class="sc">|&gt;</span> </span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(term <span class="sc">==</span> <span class="st">"bill_length_mm"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(term, estimate)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 0 × 2
-# … with 2 variables: term &lt;chr&gt;, estimate &lt;dbl&gt;</code></pre>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>pred_len_species <span class="sc">|&gt;</span> </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  rmarkdown<span class="sc">::</span><span class="fu">paged_table</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["rowid"],"name":[1],"type":["int"],"align":["right"]},{"label":["type"],"name":[2],"type":["chr"],"align":["left"]},{"label":["estimate"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["std.error"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["statistic"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["p.value"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["conf.low"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["conf.high"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["bill_depth_mm"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["bill_length_z"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["species"],"name":[11],"type":["fct"],"align":["left"]}],"data":[{"1":"1","2":"response","3":"17.18924","4":"0.1275674","5":"134.74640","6":"0","7":"16.93922","8":"17.43927","9":"17.15117","10":"-2","11":"Adelie"},{"1":"2","2":"response","3":"15.25605","4":"0.3001052","5":"50.83567","6":"0","7":"14.66785","8":"15.84425","9":"17.15117","10":"-2","11":"Chinstrap"},{"1":"3","2":"response","3":"12.08322","4":"0.2678624","5":"45.10982","6":"0","7":"11.55822","8":"12.60822","9":"17.15117","10":"-2","11":"Gentoo"},{"1":"4","2":"response","3":"20.46326","4":"0.2008487","5":"101.88396","6":"0","7":"20.06961","8":"20.85692","9":"17.15117","10":"1","11":"Adelie"},{"1":"5","2":"response","3":"18.53007","4":"0.1160065","5":"159.73305","6":"0","7":"18.30270","8":"18.75744","9":"17.15117","10":"1","11":"Chinstrap"},{"1":"6","2":"response","3":"15.35724","4":"0.0920159","5":"166.89770","6":"0","7":"15.17689","8":"15.53759","9":"17.15117","10":"1","11":"Gentoo"},{"1":"7","2":"response","3":"19.37192","4":"0.1186355","5":"163.28941","6":"0","7":"19.13940","8":"19.60444","9":"17.15117","10":"0","11":"Adelie"},{"1":"8","2":"response","3":"17.43873","4":"0.1440456","5":"121.06392","6":"0","7":"17.15640","8":"17.72105","9":"17.15117","10":"0","11":"Chinstrap"},{"1":"9","2":"response","3":"14.26590","4":"0.1063852","5":"134.09672","6":"0","7":"14.05739","8":"14.47441","9":"17.15117","10":"0","11":"Gentoo"},{"1":"10","2":"response","3":"21.55460","4":"0.2912895","5":"73.99717","6":"0","7":"20.98369","8":"22.12552","9":"17.15117","10":"2","11":"Adelie"},{"1":"11","2":"response","3":"19.62141","4":"0.1562352","5":"125.58893","6":"0","7":"19.31519","8":"19.92762","9":"17.15117","10":"2","11":"Chinstrap"},{"1":"12","2":"response","3":"16.44858","4":"0.1544656","5":"106.48704","6":"0","7":"16.14584","8":"16.75133","9":"17.15117","10":"2","11":"Gentoo"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
 </div>
 </div>
+</div>
+</details>
+<p>Let’s first plot these predicted values over the bill length x bill depth scatterplot.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">predictions</span>(</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  mod_len_species,</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">newdata =</span> <span class="fu">datagrid</span>(<span class="at">bill_length_mm =</span> <span class="fu">c</span>(<span class="dv">32</span>, <span class="dv">39</span>, <span class="dv">43</span>, <span class="dv">48</span>, <span class="dv">59</span>),</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>                     <span class="at">species =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span>, <span class="st">"Chinstrap"</span>, <span class="st">"Gentoo"</span>))</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span> </span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>() <span class="ot">-&gt;</span></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  pred_len_species</span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(bill_length_mm, bill_depth_mm, <span class="at">color =</span> species))<span class="sc">+</span></span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(</span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> pred_len_species,</span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">y =</span> estimate)</span>
-<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>  )<span class="sc">+</span></span>
-<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_ribbon</span>(</span>
-<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> pred_len_species,</span>
-<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">ymin =</span> conf.low, <span class="at">ymax =</span> conf.high),</span>
-<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="fl">0.3</span></span>
-<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>  )<span class="ot">-&gt;</span></span>
-<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>  pred_len_species_plot</span>
-<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>pred_len_species_plot <span class="sc">+</span> <span class="fu">scale_color_bright</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="annotated-cell-22"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-22" data-target-annotation="1">1</button><span id="annotated-cell-22-1" class="code-annotation-target"><a href="#annotated-cell-22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
+<span id="annotated-cell-22-2"><a href="#annotated-cell-22-2" aria-hidden="true" tabindex="-1"></a>  penguin_focus,</span>
+<span id="annotated-cell-22-3"><a href="#annotated-cell-22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(</span>
+<span id="annotated-cell-22-4"><a href="#annotated-cell-22-4" aria-hidden="true" tabindex="-1"></a>    bill_length_z,</span>
+<span id="annotated-cell-22-5"><a href="#annotated-cell-22-5" aria-hidden="true" tabindex="-1"></a>    bill_depth_mm,</span>
+<span id="annotated-cell-22-6"><a href="#annotated-cell-22-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> species</span>
+<span id="annotated-cell-22-7"><a href="#annotated-cell-22-7" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="annotated-cell-22-8"><a href="#annotated-cell-22-8" aria-hidden="true" tabindex="-1"></a>)<span class="sc">+</span></span>
+<span id="annotated-cell-22-9"><a href="#annotated-cell-22-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-22" data-target-annotation="2">2</button><span id="annotated-cell-22-10" class="code-annotation-target"><a href="#annotated-cell-22-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(</span>
+<span id="annotated-cell-22-11"><a href="#annotated-cell-22-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> pred_len_species,</span>
+<span id="annotated-cell-22-12"><a href="#annotated-cell-22-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">y =</span> estimate)</span>
+<span id="annotated-cell-22-13"><a href="#annotated-cell-22-13" aria-hidden="true" tabindex="-1"></a>  )<span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-22" data-target-annotation="3">3</button><span id="annotated-cell-22-14" class="code-annotation-target"><a href="#annotated-cell-22-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_ribbon</span>(</span>
+<span id="annotated-cell-22-15"><a href="#annotated-cell-22-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> pred_len_species,</span>
+<span id="annotated-cell-22-16"><a href="#annotated-cell-22-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(</span>
+<span id="annotated-cell-22-17"><a href="#annotated-cell-22-17" aria-hidden="true" tabindex="-1"></a>      <span class="at">ymin =</span> conf.low,</span>
+<span id="annotated-cell-22-18"><a href="#annotated-cell-22-18" aria-hidden="true" tabindex="-1"></a>      <span class="at">ymax =</span> conf.high,</span>
+<span id="annotated-cell-22-19"><a href="#annotated-cell-22-19" aria-hidden="true" tabindex="-1"></a>      <span class="at">fill =</span> species</span>
+<span id="annotated-cell-22-20"><a href="#annotated-cell-22-20" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-22" data-target-annotation="4">4</button><span id="annotated-cell-22-21" class="code-annotation-target"><a href="#annotated-cell-22-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="cn">NA</span>,</span>
+<span id="annotated-cell-22-22"><a href="#annotated-cell-22-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="fl">0.3</span></span>
+<span id="annotated-cell-22-23"><a href="#annotated-cell-22-23" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-22" data-target-annotation="5">5</button><span id="annotated-cell-22-24" class="code-annotation-target"><a href="#annotated-cell-22-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_bright</span>()<span class="sc">+</span></span>
+<span id="annotated-cell-22-25"><a href="#annotated-cell-22-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_bright</span>()</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-hidden code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-22" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-annotation="1" data-code-cell="annotated-cell-22" data-code-lines="1,2,3,4,5,6,7,8,9">Setting up the scatter plot, this time coloring points according to penguin species.</span>
+</dd>
+<dt data-target-cell="annotated-cell-22" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-annotation="2" data-code-cell="annotated-cell-22" data-code-lines="10,11,12,13">Adding on the predicted values from <code>pred_len_species</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-22" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-annotation="3" data-code-cell="annotated-cell-22" data-code-lines="14,15,16,17,18,19,20">Adding on confidence intervals.</span>
+</dd>
+<dt data-target-cell="annotated-cell-22" data-target-annotation="4">4</dt>
+<dd>
+<span data-code-annotation="4" data-code-cell="annotated-cell-22" data-code-lines="21,22">The plot looks nicer with these settings.</span>
+</dd>
+<dt data-target-cell="annotated-cell-22" data-target-annotation="5">5</dt>
+<dd>
+<span data-code-annotation="5" data-code-cell="annotated-cell-22" data-code-lines="24,25">Using our color scheme for both the color of the points &amp; lines and the fill of the ribbons.</span>
+</dd>
+</dl>
+</div>
 <div class="cell-output-display">
 <p><img src="index_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid" width="576"></p>
 </div>
 </div>
+<p>What we can see now is that when looking at the data overall, the relationship between bill length and bill depth might be negative, but when looking <em>within each species</em>, the relationship is positive. For Adelies, penguins with longer bills have deeper bills, and the same goes for Chinstraps and Gentoos.</p>
+<p>The original slope in the univariate model was negative because each species has a different baseline bill depth and different ranges of bill lengths. When fitting a univariate model that didn’t take species into account, this results in a negative slope! This mismatch between the effect within groups vs combining groups is known as <a href="https://en.wikipedia.org/wiki/Simpson%27s_paradox">Simpson’s Paradox</a>.</p>
+</section>
+<section id="remaining-questions" class="level2">
+<h2 class="anchored" data-anchor-id="remaining-questions">Remaining Questions:</h2>
+<section id="could-we-have-predicted-what-the-slopes-were-going-to-be-in-the-multivariate-model" class="level3">
+<h3 class="anchored" data-anchor-id="could-we-have-predicted-what-the-slopes-were-going-to-be-in-the-multivariate-model">Could we have predicted what the slopes were going to be in the multivariate model?</h3>
+<p>When we were learning about centering and scaling predictors for univariate models, it was possible to calculate what the new parameters were going to be after (linearly) transforming them. Could we have mathematically calculated what the slopes were going to be in the multivariate model based on the two univariate models?</p>
+<p><strong>No.</strong> The negative slope in the <code>bill_depth_mm ~ bill_length_z</code>, for example, was estimated with information about species missing (i.e.&nbsp;<code>bill_depth_mm</code>’s relationship to species and <code>bill_length_z</code>’s relationship to species).</p>
+</section>
+<section id="did-the-univariate-models-miscalculate-the-relationship-between-bill-length-species-and-bill-depth" class="level3">
+<h3 class="anchored" data-anchor-id="did-the-univariate-models-miscalculate-the-relationship-between-bill-length-species-and-bill-depth">Did the univariate models miscalculate the relationship between bill length, species, and bill depth?</h3>
+<p><em>No, not really</em>. As it turns out, the univariate models aren’t very good models for predicting bill depth. If we compare their model fits as well as <span class="math inline">\(R^2\)</span> and goodness of fit heuristics, AIC and BIC, the multivariate model is preferred.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>pred_len_species_plot <span class="sc">+</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> pred_len,</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">y =</span> estimate),</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"black"</span></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in `geom_line()`:
-! Problem while computing aesthetics.
-ℹ Error occurred in the 4th layer.
-Caused by error in `FUN()`:
-! object 'bill_length_mm' not found</code></pre>
+<div class="cell-output-display">
+
+<div id="evfmmusncq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#evfmmusncq .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#evfmmusncq .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#evfmmusncq .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#evfmmusncq .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#evfmmusncq .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#evfmmusncq .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#evfmmusncq .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#evfmmusncq .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#evfmmusncq .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#evfmmusncq .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#evfmmusncq .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#evfmmusncq .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#evfmmusncq .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#evfmmusncq .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#evfmmusncq .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#evfmmusncq .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#evfmmusncq .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#evfmmusncq .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#evfmmusncq .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#evfmmusncq .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#evfmmusncq .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#evfmmusncq .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#evfmmusncq .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#evfmmusncq .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#evfmmusncq .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#evfmmusncq .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#evfmmusncq .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#evfmmusncq .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#evfmmusncq .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#evfmmusncq .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#evfmmusncq .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#evfmmusncq .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#evfmmusncq .gt_left {
+  text-align: left;
+}
+
+#evfmmusncq .gt_center {
+  text-align: center;
+}
+
+#evfmmusncq .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#evfmmusncq .gt_font_normal {
+  font-weight: normal;
+}
+
+#evfmmusncq .gt_font_bold {
+  font-weight: bold;
+}
+
+#evfmmusncq .gt_font_italic {
+  font-style: italic;
+}
+
+#evfmmusncq .gt_super {
+  font-size: 65%;
+}
+
+#evfmmusncq .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+#evfmmusncq .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#evfmmusncq .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#evfmmusncq .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#evfmmusncq .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#evfmmusncq .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#evfmmusncq .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+
+<table class="gt_table table table-sm table-striped" data-quarto-postprocess="true">
+<thead class="gt_col_headings">
+<tr class="header">
+<th id="model" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">model</th>
+<th id="r.squared" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">r.squared</th>
+<th id="AIC" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">AIC</th>
+<th id="BIC" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">BIC</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="model" style="color: #000000">~len</td>
+<td class="gt_row gt_right" headers="r.squared" style="color: #000000">0.06</td>
+<td class="gt_row gt_right" headers="AIC" style="color: #000000">1,422</td>
+<td class="gt_row gt_right" headers="BIC" style="color: #000000">1,433</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="model" style="color: #000000">~species</td>
+<td class="gt_row gt_right" headers="r.squared" style="color: #000000">0.68</td>
+<td class="gt_row gt_right" headers="AIC" style="color: #000000">1,054</td>
+<td class="gt_row gt_right" headers="BIC" style="color: #000000">1,069</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="model" style="color: #000000">~len + species</td>
+<td class="gt_row gt_right" headers="r.squared" style="color: #000000">0.77</td>
+<td class="gt_row gt_right" headers="AIC" style="color: #000000">944</td>
+<td class="gt_row gt_right" headers="BIC" style="color: #000000">963</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>But, just because the univariate models aren’t ideal, that doesn’t mean they miscalculated anything. When trying to estimate the effect of bill length on bill depth <em>in the absence of species information</em>, the slope <em>is</em> negative.</p>
+</section>
+<section id="how-do-i-visualize-fitted-multivariate-models" class="level3">
+<h3 class="anchored" data-anchor-id="how-do-i-visualize-fitted-multivariate-models">How do I visualize fitted multivariate models?</h3>
+<p>One important takeaway is that in order to visualize the results of a multivariate model, you <em>can’t</em> just plot the fit of a univariate model. This plot doesn’t show a line with a slope of 1.09.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  penguin_focus, </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    bill_length_z, </span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    bill_depth_mm</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>)<span class="sc">+</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_smooth</span>(<span class="at">method =</span> lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-27-1.png" class="img-fluid" width="576"></p>
+</div>
+</div>
+<p>Instead, you need to get predicted values from the multivariate model. The code above used <code>marginaleffects::predictions()</code> to do that, but there are actually lots of ways to go about it. For example, here’s some base R code to do it.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>pred <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">bill_length_z =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>),</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">species =</span> <span class="fu">c</span>(<span class="st">"Adelie"</span>, <span class="st">"Chinstrap"</span>, <span class="st">"Gentoo"</span>)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>pred<span class="sc">$</span>estimate <span class="ot">&lt;-</span> <span class="fu">predict</span>(mod_len_species, <span class="at">newdata =</span> pred)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  penguin_focus,</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    bill_length_z,</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    bill_depth_mm,</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> species</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>)<span class="sc">+</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> pred,</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">y =</span> estimate)</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>  )<span class="sc">+</span></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_bright</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid" width="576"></p>
 </div>
 </div>
 
 
+</section>
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div>CC-BY-SA 4.0</div></div></section></div></main> <!-- /main -->
