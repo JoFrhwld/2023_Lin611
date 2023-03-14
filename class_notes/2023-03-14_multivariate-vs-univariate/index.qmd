@@ -1,0 +1,417 @@
+---
+title: "Multivariate models aren't just univariate models glued together"
+author: Josef Fruehwald
+knitr: 
+  opts_chunk: 
+    message: false
+    warning: false
+fig-width: 6
+fig-height: 4
+fig-align: center
+code-annotations: select
+error: true
+---
+
+Like the title says, multivariate models aren't just univariate models glued together. In fact, there's no straightforward way to calculate, ahead of time, what the parameters of a model `y ~ x1 + x2` will be if all you have are separate univariate models `y ~ x1` and `y ~ x2`. I'll demonstrate that with an example modelling the bill depth of penguins, using bill length and species as predictors.
+
+::: {layout-ncol="2"}
+![Penguin Species](art/penguins.png){fig-align="center"}
+
+![Bill Measurements](art/culmen_depth.png){fig-align="center"}
+
+Artwork by \@allison_horst
+:::
+
+## Loading packages
+
+These are the packages we'll use in this lesson:
+
+```{r}
+library(tidyverse) # <1>
+
+library(ggbeeswarm)   # <2>
+library(khroma)       # <2>
+library(patchwork)    # <2>
+theme_set(theme_bw()) # <2>
+
+library(palmerpenguins) # <3>
+
+library(broom)            # <4>
+library(marginaleffects)  # <4>
+```
+
+1.  General data processing
+2.  Data visualization
+3.  The penguins data
+4.  Model investigation
+
+## Penguins, first look
+
+Let's grab just the data columns we're focusing on.
+
+```{r}
+penguins |>  # <1> 
+  select(bill_depth_mm, bill_length_mm, species) |> # <2> 
+  drop_na() -> # <3>
+  penguin_focus # <4>
+```
+
+1.  The original penguins data.
+2.  Selecting just the data columns we're focused on.
+3.  Dropping rows that have `NA` values.
+4.  The new data frame.
+
+## Preparing to model
+
+It's always a good idea to take a look at how each of the variables (outcome and predictor) are distributed.
+
+```{r}
+penguin_focus |> 
+  ggplot(aes(bill_depth_mm)) + # <1>
+    stat_bin()                 # <1>
+    labs(title = "Bill Depth Histogram (outcome)")
+```
+
+```{r}
+penguin_focus |> 
+  ggplot(aes(bill_length_mm)) + # <1>
+    stat_bin()                  # <1>
+    labs(title = "Bill Length Histogram (predictor)")
+```
+
+1.  Plotting a histogram of `bill_length_mm`
+
+```{=html}
+<!-- -->
+```
+1.  Plotting a histogram of `bill_depth_mm`.
+
+```{r}
+penguin_focus |> 
+  ggplot(aes(species, fill = species))+ # <1>
+    stat_count()+                       # <1>
+    khroma::scale_fill_bright() +        # <2>
+    labs(title = "Species Counts (predictor)")
+```
+
+1.  Plotting counts of each species.
+2.  Setting a color scheme for species that we'll reuse later.
+
+Let's "normalize" the `bill_length_mm` data for modeling by z-scoring it.
+
+```{r}
+penguin_focus |> 
+  mutate(           # <1> 
+    bill_length_z = (bill_length_mm - # <2>
+                       mean(bill_length_mm)) / # <2>
+                    sd(bill_length_mm) # <2>
+  ) ->
+  penguin_focus # <3>
+```
+
+1.  `mutate()` adds new columns.
+2.  We're subtracting the mean and dividing by the standard deviation. $\frac{x-\text{mean}(x)}{\text{sd}(x)}$
+3.  Assigning the result back out.
+
+Let's look at the z-scored histogram
+
+```{r}
+penguin_focus |> 
+  ggplot(aes(bill_length_z)) +    # <1>
+    stat_bin()+                   # <1>
+    labs(title = "Bill Length (z-scored)")
+```
+
+1.  Plotting a histogram of `bill_length_z`.
+
+## Fitting the univariate models
+
+Normally, I'd recommend making a plot of the outcome & predictor variable before fitting a model, but just to avoid repeating too much code here, we'll fit the models first, then plot their predicted values on the data.
+
+### Bill Length Model
+
+We'll start with a univariate (one variable) model, predicting `bill_depth_mm` with `bill_length_z`.
+
+```{r}
+mod_len <- lm(    # <1> 
+   bill_depth_mm ~  # <2> 
+     bill_length_z, # <3> 
+   data = penguin_focus) # <4> 
+```
+
+1.  Fitting a linear model
+2.  `bill_depth_mm` is our outcome variable
+3.  `bill_length_z` is our predictor variable
+4.  Using the `penguin_focus` data
+
+We can look at the model parameters in a dataframe format using `broom::tidy`.
+
+```{r}
+tidy(mod_len)
+```
+
+```{r}
+#| echo: false
+len0_slope <- coef(mod_len)["bill_length_z"]
+len_slope <- coef(mod_len)
+```
+
+The estimated effect of `bill_length_z` is `r round(len0_slope, digits = 3)`, meaning that for every 1 standard deviation increase in bill length, we expect bill depth to decrease by `r round(len0_slope, digits = 3)` millimeters.
+
+We can get the bill depth values this model predicts with the `marginaleffects::predictions()` function.
+
+```{r}
+predictions(      # <1>
+  mod_len,        # <2>
+  newdata = datagrid(   # <3>
+    bill_length_z = c(-2, 1, 0, 1, 2)  # <4>
+  )
+) |> 
+  tibble()->    # <5>
+  pred_len
+```
+
+1.  `predictions()` is from the `{marginaleffects}` package.
+2.  This is the model we want to get predictions from.
+3.  We want to get predicted values at specific points/combinations of predictors, so we use the `newdata` argument. `datagrid()` is another function from `{marginaleffects}` that will create a data frame.
+4.  We want to get predicted `bill_depth_mm` values for some representative `bill_length_z` values.
+5.  The output of `predictions()` isn't quite what we want for making a plot, so we convert it with `tibble()`.
+
+<details>
+
+<summary>The `pred_len` dataframe</summary>
+
+```{r}
+pred_len |> 
+  rmarkdown::paged_table()
+```
+
+</details>
+
+We can plot these predicted values over top the original data. One thing to know is that the line we plot here is identical to what we'd get if we just added `stat_smooth(method = lm)` to the plot.
+
+```{r}
+ggplot( # <1>
+  penguin_focus, # <1> 
+  aes(bill_length_z, bill_depth_mm)
+)+ # <1>
+  geom_point() + # <1>
+  geom_line(          # <2>
+    data = pred_len,  # <2>
+    aes(y = estimate), # <3>
+    color = "steelblue"
+  )+
+  geom_ribbon(        # <4>
+    data = pred_len,  # <4>
+    aes(               # <5>
+      ymin = conf.low, # <5>
+      ymax = conf.high # <5>
+    ),                 # <5>
+    alpha = 0.3        # <6>
+  )
+```
+
+1.  Scatterplot of the full data.
+2.  Adding a line to represent the predicted values, which are in the `pred_len` dataframe.
+3.  In `pred_len`, the predicted bill depth is in the `estimate` column.
+4.  Adding a confidence interval onto the predicted values with `geom_ribbon()`.
+5.  The width of `geom_ribbon()` is determined by the `ymax` and `ymin` aesthetics, and the high and low points of the confidence interval are in the `conf.low` and `conf.high` columns of `pred_len`.
+6.  Setting a transparency on the confidence interval.
+
+So, as you can see, the line of predicted values of bill depth slopes downwards as bill length increases when we include only `bill_length_z` in the model.
+
+### Species Model.
+
+Now, let's fit a model looking at just an effect of `Species`. I've left the alphabetically first penguin species, Adelie, as the reference level.
+
+```{r}
+mod_species <- lm(     # <1>
+  bill_depth_mm ~      # <2>
+    species,           # <3>
+  data = penguin_focus # <4>
+)
+```
+
+1.  We're fitting a linear model.
+2.  Our outcome variable is `bill_depth_mm`.
+3.  Our predictor variable is `species`.
+4.  We're drawing the data from `penguin_focus`.
+
+And again, we can look at the model parameters with `broom::tidy`.
+
+```{r}
+tidy(mod_species)
+```
+
+```{r}
+#| echo: false
+coef_species <- coef(mod_species)
+```
+
+So, the predicted bill depth for our reference level (Adelie) is `r round(coef_species[1], digits =2)` millimeters. Chinstraps are estimated to have deeper bills by `r round(coef_species[2], digits =2)`mm (not significant), and Gentoos are estimated to have less deep bills by `r round(coef_species[3], digits =2)`mm.
+
+Let's get the predicted bill depths from our model to plot over our data.
+
+```{r}
+predictions(      # <1>
+  mod_species,    # <2>
+  newdata = datagrid( # <3>
+    species = c("Adelie", "Chinstrap", "Gentoo") # <4>
+  )
+) |> 
+  tibble()-> # <5>
+  pred_species
+```
+
+1.  `predictions()` from `{marginaleffects}`.
+2.  We're getting predictions from our `mod_species` model.
+3.  We're getting predicted values for this `newdata` generated by `datagrid`.
+4.  We want predicted values for these specific species.
+5.  Conversion to a dataframe.
+
+<details>
+
+<summary>`pred_species`</summary>
+
+```{r}
+pred_species |> 
+  rmarkdown::paged_table()
+```
+
+</details>
+
+To plot the original data by species, I'll create a "beeswarm" plot, and add the predicted values on top with a "pointrange"
+
+```{r}
+ggplot(       # <1>
+  penguin_focus,   # <1>
+  aes(         # <1>
+    species,   # <1>
+    bill_depth_mm, # <1>
+    color = species # <2>
+  )
+)+
+  geom_beeswarm( # <3> 
+    size = 0.5,  # <4>
+    shape = 1    # <4>
+  )+
+  geom_pointrange(       # <5>
+    data = pred_species, # <6>
+    aes(                 # <7>
+      y = estimate,      # <7>
+      ymin = conf.low,   # <7>
+      ymax = conf.high   # <7>
+    )                    # <7>
+  )+ 
+  khroma::scale_color_bright() # <8>
+```
+
+1.  Setting up the plot of the original data.
+2.  Strictly speaking, coloring the data by `species` is redundant for this plot, but we're sticking to a common color scheme across all plots.
+3.  `ggbeeswarm::geom_beeswarm()` is one way to try to deal with plotting a continuous variable against a categorical variable.
+4.  I'm making the data points small and open circles so that they'll be visually distinct from the points we use to plot the predicted values.
+5.  `geom_pointrange()` plot a point to represent the estimated value, and a "whisker" to represent the confidence interval.
+6.  Our predicted values are in `pred_species`.
+7.  The predicted value is in the `estimate` column, and the high and low points for the confidence intervals are in `conf.high` and `conf.low`.
+8.  Re-using our consistent color scheme.
+
+### Univariate model recap.
+
+Just to recap what we've seen from our two separate univariate models:
+
+-   When we modelled `bill_depth_mm` with `bill_length_z`, we got an estimated slope of `r round(len_slope[2], digits = 3)` .
+
+-   When we predicted `bill_depth_mm` with `species`, we estimated that Chinstraps have a bill depth `r round(coef_species[2], digits = 2)`mm more than Adelies, and Gentoos have a bill depth `r round(coef_species[3], digits = 2)` less than Adelies.
+
+## Fitting the multivariate model
+
+Now, let's see what we get when we fit a multivatiate model, including *both* bill length and species in the model.
+
+```{r}
+mod_len_species <- lm( # <1>
+  bill_depth_mm ~      # <2>
+    bill_length_z +    # <3>
+    species,           # <3>
+  data = penguin_focus      # <4>
+)
+```
+
+1.  We're fitting a linear model
+2.  Our outcome variable is `bill_depth_mm`
+3.  Our predictor variables are `bill_length_z` *and* `species`
+4.  We're drawing the data from the `penguin_focus` dataframe.
+
+Let's look at our model parameters now!
+
+```{r}
+tidy(mod_len_species)
+```
+
+
+
+```{r}
+#| echo: false
+library(gt)
+glued <- tibble(
+  term = c("bill_length_z", "speciesChinstrap", "speciesGentoo"),
+  `glued togther univariate` = c(len_slope[2], coef_species[2:3])
+)
+
+tidy(mod_len_species) |> 
+  select(term, estimate) |> 
+  rename(`multivariate` = estimate) |> 
+  left_join(glued) |> 
+  drop_na() |> 
+  gt() |> 
+  fmt_number(columns = 2:3,
+             decimals =  2) |> 
+  tab_style(
+    cell_text(color = "black"),
+    locations = cells_body())
+```
+
+```{r}
+tidy(mod_len) |> 
+  filter(term == "bill_length_mm") |> 
+  select(term, estimate)
+```
+
+```{r}
+tidy(mod_len_species) |> 
+  filter(term == "bill_length_mm") |> 
+  select(term, estimate)
+```
+
+```{r}
+predictions(
+  mod_len_species,
+  newdata = datagrid(bill_length_mm = c(32, 39, 43, 48, 59),
+                     species = c("Adelie", "Chinstrap", "Gentoo"))
+) |> 
+  tibble() ->
+  pred_len_species
+
+ggplot(penguins, aes(bill_length_mm, bill_depth_mm, color = species))+
+  geom_point()+
+  geom_line(
+    data = pred_len_species,
+    aes(y = estimate)
+  )+
+  geom_ribbon(
+    data = pred_len_species,
+    aes(ymin = conf.low, ymax = conf.high),
+    alpha = 0.3
+  )->
+  pred_len_species_plot
+
+pred_len_species_plot + scale_color_bright()
+```
+
+```{r}
+pred_len_species_plot +
+  geom_line(
+    data = pred_len,
+    aes(y = estimate),
+    color = "black"
+  )
+```
