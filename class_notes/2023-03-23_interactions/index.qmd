@@ -1,0 +1,202 @@
+---
+title: "Interactions"
+date: 2023-3-23
+---
+
+::: callout-important
+The axis labels will only show in light mode!
+:::
+
+::: {.panel-input layout-ncol="2"}
+<div>
+```{ojs}
+//| echo: false
+viewof slope_a = Inputs.range([-5, 5], {step: 0.01, label: "a slope "});
+```
+```{ojs}
+//| echo: false
+viewof intercept_a = Inputs.range([-20, 20], {step: 1, label: "a intercept"});
+```
+</div>
+
+
+<div>
+```{ojs}
+//| echo: false
+viewof slope_b = Inputs.range([-5, 5], {step: 0.01, label: "b slope "});
+viewof intercept_b = Inputs.range([-20, 20], {step: 1, label: "b intercept"});
+```
+</div>
+
+<div>
+```{ojs}
+//| echo: false
+viewof x_center = Inputs.range([-5, 5], {step: 0.01, label: "x centering"});
+```
+</div>
+
+
+:::
+
+
+
+```{ojs}
+//| echo: false
+maximal = (5 * 5) + 20;
+
+
+a_at_x = (x_center * slope_a) +intercept_a;
+b_at_x = (x_center * slope_b) +intercept_b;
+a_at_x1 = ((x_center+1) * slope_a) +intercept_a;
+b_at_x1 = ((x_center+1) * slope_b) +intercept_b;
+
+
+
+b_eff = b_at_x - a_at_x;
+b_counter = b_at_x + slope_a;
+interaction =  b_at_x1 - b_counter;
+```
+
+```{ojs}
+//| echo: false
+myline = [
+  {x: -5, y: (-5 * slope_a)+intercept_a, group: "a"},
+  {x: 5, y: (5 * slope_a)+intercept_a, group: "a"},
+  {x: -5, y: (-5 * slope_b)+intercept_b, group: "b"},
+  {x: 5, y: (5 * slope_b)+intercept_b, group: "b"}
+]
+```
+
+```{ojs}
+//| echo: false
+interceptPoint = [
+  {x: x_center, y: (x_center * slope_a) +intercept_a}
+];
+
+arrowLine = [
+  {
+    from_x: x_center,
+    to_x: x_center,
+    from_y: (x_center * slope_a) +intercept_a,
+    to_y: (x_center * slope_b) +intercept_b
+  }
+]
+```
+
+```{ojs}
+//| echo: false
+a_step = [
+  {x: x_center, y: (x_center * slope_a) +intercept_a, group: "a"},
+  //{x: x_center, y: (x_center+1 * slope_a) +intercept_a},
+  {x: x_center+1, y: ((x_center+1) * slope_a) + intercept_a, group: "a"}
+];
+
+b_step = [
+  {x: x_center, y: b_at_x, group: "a"},
+  //{x: x_center, y: (x_center+1 * slope_a) +intercept_a},
+  {x: x_center+1, y: b_at_x + slope_a, group: "a"}
+];
+
+b_interaction = [
+  {from_x: x_center+1,
+   to_x: x_center+1,
+   from_y: b_counter,
+   to_y: b_at_x1,
+   group: "b"
+  }
+];
+```
+
+::: {.column-page layout-ncol="2"}
+```{ojs}
+//| echo: false
+Plot.plot({
+  y: {domain: [-maximal, maximal]},
+  x: {domain: [-5, 6]},
+  marks: [
+    Plot.lineY(myline, {x: "x", y: "y", stroke: "group", strokeWidth: 4}),
+    Plot.arrow(arrowLine,
+      {
+        x1: "from_x",
+        x2: "to_x",
+        y1: "from_y",
+        y2: "to_y",
+        stroke: "red",
+        strokeWidth: 3
+      }
+    ),
+    Plot.arrow(b_interaction,
+      {
+        x1: "from_x",
+        x2: "to_x",
+        y1: "from_y",
+        y2: "to_y",
+        stroke: "group",
+        strokeWidth: 3
+      }
+    ),
+    Plot.line(a_step,
+      {
+        x: "x",
+        y: "y",
+        curve: "step-after",
+        stroke: "group",
+        strokeDasharray: [2],
+        strokeWidth: 2
+      }
+    ),
+    Plot.line(b_step,
+      {
+        x: "x",
+        y: "y",
+        curve: "step-after",
+        stroke: "group",
+        strokeDasharray: [5],
+        strokeWidth: 2
+      }
+    ),
+    Plot.dot(interceptPoint, {x: "x", y: "y", fill: "black", r: 5}),
+    Plot.text(myline, {
+      filter: d => d.x === 5,
+      x: 4.8,
+      y: "y",
+      text: "group",
+      fill: "group",
+      fontSize: 20
+    })
+  ]
+})
+```
+
+<div>
+What you'd see in the regression results for `lm(y~x*group)`
+
+```{ojs}
+//| echo: false
+regressionTable = [
+  {
+    term: "Intercept",
+    estimate: a_at_x,
+    symbol: "black dot"
+  },
+  {
+    term: "x",
+    estimate: slope_a,
+    symbol: "dashed blue step"
+  },
+  {
+    term: "groupb",
+    estimate: (b_at_x - a_at_x),
+    symbol: "red arrow"
+  },
+  {
+    term: "x:groupb",
+    estimate: (slope_b - slope_a),
+    symbol: "orange arrow"
+  }
+];
+Inputs.table(regressionTable, {sort: false})
+```
+
+</div>
+:::
