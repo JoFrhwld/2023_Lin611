@@ -1,0 +1,48 @@
+---
+title: "Interactions (code)"
+date: 2023-03-23
+order: 16
+knitr: 
+  opts_chunk: 
+    message: false
+---
+
+## Prep
+
+### Loading packages
+
+```{r}
+#| message: false
+library(tidyverse)
+library(forcats)
+library(marginaleffects)
+```
+
+### Getting data to model
+
+```{r}
+library(palmerpenguins)
+```
+
+```{r}
+rt_frequency <- read_csv("https://raw.githubusercontent.com/bodowinter/applied_statistics_book_data/master/ELP_length_frequency.csv")
+```
+
+```{r}
+ey_data <- read_csv("https://bit.ly/ey_dat")
+pnc_demo <- read_csv("https://bit.ly/3wOfcGx") |> 
+  select(idstring, gender)
+```
+
+```{r}
+ey_data |> 
+  left_join(
+    pnc_demo,
+    by = join_by(speaker == idstring)
+  ) ->
+  ey_data_demo
+```
+
+```{r}
+um_uh <- read_csv("https://bit.ly/3JdeSbx")
+```

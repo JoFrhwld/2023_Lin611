@@ -1,0 +1,14 @@
+{
+  "hash": "f00894af2fab674413fb9025fd950142",
+  "result": {
+    "markdown": "---\ntitle: \"Interactions (code)\"\ndate: 2023-03-23\norder: 16\nknitr: \n  opts_chunk: \n    message: false\n---\n\n\n## Prep\n\n### Loading packages\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(tidyverse)\nlibrary(forcats)\nlibrary(marginaleffects)\n```\n:::\n\n\n### Getting data to model\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(palmerpenguins)\n```\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\nrt_frequency <- read_csv(\"https://raw.githubusercontent.com/bodowinter/applied_statistics_book_data/master/ELP_length_frequency.csv\")\n```\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\ney_data <- read_csv(\"https://bit.ly/ey_dat\")\npnc_demo <- read_csv(\"https://bit.ly/3wOfcGx\") |> \n  select(idstring, gender)\n```\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\ney_data |> \n  left_join(\n    pnc_demo,\n    by = join_by(speaker == idstring)\n  ) ->\n  ey_data_demo\n```\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\num_uh <- read_csv(\"https://bit.ly/3JdeSbx\")\n```\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

@@ -1,6 +1,7 @@
 ---
-title: "Interactions"
+title: "Interactions (Interactive)"
 date: 2023-3-23
+order: 16
 ---
 
 ::: callout-important
@@ -9,36 +10,38 @@ The axis labels will only show in light mode!
 
 ::: {.panel-input layout-ncol="2"}
 <div>
+
 ```{ojs}
 //| echo: false
 viewof slope_a = Inputs.range([-5, 5], {step: 0.01, label: "a slope "});
 ```
+
 ```{ojs}
 //| echo: false
 viewof intercept_a = Inputs.range([-20, 20], {step: 1, label: "a intercept"});
 ```
+
 </div>
 
-
 <div>
+
 ```{ojs}
 //| echo: false
 viewof slope_b = Inputs.range([-5, 5], {step: 0.01, label: "b slope "});
 viewof intercept_b = Inputs.range([-20, 20], {step: 1, label: "b intercept"});
 ```
+
 </div>
 
 <div>
+
 ```{ojs}
 //| echo: false
 viewof x_center = Inputs.range([-5, 5], {step: 0.01, label: "x centering"});
 ```
+
 </div>
-
-
 :::
-
-
 
 ```{ojs}
 //| echo: false
@@ -169,6 +172,7 @@ Plot.plot({
 ```
 
 <div>
+
 What you'd see in the regression results for `lm(y~x*group)`
 
 ```{ojs}
