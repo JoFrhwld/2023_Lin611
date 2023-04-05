@@ -1,0 +1,388 @@
+---
+title: "Mixed Effects Models 1"
+date: 2023-04-06
+knitr: 
+  opts_chunk: 
+    message: false
+code-annotations: hover
+---
+
+## Setup
+
+### Installing new packages
+
+```{r}
+if(!require(broom.mixed)){
+  install.packages("broom.mixed")
+  library(broom.mixed)
+}
+
+if(!require(lme4)){
+  install.packages("lme4")
+  library(lme4)
+}
+
+if(!require(janitor)){
+  install.packages("janitor")
+  library(janitor)
+}
+```
+
+### Loading already installed packages
+
+```{r}
+library(marginaleffects)
+library(tidyverse)
+```
+
+### Loading data for today
+
+```{r}
+ey_dat <- read_csv("https://bit.ly/ey_dat")
+```
+
+## Looking at the data
+
+Imbalance is going to be rampant!
+
+```{r}
+ey_dat |>                       
+  count(speaker) |>             #<1>
+  mutate(                       #<2>
+    rank = rank(                #<3>
+      desc(n),                  #<4>  
+      ties.method = "random"    #<5>
+    )                           
+  ) |> 
+  ggplot(aes(rank, n))+
+    geom_col()+
+    labs(
+      title = "data per speaker"
+    )
+```
+
+1.  Getting the total number of observations per speaker.
+2.  Adding on a column.
+3.  Getting the rank of `n`, the number of observations.
+4.  We want the descending rank (that is, the largest `n` should get 1.
+5.  When two or more speakers have the same `n`, randomly assign the next rank, rather than giving them all the same rank.
+
+```{r}
+ey_dat |> 
+  count(word) |> 
+  mutate(
+    rank = rank(
+      desc(n),
+      ties.method = "random"
+    )
+  ) |> 
+  ggplot(aes(rank, n))+
+    geom_col()+
+    labs(
+      title = "data per word"
+    )
+```
+
+## Prepare the data for modelling
+
+```{r}
+ey_dat |> 
+  mutate(
+    dob_0 = (dob - median(dob))/25,
+    log_freq = log2(frequency),
+    freq_c = log_freq - median(log_freq),
+    log_dur = log2(dur),
+    dur_c = log_dur - median(log_dur)
+  ) |> 
+  drop_na()->
+  ey_to_model
+```
+
+## Modelling
+
+### "Complete Pooling"
+
+That is, pooling all speakers' data together.
+
+Q: What is the effect of word frequency on `F1_n`?
+
+```{r}
+ey_flat <- lm(F1_n ~ freq_c, data = ey_to_model)
+```
+
+#### The model parameters
+
+```{r}
+tidy(ey_flat)
+```
+
+#### The fitted values
+
+Step 1, get a reasonable range of `freq_c` values to get predictions between.
+
+```{r}
+freq_range <- quantile(
+  ey_to_model$freq_c, 
+  probs = c(0.025, 0.975)
+)
+
+freq_range
+```
+
+Step 2, get the predictions
+
+```{r}
+predictions(               #<1>
+  model = ey_flat,         #<2>
+  newdata = datagrid(      #<3>
+    freq_c = seq(freq_range[1], freq_range[2], length = 50) #<4>
+  )
+)  |> 
+  as_tibble() ->         #<5>
+  ey_flat_predicted
+```
+
+1.  `marginaleffects::predictions()`
+2.  The model we're getting predicted values from.
+3.  Using `marginaleffects::datagrid()` to create an "grid" of data to make predictions for.
+4.  We want predictions from the beginning to the end of `freq_range` with 50 total predictions.
+5.  Converting the result to a tibble.
+
+```{r}
+ey_flat_predicted |> 
+  ggplot(aes(freq_c, estimate))+
+    geom_ribbon(
+      aes(ymin = conf.low, ymax = conf.high),
+      alpha = 0.6
+    )+
+    geom_line()
+```
+
+### No Pooling
+
+One model per speaker.
+
+#### Fitting the models
+
+Step 1: "Nest" the speaker data.
+
+```{r}
+ey_to_model |> 
+  group_by(speaker) |> 
+  nest() -> 
+  ey_nested
+
+head(ey_nested)
+```
+
+Step 2: Write a little function to fit a linear model to a data frame
+
+```{r}
+fit_lm <- function(df){
+  lm(F1_n ~ freq_c, data = df)
+}
+```
+
+Step 3: `purrr:map()` that function over the `data` column.
+
+```{r}
+ey_nested |> 
+  mutate(models = map(data, fit_lm)) ->
+  ey_nested_models
+
+head(ey_nested_models)
+```
+
+```{r}
+ey_nested_models$models[[1]]
+```
+
+#### Getting the model parameters
+
+Step 1: map `tidy` onto each model and unnest it.
+
+```{r}
+ey_nested_models |> 
+  mutate(
+    params = map(models, tidy)
+  ) |> 
+  unnest(params) ->
+  ey_nested_params
+
+head(ey_nested_params)
+```
+
+Step 2: Select the columns of interest, and pivot wider
+
+```{r}
+ey_nested_params |> 
+  mutate(
+    n = map_vec(data, nrow)
+  ) |> 
+  select(speaker, n, term, estimate) |> 
+  pivot_wider(
+    names_from = term,
+    values_from = estimate
+  ) |> 
+  janitor::clean_names() ->
+  ey_speaker_params
+
+head(ey_speaker_params)
+```
+
+```{r}
+ey_speaker_params |> 
+  ggplot(aes(intercept, freq_c))+
+    geom_point(
+      aes(size = n),
+      alpha = 0.6
+    )
+```
+
+#### Getting predictions
+
+```{r}
+get_pred_tibble <- function(mod, freq_range){
+  predictions(
+    mod,
+    newdata = datagrid(
+      freq_c = seq(freq_range[1], freq_range[2], length = 10) 
+    )
+  ) |> 
+    as_tibble()
+}
+```
+
+```{r}
+ey_nested_models |> 
+  mutate(
+    n = map_vec(data, nrow),
+    pred = map(models, get_pred_tibble)
+  ) |> 
+  select(speaker, n, pred) |> 
+  unnest(pred)->
+  pred_by_speaker
+```
+
+```{r}
+pred_by_speaker |> 
+  ggplot(aes(freq_c, estimate))+
+    geom_line(
+      aes(group = speaker),
+      alpha = 0.2
+    )+
+    geom_line(
+      data = ey_flat_predicted,
+      color = "steelblue",
+      linewidth = 2
+    )
+```
+
+### Partial Pooling
+
+a.k.a. mixed effects model.
+
+#### Specifying and fitting the model
+
+```{r}
+ey_mixed <- lmer(F1_n ~ freq_c + (1 + freq_c | speaker), data = ey_to_model)
+```
+
+```{r}
+summary(ey_mixed)
+```
+
+```{r}
+tidy(ey_mixed)
+```
+
+Compare to the flat model
+
+```{r}
+tidy(ey_flat)
+```
+
+#### Comparison to the no-pooling models
+
+```{r}
+ranef(ey_mixed)$speaker |> 
+  janitor::clean_names() |>
+  rownames_to_column("speaker") |> 
+  mutate(
+    intercept = intercept + fixef(ey_mixed)[1],
+    freq_c = freq_c + fixef(ey_mixed)[2]
+  )->
+  mixed_speaker_params
+
+mixed_speaker_params |> 
+  ggplot(aes(intercept, freq_c))+
+    geom_point()
+```
+
+#### Getting predictions
+
+For each speaker
+
+```{r}
+predictions(
+  ey_mixed,
+  newdata = datagrid(
+    freq_c = seq(freq_range[1], freq_range[2], length = 10),
+    speaker = unique(ey_dat$speaker)
+  )
+) |> 
+  as_tibble() ->
+  mixed_group_pred
+```
+
+Just the fixed effects.
+
+```{r}
+predictions(
+  ey_mixed,
+  re.form = NA,
+  newdata = datagrid(
+    freq_c = seq(freq_range[1], freq_range[2], length = 10)
+  )
+) |> 
+  as_tibble()->
+  mixed_fixed_pred
+```
+
+```{r}
+mixed_group_pred |> 
+  ggplot(aes(freq_c, estimate))+
+    geom_line(
+      aes(group = speaker),
+      alpha = 0.3
+    )+
+    geom_line(
+      data = mixed_fixed_pred,
+      color = "steelblue",
+      linewidth = 2
+    )
+```
+
+## More than one grouping factor
+
+You couldn't look at *both* speaker and word grouping effects in the no-pooling approach
+
+```{r}
+ey_mixed2 <- lmer(F1_n ~ freq_c + (1 + freq_c | speaker) + (1 | word), data = ey_to_model)
+```
+
+```{r}
+summary(ey_mixed2)
+```
+
+```{r}
+tidy(ey_mixed2)
+```
+
+```{r}
+ranef(ey_mixed2)$word |> 
+  janitor::clean_names() |> 
+  rownames_to_column() |> 
+  arrange(intercept) |> 
+  head()
+```

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.280">
+<meta name="generator" content="quarto-1.3.296">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -330,6 +330,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Interactions (code)</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../class_notes/2023-04-06_mixed-effects-models/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Mixed Effects Models 1</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -412,19 +418,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-1" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-cell="annotated-cell-1" data-code-lines="1">General data processing</span>
+<span data-code-cell="annotated-cell-1" data-code-lines="1" data-code-annotation="1">General data processing</span>
 </dd>
 <dt data-target-cell="annotated-cell-1" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-annotation="2" data-code-cell="annotated-cell-1" data-code-lines="3,4,5,6">Data visualization</span>
+<span data-code-cell="annotated-cell-1" data-code-lines="3,4,5,6" data-code-annotation="2">Data visualization</span>
 </dd>
 <dt data-target-cell="annotated-cell-1" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-annotation="3" data-code-cell="annotated-cell-1" data-code-lines="8">The penguins data</span>
+<span data-code-cell="annotated-cell-1" data-code-lines="8" data-code-annotation="3">The penguins data</span>
 </dd>
 <dt data-target-cell="annotated-cell-1" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-annotation="4" data-code-cell="annotated-cell-1" data-code-lines="10,11">Model investigation</span>
+<span data-code-cell="annotated-cell-1" data-code-lines="10,11" data-code-annotation="4">Model investigation</span>
 </dd>
 </dl>
 </div>
@@ -442,19 +448,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-2" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-cell="annotated-cell-2" data-code-lines="1">The original penguins data.</span>
+<span data-code-cell="annotated-cell-2" data-code-lines="1" data-code-annotation="1">The original penguins data.</span>
 </dd>
 <dt data-target-cell="annotated-cell-2" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-annotation="2" data-code-cell="annotated-cell-2" data-code-lines="2">Selecting just the data columns we’re focused on.</span>
+<span data-code-cell="annotated-cell-2" data-code-lines="2" data-code-annotation="2">Selecting just the data columns we’re focused on.</span>
 </dd>
 <dt data-target-cell="annotated-cell-2" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-annotation="3" data-code-cell="annotated-cell-2" data-code-lines="3">Dropping rows that have <code>NA</code> values.</span>
+<span data-code-cell="annotated-cell-2" data-code-lines="3" data-code-annotation="3">Dropping rows that have <code>NA</code> values.</span>
 </dd>
 <dt data-target-cell="annotated-cell-2" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-annotation="4" data-code-cell="annotated-cell-2" data-code-lines="4">The new data frame.</span>
+<span data-code-cell="annotated-cell-2" data-code-lines="4" data-code-annotation="4">The new data frame.</span>
 </dd>
 </dl>
 </div>
@@ -472,7 +478,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-3" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-cell="annotated-cell-3" data-code-lines="2,3">Plotting a histogram of <code>bill_depth_mm</code>.</span>
+<span data-code-cell="annotated-cell-3" data-code-lines="2,3" data-code-annotation="1">Plotting a histogram of <code>bill_depth_mm</code>.</span>
 </dd>
 </dl>
 </div>
@@ -489,7 +495,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-4" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-cell="annotated-cell-4" data-code-lines="2,3">Plotting a histogram of <code>bill_length_mm</code></span>
+<span data-code-cell="annotated-cell-4" data-code-lines="2,3" data-code-annotation="1">Plotting a histogram of <code>bill_length_mm</code></span>
 </dd>
 </dl>
 </div>
@@ -507,11 +513,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-5" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-cell="annotated-cell-5" data-code-lines="2,3">Plotting counts of each species.</span>
+<span data-code-cell="annotated-cell-5" data-code-lines="2,3" data-code-annotation="1">Plotting counts of each species.</span>
 </dd>
 <dt data-target-cell="annotated-cell-5" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-annotation="2" data-code-cell="annotated-cell-5" data-code-lines="4">Setting a color scheme for species that we’ll reuse later.</span>
+<span data-code-cell="annotated-cell-5" data-code-lines="4" data-code-annotation="2">Setting a color scheme for species that we’ll reuse later.</span>
 </dd>
 </dl>
 </div>
@@ -532,15 +538,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-6" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-cell="annotated-cell-6" data-code-lines="2"><code>mutate()</code> adds new columns.</span>
+<span data-code-cell="annotated-cell-6" data-code-lines="2" data-code-annotation="1"><code>mutate()</code> adds new columns.</span>
 </dd>
 <dt data-target-cell="annotated-cell-6" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-annotation="2" data-code-cell="annotated-cell-6" data-code-lines="3,4,5">We’re subtracting the mean and dividing by the standard deviation. <span class="math inline">\(\frac{x-\text{mean}(x)}{\text{sd}(x)}\)</span></span>
+<span data-code-cell="annotated-cell-6" data-code-lines="3,4,5" data-code-annotation="2">We’re subtracting the mean and dividing by the standard deviation. <span class="math inline">\(\frac{x-\text{mean}(x)}{\text{sd}(x)}\)</span></span>
 </dd>
 <dt data-target-cell="annotated-cell-6" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-annotation="3" data-code-cell="annotated-cell-6" data-code-lines="7">Assigning the result back out.</span>
+<span data-code-cell="annotated-cell-6" data-code-lines="7" data-code-annotation="3">Assigning the result back out.</span>
 </dd>
 </dl>
 </div>
@@ -555,7 +561,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-7" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-cell="annotated-cell-7" data-code-lines="2,3">Plotting a histogram of <code>bill_length_z</code>.</span>
+<span data-code-cell="annotated-cell-7" data-code-lines="2,3" data-code-annotation="1">Plotting a histogram of <code>bill_length_z</code>.</span>
 </dd>
 </dl>
 </div>
@@ -579,19 +585,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-8" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-cell="annotated-cell-8" data-code-lines="1">Fitting a linear model</span>
+<span data-code-cell="annotated-cell-8" data-code-lines="1" data-code-annotation="1">Fitting a linear model</span>
 </dd>
 <dt data-target-cell="annotated-cell-8" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-annotation="2" data-code-cell="annotated-cell-8" data-code-lines="2"><code>bill_depth_mm</code> is our outcome variable</span>
+<span data-code-cell="annotated-cell-8" data-code-lines="2" data-code-annotation="2"><code>bill_depth_mm</code> is our outcome variable</span>
 </dd>
 <dt data-target-cell="annotated-cell-8" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-annotation="3" data-code-cell="annotated-cell-8" data-code-lines="3"><code>bill_length_z</code> is our predictor variable</span>
+<span data-code-cell="annotated-cell-8" data-code-lines="3" data-code-annotation="3"><code>bill_length_z</code> is our predictor variable</span>
 </dd>
 <dt data-target-cell="annotated-cell-8" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-annotation="4" data-code-cell="annotated-cell-8" data-code-lines="4">Using the <code>penguin_focus</code> data</span>
+<span data-code-cell="annotated-cell-8" data-code-lines="4" data-code-annotation="4">Using the <code>penguin_focus</code> data</span>
 </dd>
 </dl>
 </div>
@@ -622,23 +628,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-10" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-cell="annotated-cell-10" data-code-lines="1"><code>predictions()</code> is from the <code>{marginaleffects}</code> package.</span>
+<span data-code-cell="annotated-cell-10" data-code-lines="1" data-code-annotation="1"><code>predictions()</code> is from the <code>{marginaleffects}</code> package.</span>
 </dd>
 <dt data-target-cell="annotated-cell-10" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-annotation="2" data-code-cell="annotated-cell-10" data-code-lines="2">This is the model we want to get predictions from.</span>
+<span data-code-cell="annotated-cell-10" data-code-lines="2" data-code-annotation="2">This is the model we want to get predictions from.</span>
 </dd>
 <dt data-target-cell="annotated-cell-10" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-annotation="3" data-code-cell="annotated-cell-10" data-code-lines="3">We want to get predicted values at specific points/combinations of predictors, so we use the <code>newdata</code> argument. <code>datagrid()</code> is another function from <code>{marginaleffects}</code> that will create a data frame.</span>
+<span data-code-cell="annotated-cell-10" data-code-lines="3" data-code-annotation="3">We want to get predicted values at specific points/combinations of predictors, so we use the <code>newdata</code> argument. <code>datagrid()</code> is another function from <code>{marginaleffects}</code> that will create a data frame.</span>
 </dd>
 <dt data-target-cell="annotated-cell-10" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-annotation="4" data-code-cell="annotated-cell-10" data-code-lines="4">We want to get predicted <code>bill_depth_mm</code> values for some representative <code>bill_length_z</code> values.</span>
+<span data-code-cell="annotated-cell-10" data-code-lines="4" data-code-annotation="4">We want to get predicted <code>bill_depth_mm</code> values for some representative <code>bill_length_z</code> values.</span>
 </dd>
 <dt data-target-cell="annotated-cell-10" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-annotation="5" data-code-cell="annotated-cell-10" data-code-lines="7">The output of <code>predictions()</code> isn’t quite what we want for making a plot, so we convert it with <code>tibble()</code>.</span>
+<span data-code-cell="annotated-cell-10" data-code-lines="7" data-code-annotation="5">The output of <code>predictions()</code> isn’t quite what we want for making a plot, so we convert it with <code>tibble()</code>.</span>
 </dd>
 </dl>
 </div>
@@ -684,27 +690,27 @@ The <code>pred_len</code> dataframe
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-12" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-cell="annotated-cell-12" data-code-lines="1,2,4,5">Scatterplot of the full data.</span>
+<span data-code-cell="annotated-cell-12" data-code-lines="1,2,4,5" data-code-annotation="1">Scatterplot of the full data.</span>
 </dd>
 <dt data-target-cell="annotated-cell-12" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-annotation="2" data-code-cell="annotated-cell-12" data-code-lines="6,7">Adding a line to represent the predicted values, which are in the <code>pred_len</code> dataframe.</span>
+<span data-code-cell="annotated-cell-12" data-code-lines="6,7" data-code-annotation="2">Adding a line to represent the predicted values, which are in the <code>pred_len</code> dataframe.</span>
 </dd>
 <dt data-target-cell="annotated-cell-12" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-annotation="3" data-code-cell="annotated-cell-12" data-code-lines="8">In <code>pred_len</code>, the predicted bill depth is in the <code>estimate</code> column.</span>
+<span data-code-cell="annotated-cell-12" data-code-lines="8" data-code-annotation="3">In <code>pred_len</code>, the predicted bill depth is in the <code>estimate</code> column.</span>
 </dd>
 <dt data-target-cell="annotated-cell-12" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-annotation="4" data-code-cell="annotated-cell-12" data-code-lines="11,12">Adding a confidence interval onto the predicted values with <code>geom_ribbon()</code>.</span>
+<span data-code-cell="annotated-cell-12" data-code-lines="11,12" data-code-annotation="4">Adding a confidence interval onto the predicted values with <code>geom_ribbon()</code>.</span>
 </dd>
 <dt data-target-cell="annotated-cell-12" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-annotation="5" data-code-cell="annotated-cell-12" data-code-lines="13,14,15,16">The width of <code>geom_ribbon()</code> is determined by the <code>ymax</code> and <code>ymin</code> aesthetics, and the high and low points of the confidence interval are in the <code>conf.low</code> and <code>conf.high</code> columns of <code>pred_len</code>.</span>
+<span data-code-cell="annotated-cell-12" data-code-lines="13,14,15,16" data-code-annotation="5">The width of <code>geom_ribbon()</code> is determined by the <code>ymax</code> and <code>ymin</code> aesthetics, and the high and low points of the confidence interval are in the <code>conf.low</code> and <code>conf.high</code> columns of <code>pred_len</code>.</span>
 </dd>
 <dt data-target-cell="annotated-cell-12" data-target-annotation="6">6</dt>
 <dd>
-<span data-code-annotation="6" data-code-cell="annotated-cell-12" data-code-lines="17">Setting a transparency on the confidence interval.</span>
+<span data-code-cell="annotated-cell-12" data-code-lines="17" data-code-annotation="6">Setting a transparency on the confidence interval.</span>
 </dd>
 </dl>
 </div>
@@ -727,19 +733,19 @@ The <code>pred_len</code> dataframe
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-13" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-cell="annotated-cell-13" data-code-lines="1">We’re fitting a linear model.</span>
+<span data-code-cell="annotated-cell-13" data-code-lines="1" data-code-annotation="1">We’re fitting a linear model.</span>
 </dd>
 <dt data-target-cell="annotated-cell-13" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-annotation="2" data-code-cell="annotated-cell-13" data-code-lines="2">Our outcome variable is <code>bill_depth_mm</code>.</span>
+<span data-code-cell="annotated-cell-13" data-code-lines="2" data-code-annotation="2">Our outcome variable is <code>bill_depth_mm</code>.</span>
 </dd>
 <dt data-target-cell="annotated-cell-13" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-annotation="3" data-code-cell="annotated-cell-13" data-code-lines="3">Our predictor variable is <code>species</code>.</span>
+<span data-code-cell="annotated-cell-13" data-code-lines="3" data-code-annotation="3">Our predictor variable is <code>species</code>.</span>
 </dd>
 <dt data-target-cell="annotated-cell-13" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-annotation="4" data-code-cell="annotated-cell-13" data-code-lines="4">We’re drawing the data from <code>penguin_focus</code>.</span>
+<span data-code-cell="annotated-cell-13" data-code-lines="4" data-code-annotation="4">We’re drawing the data from <code>penguin_focus</code>.</span>
 </dd>
 </dl>
 </div>
@@ -771,23 +777,23 @@ The <code>pred_len</code> dataframe
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-15" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-cell="annotated-cell-15" data-code-lines="1"><code>predictions()</code> from <code>{marginaleffects}</code>.</span>
+<span data-code-cell="annotated-cell-15" data-code-lines="1" data-code-annotation="1"><code>predictions()</code> from <code>{marginaleffects}</code>.</span>
 </dd>
 <dt data-target-cell="annotated-cell-15" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-annotation="2" data-code-cell="annotated-cell-15" data-code-lines="2">We’re getting predictions from our <code>mod_species</code> model.</span>
+<span data-code-cell="annotated-cell-15" data-code-lines="2" data-code-annotation="2">We’re getting predictions from our <code>mod_species</code> model.</span>
 </dd>
 <dt data-target-cell="annotated-cell-15" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-annotation="3" data-code-cell="annotated-cell-15" data-code-lines="3">We’re getting predicted values for this <code>newdata</code> generated by <code>datagrid</code>.</span>
+<span data-code-cell="annotated-cell-15" data-code-lines="3" data-code-annotation="3">We’re getting predicted values for this <code>newdata</code> generated by <code>datagrid</code>.</span>
 </dd>
 <dt data-target-cell="annotated-cell-15" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-annotation="4" data-code-cell="annotated-cell-15" data-code-lines="4">We want predicted values for these specific species.</span>
+<span data-code-cell="annotated-cell-15" data-code-lines="4" data-code-annotation="4">We want predicted values for these specific species.</span>
 </dd>
 <dt data-target-cell="annotated-cell-15" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-annotation="5" data-code-cell="annotated-cell-15" data-code-lines="7">Conversion to a dataframe.</span>
+<span data-code-cell="annotated-cell-15" data-code-lines="7" data-code-annotation="5">Conversion to a dataframe.</span>
 </dd>
 </dl>
 </div>
@@ -836,35 +842,35 @@ The <code>pred_len</code> dataframe
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-17" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-cell="annotated-cell-17" data-code-lines="1,2,3,4,5">Setting up the plot of the original data.</span>
+<span data-code-cell="annotated-cell-17" data-code-lines="1,2,3,4,5" data-code-annotation="1">Setting up the plot of the original data.</span>
 </dd>
 <dt data-target-cell="annotated-cell-17" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-annotation="2" data-code-cell="annotated-cell-17" data-code-lines="6">Strictly speaking, coloring the data by <code>species</code> is redundant for this plot, but we’re sticking to a common color scheme across all plots.</span>
+<span data-code-cell="annotated-cell-17" data-code-lines="6" data-code-annotation="2">Strictly speaking, coloring the data by <code>species</code> is redundant for this plot, but we’re sticking to a common color scheme across all plots.</span>
 </dd>
 <dt data-target-cell="annotated-cell-17" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-annotation="3" data-code-cell="annotated-cell-17" data-code-lines="9"><code>ggbeeswarm::geom_beeswarm()</code> is one way to try to deal with plotting a continuous variable against a categorical variable.</span>
+<span data-code-cell="annotated-cell-17" data-code-lines="9" data-code-annotation="3"><code>ggbeeswarm::geom_beeswarm()</code> is one way to try to deal with plotting a continuous variable against a categorical variable.</span>
 </dd>
 <dt data-target-cell="annotated-cell-17" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-annotation="4" data-code-cell="annotated-cell-17" data-code-lines="10,11">I’m making the data points small and open circles so that they’ll be visually distinct from the points we use to plot the predicted values.</span>
+<span data-code-cell="annotated-cell-17" data-code-lines="10,11" data-code-annotation="4">I’m making the data points small and open circles so that they’ll be visually distinct from the points we use to plot the predicted values.</span>
 </dd>
 <dt data-target-cell="annotated-cell-17" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-annotation="5" data-code-cell="annotated-cell-17" data-code-lines="13"><code>geom_pointrange()</code> plot a point to represent the estimated value, and a “whisker” to represent the confidence interval.</span>
+<span data-code-cell="annotated-cell-17" data-code-lines="13" data-code-annotation="5"><code>geom_pointrange()</code> plot a point to represent the estimated value, and a “whisker” to represent the confidence interval.</span>
 </dd>
 <dt data-target-cell="annotated-cell-17" data-target-annotation="6">6</dt>
 <dd>
-<span data-code-annotation="6" data-code-cell="annotated-cell-17" data-code-lines="14">Our predicted values are in <code>pred_species</code>.</span>
+<span data-code-cell="annotated-cell-17" data-code-lines="14" data-code-annotation="6">Our predicted values are in <code>pred_species</code>.</span>
 </dd>
 <dt data-target-cell="annotated-cell-17" data-target-annotation="7">7</dt>
 <dd>
-<span data-code-annotation="7" data-code-cell="annotated-cell-17" data-code-lines="15,16,17,18,19">The predicted value is in the <code>estimate</code> column, and the high and low points for the confidence intervals are in <code>conf.high</code> and <code>conf.low</code>.</span>
+<span data-code-cell="annotated-cell-17" data-code-lines="15,16,17,18,19" data-code-annotation="7">The predicted value is in the <code>estimate</code> column, and the high and low points for the confidence intervals are in <code>conf.high</code> and <code>conf.low</code>.</span>
 </dd>
 <dt data-target-cell="annotated-cell-17" data-target-annotation="8">8</dt>
 <dd>
-<span data-code-annotation="8" data-code-cell="annotated-cell-17" data-code-lines="21">Re-using our consistent color scheme.</span>
+<span data-code-cell="annotated-cell-17" data-code-lines="21" data-code-annotation="8">Re-using our consistent color scheme.</span>
 </dd>
 </dl>
 </div>
@@ -896,19 +902,19 @@ The <code>pred_len</code> dataframe
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-18" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-cell="annotated-cell-18" data-code-lines="1">We’re fitting a linear model</span>
+<span data-code-cell="annotated-cell-18" data-code-lines="1" data-code-annotation="1">We’re fitting a linear model</span>
 </dd>
 <dt data-target-cell="annotated-cell-18" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-annotation="2" data-code-cell="annotated-cell-18" data-code-lines="2">Our outcome variable is <code>bill_depth_mm</code></span>
+<span data-code-cell="annotated-cell-18" data-code-lines="2" data-code-annotation="2">Our outcome variable is <code>bill_depth_mm</code></span>
 </dd>
 <dt data-target-cell="annotated-cell-18" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-annotation="3" data-code-cell="annotated-cell-18" data-code-lines="3,4">Our predictor variables are <code>bill_length_z</code> <em>and</em> <code>species</code></span>
+<span data-code-cell="annotated-cell-18" data-code-lines="3,4" data-code-annotation="3">Our predictor variables are <code>bill_length_z</code> <em>and</em> <code>species</code></span>
 </dd>
 <dt data-target-cell="annotated-cell-18" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-annotation="4" data-code-cell="annotated-cell-18" data-code-lines="5">We’re drawing the data from the <code>penguin_focus</code> dataframe.</span>
+<span data-code-cell="annotated-cell-18" data-code-lines="5" data-code-annotation="4">We’re drawing the data from the <code>penguin_focus</code> dataframe.</span>
 </dd>
 </dl>
 </div>
@@ -930,12 +936,12 @@ The <code>pred_len</code> dataframe
 <div class="cell">
 <div class="cell-output-display">
 
-<div id="ezxtwfgaxm" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="hkjfpluxom" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#ezxtwfgaxm .gt_table {
+#hkjfpluxom .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -960,7 +966,7 @@ The <code>pred_len</code> dataframe
   border-left-color: #D3D3D3;
 }
 
-#ezxtwfgaxm .gt_heading {
+#hkjfpluxom .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -972,12 +978,12 @@ The <code>pred_len</code> dataframe
   border-right-color: #D3D3D3;
 }
 
-#ezxtwfgaxm .gt_caption {
+#hkjfpluxom .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ezxtwfgaxm .gt_title {
+#hkjfpluxom .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -989,7 +995,7 @@ The <code>pred_len</code> dataframe
   border-bottom-width: 0;
 }
 
-#ezxtwfgaxm .gt_subtitle {
+#hkjfpluxom .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1001,13 +1007,13 @@ The <code>pred_len</code> dataframe
   border-top-width: 0;
 }
 
-#ezxtwfgaxm .gt_bottom_border {
+#hkjfpluxom .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ezxtwfgaxm .gt_col_headings {
+#hkjfpluxom .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1022,7 +1028,7 @@ The <code>pred_len</code> dataframe
   border-right-color: #D3D3D3;
 }
 
-#ezxtwfgaxm .gt_col_heading {
+#hkjfpluxom .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1042,7 +1048,7 @@ The <code>pred_len</code> dataframe
   overflow-x: hidden;
 }
 
-#ezxtwfgaxm .gt_column_spanner_outer {
+#hkjfpluxom .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1054,15 +1060,15 @@ The <code>pred_len</code> dataframe
   padding-right: 4px;
 }
 
-#ezxtwfgaxm .gt_column_spanner_outer:first-child {
+#hkjfpluxom .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ezxtwfgaxm .gt_column_spanner_outer:last-child {
+#hkjfpluxom .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ezxtwfgaxm .gt_column_spanner {
+#hkjfpluxom .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1074,7 +1080,7 @@ The <code>pred_len</code> dataframe
   width: 100%;
 }
 
-#ezxtwfgaxm .gt_group_heading {
+#hkjfpluxom .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1100,7 +1106,7 @@ The <code>pred_len</code> dataframe
   text-align: left;
 }
 
-#ezxtwfgaxm .gt_empty_group_heading {
+#hkjfpluxom .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1115,15 +1121,15 @@ The <code>pred_len</code> dataframe
   vertical-align: middle;
 }
 
-#ezxtwfgaxm .gt_from_md > :first-child {
+#hkjfpluxom .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ezxtwfgaxm .gt_from_md > :last-child {
+#hkjfpluxom .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ezxtwfgaxm .gt_row {
+#hkjfpluxom .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1142,7 +1148,7 @@ The <code>pred_len</code> dataframe
   overflow-x: hidden;
 }
 
-#ezxtwfgaxm .gt_stub {
+#hkjfpluxom .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1155,7 +1161,7 @@ The <code>pred_len</code> dataframe
   padding-right: 5px;
 }
 
-#ezxtwfgaxm .gt_stub_row_group {
+#hkjfpluxom .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1169,11 +1175,11 @@ The <code>pred_len</code> dataframe
   vertical-align: top;
 }
 
-#ezxtwfgaxm .gt_row_group_first td {
+#hkjfpluxom .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ezxtwfgaxm .gt_summary_row {
+#hkjfpluxom .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1183,16 +1189,16 @@ The <code>pred_len</code> dataframe
   padding-right: 5px;
 }
 
-#ezxtwfgaxm .gt_first_summary_row {
+#hkjfpluxom .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ezxtwfgaxm .gt_first_summary_row.thick {
+#hkjfpluxom .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ezxtwfgaxm .gt_last_summary_row {
+#hkjfpluxom .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1202,7 +1208,7 @@ The <code>pred_len</code> dataframe
   border-bottom-color: #D3D3D3;
 }
 
-#ezxtwfgaxm .gt_grand_summary_row {
+#hkjfpluxom .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1212,7 +1218,7 @@ The <code>pred_len</code> dataframe
   padding-right: 5px;
 }
 
-#ezxtwfgaxm .gt_first_grand_summary_row {
+#hkjfpluxom .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1222,11 +1228,11 @@ The <code>pred_len</code> dataframe
   border-top-color: #D3D3D3;
 }
 
-#ezxtwfgaxm .gt_striped {
+#hkjfpluxom .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ezxtwfgaxm .gt_table_body {
+#hkjfpluxom .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1235,7 +1241,7 @@ The <code>pred_len</code> dataframe
   border-bottom-color: #D3D3D3;
 }
 
-#ezxtwfgaxm .gt_footnotes {
+#hkjfpluxom .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1249,7 +1255,7 @@ The <code>pred_len</code> dataframe
   border-right-color: #D3D3D3;
 }
 
-#ezxtwfgaxm .gt_footnote {
+#hkjfpluxom .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -1258,7 +1264,7 @@ The <code>pred_len</code> dataframe
   padding-right: 5px;
 }
 
-#ezxtwfgaxm .gt_sourcenotes {
+#hkjfpluxom .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1272,7 +1278,7 @@ The <code>pred_len</code> dataframe
   border-right-color: #D3D3D3;
 }
 
-#ezxtwfgaxm .gt_sourcenote {
+#hkjfpluxom .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1280,64 +1286,64 @@ The <code>pred_len</code> dataframe
   padding-right: 5px;
 }
 
-#ezxtwfgaxm .gt_left {
+#hkjfpluxom .gt_left {
   text-align: left;
 }
 
-#ezxtwfgaxm .gt_center {
+#hkjfpluxom .gt_center {
   text-align: center;
 }
 
-#ezxtwfgaxm .gt_right {
+#hkjfpluxom .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ezxtwfgaxm .gt_font_normal {
+#hkjfpluxom .gt_font_normal {
   font-weight: normal;
 }
 
-#ezxtwfgaxm .gt_font_bold {
+#hkjfpluxom .gt_font_bold {
   font-weight: bold;
 }
 
-#ezxtwfgaxm .gt_font_italic {
+#hkjfpluxom .gt_font_italic {
   font-style: italic;
 }
 
-#ezxtwfgaxm .gt_super {
+#hkjfpluxom .gt_super {
   font-size: 65%;
 }
 
-#ezxtwfgaxm .gt_footnote_marks {
+#hkjfpluxom .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#ezxtwfgaxm .gt_asterisk {
+#hkjfpluxom .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ezxtwfgaxm .gt_indent_1 {
+#hkjfpluxom .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ezxtwfgaxm .gt_indent_2 {
+#hkjfpluxom .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ezxtwfgaxm .gt_indent_3 {
+#hkjfpluxom .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ezxtwfgaxm .gt_indent_4 {
+#hkjfpluxom .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ezxtwfgaxm .gt_indent_5 {
+#hkjfpluxom .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1392,23 +1398,23 @@ The <code>pred_len</code> dataframe
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-20" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-cell="annotated-cell-20" data-code-lines="1"><code>predictions()</code> from <code>{marginaleffects}</code>.</span>
+<span data-code-cell="annotated-cell-20" data-code-lines="1" data-code-annotation="1"><code>predictions()</code> from <code>{marginaleffects}</code>.</span>
 </dd>
 <dt data-target-cell="annotated-cell-20" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-annotation="2" data-code-cell="annotated-cell-20" data-code-lines="2">We’re getting predictions from our multivariate <code>mod_len_species</code> model.</span>
+<span data-code-cell="annotated-cell-20" data-code-lines="2" data-code-annotation="2">We’re getting predictions from our multivariate <code>mod_len_species</code> model.</span>
 </dd>
 <dt data-target-cell="annotated-cell-20" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-annotation="3" data-code-cell="annotated-cell-20" data-code-lines="3">We’re going to get predictions for the newdata generated by <code>datagrid()</code>. This time, because we’re creating two columns, <code>datagrid()</code> is going to create a row for every combination of values in <code>bill_length_z</code> and <code>species</code>.</span>
+<span data-code-cell="annotated-cell-20" data-code-lines="3" data-code-annotation="3">We’re going to get predictions for the newdata generated by <code>datagrid()</code>. This time, because we’re creating two columns, <code>datagrid()</code> is going to create a row for every combination of values in <code>bill_length_z</code> and <code>species</code>.</span>
 </dd>
 <dt data-target-cell="annotated-cell-20" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-annotation="4" data-code-cell="annotated-cell-20" data-code-lines="4,5">We want predictions for representative values of <code>bill_length_z</code> and <code>species</code>.</span>
+<span data-code-cell="annotated-cell-20" data-code-lines="4,5" data-code-annotation="4">We want predictions for representative values of <code>bill_length_z</code> and <code>species</code>.</span>
 </dd>
 <dt data-target-cell="annotated-cell-20" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-annotation="5" data-code-cell="annotated-cell-20" data-code-lines="8">Conversion to a dataframe.</span>
+<span data-code-cell="annotated-cell-20" data-code-lines="8" data-code-annotation="5">Conversion to a dataframe.</span>
 </dd>
 </dl>
 </div>
@@ -1461,23 +1467,23 @@ The <code>pred_len</code> dataframe
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-22" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-cell="annotated-cell-22" data-code-lines="1,2,3,4,5,6,7,8,9">Setting up the scatter plot, this time coloring points according to penguin species.</span>
+<span data-code-cell="annotated-cell-22" data-code-lines="1,2,3,4,5,6,7,8,9" data-code-annotation="1">Setting up the scatter plot, this time coloring points according to penguin species.</span>
 </dd>
 <dt data-target-cell="annotated-cell-22" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-annotation="2" data-code-cell="annotated-cell-22" data-code-lines="10,11,12,13">Adding on the predicted values from <code>pred_len_species</code>.</span>
+<span data-code-cell="annotated-cell-22" data-code-lines="10,11,12,13" data-code-annotation="2">Adding on the predicted values from <code>pred_len_species</code>.</span>
 </dd>
 <dt data-target-cell="annotated-cell-22" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-annotation="3" data-code-cell="annotated-cell-22" data-code-lines="14,15,16,17,18,19,20">Adding on confidence intervals.</span>
+<span data-code-cell="annotated-cell-22" data-code-lines="14,15,16,17,18,19,20" data-code-annotation="3">Adding on confidence intervals.</span>
 </dd>
 <dt data-target-cell="annotated-cell-22" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-annotation="4" data-code-cell="annotated-cell-22" data-code-lines="21,22">The plot looks nicer with these settings.</span>
+<span data-code-cell="annotated-cell-22" data-code-lines="21,22" data-code-annotation="4">The plot looks nicer with these settings.</span>
 </dd>
 <dt data-target-cell="annotated-cell-22" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-annotation="5" data-code-cell="annotated-cell-22" data-code-lines="24,25">Using our color scheme for both the color of the points &amp; lines and the fill of the ribbons.</span>
+<span data-code-cell="annotated-cell-22" data-code-lines="24,25" data-code-annotation="5">Using our color scheme for both the color of the points &amp; lines and the fill of the ribbons.</span>
 </dd>
 </dl>
 </div>
@@ -1501,12 +1507,12 @@ The <code>pred_len</code> dataframe
 <div class="cell">
 <div class="cell-output-display">
 
-<div id="evfmmusncq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="skididyszw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#evfmmusncq .gt_table {
+#skididyszw .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -1531,7 +1537,7 @@ The <code>pred_len</code> dataframe
   border-left-color: #D3D3D3;
 }
 
-#evfmmusncq .gt_heading {
+#skididyszw .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1543,12 +1549,12 @@ The <code>pred_len</code> dataframe
   border-right-color: #D3D3D3;
 }
 
-#evfmmusncq .gt_caption {
+#skididyszw .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#evfmmusncq .gt_title {
+#skididyszw .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1560,7 +1566,7 @@ The <code>pred_len</code> dataframe
   border-bottom-width: 0;
 }
 
-#evfmmusncq .gt_subtitle {
+#skididyszw .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1572,13 +1578,13 @@ The <code>pred_len</code> dataframe
   border-top-width: 0;
 }
 
-#evfmmusncq .gt_bottom_border {
+#skididyszw .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#evfmmusncq .gt_col_headings {
+#skididyszw .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1593,7 +1599,7 @@ The <code>pred_len</code> dataframe
   border-right-color: #D3D3D3;
 }
 
-#evfmmusncq .gt_col_heading {
+#skididyszw .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1613,7 +1619,7 @@ The <code>pred_len</code> dataframe
   overflow-x: hidden;
 }
 
-#evfmmusncq .gt_column_spanner_outer {
+#skididyszw .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1625,15 +1631,15 @@ The <code>pred_len</code> dataframe
   padding-right: 4px;
 }
 
-#evfmmusncq .gt_column_spanner_outer:first-child {
+#skididyszw .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#evfmmusncq .gt_column_spanner_outer:last-child {
+#skididyszw .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#evfmmusncq .gt_column_spanner {
+#skididyszw .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1645,7 +1651,7 @@ The <code>pred_len</code> dataframe
   width: 100%;
 }
 
-#evfmmusncq .gt_group_heading {
+#skididyszw .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1671,7 +1677,7 @@ The <code>pred_len</code> dataframe
   text-align: left;
 }
 
-#evfmmusncq .gt_empty_group_heading {
+#skididyszw .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1686,15 +1692,15 @@ The <code>pred_len</code> dataframe
   vertical-align: middle;
 }
 
-#evfmmusncq .gt_from_md > :first-child {
+#skididyszw .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#evfmmusncq .gt_from_md > :last-child {
+#skididyszw .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#evfmmusncq .gt_row {
+#skididyszw .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1713,7 +1719,7 @@ The <code>pred_len</code> dataframe
   overflow-x: hidden;
 }
 
-#evfmmusncq .gt_stub {
+#skididyszw .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1726,7 +1732,7 @@ The <code>pred_len</code> dataframe
   padding-right: 5px;
 }
 
-#evfmmusncq .gt_stub_row_group {
+#skididyszw .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1740,11 +1746,11 @@ The <code>pred_len</code> dataframe
   vertical-align: top;
 }
 
-#evfmmusncq .gt_row_group_first td {
+#skididyszw .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#evfmmusncq .gt_summary_row {
+#skididyszw .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1754,16 +1760,16 @@ The <code>pred_len</code> dataframe
   padding-right: 5px;
 }
 
-#evfmmusncq .gt_first_summary_row {
+#skididyszw .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#evfmmusncq .gt_first_summary_row.thick {
+#skididyszw .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#evfmmusncq .gt_last_summary_row {
+#skididyszw .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1773,7 +1779,7 @@ The <code>pred_len</code> dataframe
   border-bottom-color: #D3D3D3;
 }
 
-#evfmmusncq .gt_grand_summary_row {
+#skididyszw .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1783,7 +1789,7 @@ The <code>pred_len</code> dataframe
   padding-right: 5px;
 }
 
-#evfmmusncq .gt_first_grand_summary_row {
+#skididyszw .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1793,11 +1799,11 @@ The <code>pred_len</code> dataframe
   border-top-color: #D3D3D3;
 }
 
-#evfmmusncq .gt_striped {
+#skididyszw .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#evfmmusncq .gt_table_body {
+#skididyszw .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1806,7 +1812,7 @@ The <code>pred_len</code> dataframe
   border-bottom-color: #D3D3D3;
 }
 
-#evfmmusncq .gt_footnotes {
+#skididyszw .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1820,7 +1826,7 @@ The <code>pred_len</code> dataframe
   border-right-color: #D3D3D3;
 }
 
-#evfmmusncq .gt_footnote {
+#skididyszw .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -1829,7 +1835,7 @@ The <code>pred_len</code> dataframe
   padding-right: 5px;
 }
 
-#evfmmusncq .gt_sourcenotes {
+#skididyszw .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1843,7 +1849,7 @@ The <code>pred_len</code> dataframe
   border-right-color: #D3D3D3;
 }
 
-#evfmmusncq .gt_sourcenote {
+#skididyszw .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1851,64 +1857,64 @@ The <code>pred_len</code> dataframe
   padding-right: 5px;
 }
 
-#evfmmusncq .gt_left {
+#skididyszw .gt_left {
   text-align: left;
 }
 
-#evfmmusncq .gt_center {
+#skididyszw .gt_center {
   text-align: center;
 }
 
-#evfmmusncq .gt_right {
+#skididyszw .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#evfmmusncq .gt_font_normal {
+#skididyszw .gt_font_normal {
   font-weight: normal;
 }
 
-#evfmmusncq .gt_font_bold {
+#skididyszw .gt_font_bold {
   font-weight: bold;
 }
 
-#evfmmusncq .gt_font_italic {
+#skididyszw .gt_font_italic {
   font-style: italic;
 }
 
-#evfmmusncq .gt_super {
+#skididyszw .gt_super {
   font-size: 65%;
 }
 
-#evfmmusncq .gt_footnote_marks {
+#skididyszw .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#evfmmusncq .gt_asterisk {
+#skididyszw .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#evfmmusncq .gt_indent_1 {
+#skididyszw .gt_indent_1 {
   text-indent: 5px;
 }
 
-#evfmmusncq .gt_indent_2 {
+#skididyszw .gt_indent_2 {
   text-indent: 10px;
 }
 
-#evfmmusncq .gt_indent_3 {
+#skididyszw .gt_indent_3 {
   text-indent: 15px;
 }
 
-#evfmmusncq .gt_indent_4 {
+#skididyszw .gt_indent_4 {
   text-indent: 20px;
 }
 
-#evfmmusncq .gt_indent_5 {
+#skididyszw .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
