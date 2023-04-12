@@ -1,0 +1,14 @@
+{
+  "hash": "ee160d5f3f084512739f7adc96de3f41",
+  "result": {
+    "markdown": "---\ntitle: \"Mixed Effects Models 1\"\ndate: 2023-04-06\nknitr: \n  opts_chunk: \n    message: false\ncode-annotations: hover\n---\n\n\n## Setup\n\n### Library Loading\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(tidyverse)\nlibrary(lme4)\nlibrary(marginaleffects)\nlibrary(broom)\nlibrary(broom.mixed)\nlibrary(janitor)\n```\n:::\n\n\n### Data loading\n\n\n::: {.cell}\n\n```{.r .cell-code}\num_dat <- read_tsv(\"https://bit.ly/3JdeSbx\")\ndemog <- read_csv(\"https://bit.ly/3wOfcGx\")\n```\n:::\n\n\n## Preparing for modeling\n\n\n::: {.cell}\n\n```{.r .cell-code}\num_dat |> \n  left_join(demog) |> \n  filter(word %in% c(\"UM\", \"UH\")) |>\n  mutate(\n    # vowel duration\n    vowel_dur= vowel_end - vowel_start,\n    log_vowel_dur = log10(vowel_dur),\n    # word\n    word = fct_relevel(word, \"UH\"),\n    # demographics\n    gender = fct_relevel(gender, \"f\"),\n    age_c = age - median(age, na.rm = T),\n    age_z = age_c / 10\n  ) |> \n  select(\n    log_vowel_dur,\n    word,\n    gender,\n    age_z,\n    idstring,\n    next_seg\n  ) ->\n  data_to_model\n```\n:::\n\n\n## Modeling\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

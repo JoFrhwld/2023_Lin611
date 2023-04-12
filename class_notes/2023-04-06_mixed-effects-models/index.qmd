@@ -1,10 +1,10 @@
 ---
-title: "Mixed Effects Models 1"
-date: 2023-04-06
-knitr: 
-  opts_chunk: 
-    message: false
-code-annotations: hover
+  title: "Mixed Effects Models 1"
+  date: 2023-04-06
+  knitr: 
+    opts_chunk: 
+      message: false
+  code-annotations: hover
 ---
 
 ## Setup
