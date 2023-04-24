@@ -1,0 +1,28 @@
+---
+title: "ggplot2"
+---
+
+```{r}
+library(tidyverse)
+```
+
+```{r}
+# you might need to run
+# install.packages("devtools")
+# devtools::install_github("jvcasillas/untidydata")
+library(untidydata)
+```
+
+Lets get some tidied up vowel data.
+
+```{r}
+tidy_vowels <- 
+  spanish_vowels |> 
+  separate_wider_delim(
+    label, 
+    delim = "-", 
+    names = c("id", "gender", "vowel")
+  )
+```
+
+Now we plot.

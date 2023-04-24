@@ -1,0 +1,18 @@
+{
+  "hash": "902f2692792d55f94bc8a2adae701a4a",
+  "result": {
+    "markdown": "---\ntitle: \"Generalized Linear Models\"\nauthor: \"Josef Fruehwald\"\nknitr: \n  opts_chunk: \n    message: false\n---\n\n\n## Setup\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(tidyverse)\nlibrary(lme4)\nlibrary(broom.mixed)\nlibrary(marginaleffects)\n```\n:::\n\n\n## Logistic Regression (a.k.a. binary data)\n\n\n::: {.cell}\n\n```{.r .cell-code}\num_dat <- read_tsv(\"https://bit.ly/3JdeSbx\")\ndemog <- read_csv(\"https://bit.ly/3wOfcGx\")\n\num_dat <- um_dat |> \n  left_join(demog)\n```\n:::\n\n\n### Preparing for modelling\n\n\n::: {.cell}\n\n```{.r .cell-code}\num_dat |> \n  # only looking at UM and UH\n  filter(\n    word %in% c(\"UM\", \"UH\"),\n    is.finite(dob)\n  )  |> \n  mutate(\n    # 0 if UH, 1 if UM\n    um_binary = (word == \"UM\") * 1,\n    # centering and scaling dob\n    dob_c = dob - 1970,\n    dob_s = dob_c / 25,\n    # setting gender levels\n    gender = fct_relevel(gender, \"f\")\n  ) -> um_to_model\n```\n:::\n\n\n### Modelling\n\n\n::: {.cell}\n\n```{.r .cell-code}\num_model <- glmer(um_binary ~ dob_s * gender + (1 | idstring),\n                  data = um_to_model,\n                  family = binomial)\n```\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\ntidy(um_model) |> \n  rmarkdown::paged_table()\n```\n\n::: {.cell-output-display}\n`````{=html}\n<div data-pagedtable=\"false\">\n  <script data-pagedtable-source type=\"application/json\">\n{\"columns\":[{\"label\":[\"effect\"],\"name\":[1],\"type\":[\"chr\"],\"align\":[\"left\"]},{\"label\":[\"group\"],\"name\":[2],\"type\":[\"chr\"],\"align\":[\"left\"]},{\"label\":[\"term\"],\"name\":[3],\"type\":[\"chr\"],\"align\":[\"left\"]},{\"label\":[\"estimate\"],\"name\":[4],\"type\":[\"dbl\"],\"align\":[\"right\"]},{\"label\":[\"std.error\"],\"name\":[5],\"type\":[\"dbl\"],\"align\":[\"right\"]},{\"label\":[\"statistic\"],\"name\":[6],\"type\":[\"dbl\"],\"align\":[\"right\"]},{\"label\":[\"p.value\"],\"name\":[7],\"type\":[\"dbl\"],\"align\":[\"right\"]}],\"data\":[{\"1\":\"fixed\",\"2\":\"NA\",\"3\":\"(Intercept)\",\"4\":\"0.2855643\",\"5\":\"0.12884986\",\"6\":\"2.216256\",\"7\":\"2.667394e-02\"},{\"1\":\"fixed\",\"2\":\"NA\",\"3\":\"dob_s\",\"4\":\"1.2690808\",\"5\":\"0.09934326\",\"6\":\"12.774705\",\"7\":\"2.270070e-37\"},{\"1\":\"fixed\",\"2\":\"NA\",\"3\":\"genderm\",\"4\":\"-1.1195199\",\"5\":\"0.20458109\",\"6\":\"-5.472255\",\"7\":\"4.443444e-08\"},{\"1\":\"fixed\",\"2\":\"NA\",\"3\":\"dob_s:genderm\",\"4\":\"0.4524445\",\"5\":\"0.17070147\",\"6\":\"2.650502\",\"7\":\"8.037234e-03\"},{\"1\":\"ran_pars\",\"2\":\"idstring\",\"3\":\"sd__(Intercept)\",\"4\":\"1.2648999\",\"5\":\"NA\",\"6\":\"NA\",\"7\":\"NA\"}],\"options\":{\"columns\":{\"min\":{},\"max\":[10]},\"rows\":{\"min\":[10],\"max\":[10]},\"pages\":{}}}\n  </script>\n</div>\n`````\n:::\n:::\n\n\n### Predictions\n\n\n::: {.cell}\n\n```{.r .cell-code}\nsummary(um_to_model$dob_s)\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n -3.240  -1.760  -1.040  -1.061  -0.440   1.120 \n```\n:::\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {
+      "include-in-header": [
+        "<link href=\"../../site_libs/pagedtable-1.1/css/pagedtable.css\" rel=\"stylesheet\" />\n<script src=\"../../site_libs/pagedtable-1.1/js/pagedtable.js\"></script>\n"
+      ]
+    },
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

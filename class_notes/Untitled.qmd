@@ -1,0 +1,4 @@
+---
+title: "Generalized Linear Models"
+author: "Josef Fruehwald"
+---

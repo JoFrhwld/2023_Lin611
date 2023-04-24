@@ -1,0 +1,162 @@
+---
+title: "Generalized Linear Models"
+author: "Josef Fruehwald"
+knitr: 
+  opts_chunk: 
+    message: false
+---
+
+## Setup
+
+```{r}
+library(tidyverse)
+library(lme4)
+library(broom.mixed)
+library(marginaleffects)
+```
+
+## Logistic Regression (a.k.a. binary data)
+
+```{r}
+um_dat <- read_tsv("https://bit.ly/3JdeSbx")
+demog <- read_csv("https://bit.ly/3wOfcGx")
+
+um_dat <- um_dat |> 
+  left_join(demog)
+```
+
+### Preparing for modelling
+
+```{r}
+um_dat |> 
+  # only looking at UM and UH
+  filter(
+    word %in% c("UM", "UH"),
+    is.finite(dob)
+  )  |> 
+  mutate(
+    # 0 if UH, 1 if UM
+    um_binary = (word == "UM") * 1,
+    # centering and scaling dob
+    dob_c = dob - 1970,
+    dob_s = dob_c / 25,
+    # setting gender levels
+    gender = fct_relevel(gender, "f")
+  ) -> um_to_model
+```
+
+### Modelling
+
+```{r}
+um_model <- glmer(um_binary ~ dob_s * gender + (1 | idstring),
+                  data = um_to_model,
+                  family = binomial)
+```
+
+```{r}
+tidy(um_model) |> 
+  rmarkdown::paged_table()
+```
+
+### Predictions
+
+Just to get a sense of the range of `dob_s`
+
+```{r}
+summary(um_to_model$dob_s)
+```
+
+```{r}
+predictions(
+  um_model,
+  newdata = datagrid(
+    dob_s = seq(-3, 1, length = 100),
+    gender = c("f", "m")
+  ),
+  type = "response",
+  re.form = NA
+) |> 
+  as_tibble() ->
+  um_prob_pred
+```
+
+```{r}
+um_prob_pred |> 
+  mutate(dob = (dob_s * 25) + 1970) |>
+  ggplot(aes(dob, estimate, color = gender, fill = gender))+
+    geom_ribbon(
+      aes(ymin = conf.low, ymax = conf.high),
+      alpha = 0.3
+    )+
+    geom_line()+
+    scale_color_brewer(palette = "Dark2")+
+    scale_fill_brewer(palette = "Dark2")+
+    theme_bw()
+```
+
+## Poisson (or Count)
+
+```{r}
+um_dat |> 
+  summarise(
+    .by = c(idstring, age, gender, nwords),
+    total_fp = n(),
+  )->
+  fp_count
+```
+
+```{r}
+fp_count |> 
+  mutate(
+    age_c = age - 40,
+    age_s = age_c/10,
+    gender = fct_relevel(gender, "m")
+  ) ->
+  fp_to_model
+```
+
+### Modelling
+
+```{r}
+fp_mod <- glmer(total_fp ~ age_s * gender + offset(log(nwords)) + (1|idstring),
+                data = fp_to_model,
+                family = poisson)
+```
+
+```{r}
+tidy(fp_mod)
+```
+
+### Predictions
+
+```{r}
+summary(fp_to_model$nwords)
+```
+
+```{r}
+predictions(
+  fp_mod,
+  newdata = datagrid(
+    age_s = seq(-2, 5, length = 100),
+    gender = c("f", "m"),
+    nwords = 1000
+  ),
+  re.form = NA,
+  type = "response"
+) |>
+  as_tibble()->
+  fp_pred
+```
+
+```{r}
+fp_pred |> 
+  mutate(age = (age_s * 10) + 40) |>
+  ggplot(aes(age, estimate, color = gender, fill = gender))+
+    geom_ribbon(aes(ymin = conf.low, ymax = conf.high),
+                alpha = 0.3)+
+    geom_line()+
+    scale_color_brewer(palette = "Dark2")+
+    scale_fill_brewer(palette = "Dark2")+
+    labs(y = "filled pauses per 1,000 words")+
+    theme_bw()
+```
