@@ -2,7 +2,6 @@
   {
     "listing": "/index.html",
     "items": [
-      "/class_notes/2023-01-31_ggplot2/index.html",
       "/class_notes/2023-04-25_glm/index.html",
       "/class_notes/2023-04-13_mixed-effects-models2/index.html",
       "/class_notes/2023-04-06_mixed-effects-models/index.html",
@@ -17,6 +16,7 @@
       "/class_notes/2023-02-07_distributions/index.html",
       "/class_notes/2023-02-02_tidynorm/index.html",
       "/class_notes/2023-01-31_tidy-plot/index.html",
+      "/class_notes/2023-01-31_ggplot2/index.html",
       "/class_notes/2023-01-26_tidyverse2/index.html",
       "/class_notes/2023-01-23_tidyverse/index.html",
       "/class_notes/2023-01-17_osf-data/index.html",
@@ -29,7 +29,6 @@
   {
     "listing": "/class_notes.html",
     "items": [
-      "/class_notes/2023-01-31_ggplot2/index.html",
       "/class_notes/2023-04-25_glm/index.html",
       "/class_notes/2023-04-13_mixed-effects-models2/index.html",
       "/class_notes/2023-04-06_mixed-effects-models/index.html",
@@ -44,6 +43,7 @@
       "/class_notes/2023-02-07_distributions/index.html",
       "/class_notes/2023-02-02_tidynorm/index.html",
       "/class_notes/2023-01-31_tidy-plot/index.html",
+      "/class_notes/2023-01-31_ggplot2/index.html",
       "/class_notes/2023-01-26_tidyverse2/index.html",
       "/class_notes/2023-01-23_tidyverse/index.html",
       "/class_notes/2023-01-17_osf-data/index.html",

@@ -1,6 +1,7 @@
 ---
 title: "Generalized Linear Models"
 author: "Josef Fruehwald"
+date: 2023-04-25
 knitr: 
   opts_chunk: 
     message: false
