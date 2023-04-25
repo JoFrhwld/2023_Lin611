@@ -354,6 +354,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#predictions" id="toc-predictions" class="nav-link" data-scroll-target="#predictions">Predictions</a></li>
   </ul>
 </li>
+  <li>
+<a href="#poisson-or-count" id="toc-poisson-or-count" class="nav-link" data-scroll-target="#poisson-or-count">Poisson (or Count)</a>
+  <ul class="collapse">
+<li><a href="#modelling-1" id="toc-modelling-1" class="nav-link" data-scroll-target="#modelling-1">Modelling</a></li>
+  <li><a href="#predictions-1" id="toc-predictions-1" class="nav-link" data-scroll-target="#predictions-1">Predictions</a></li>
+  </ul>
+</li>
   </ul></nav>
     </div>
 <!-- main -->
@@ -403,17 +410,121 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div data-pagedtable="false">
   <script data-pagedtable-source="" type="application/json">
-{"columns":[{"label":["effect"],"name":[1],"type":["chr"],"align":["left"]},{"label":["group"],"name":[2],"type":["chr"],"align":["left"]},{"label":["term"],"name":[3],"type":["chr"],"align":["left"]},{"label":["estimate"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["std.error"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["statistic"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["p.value"],"name":[7],"type":["dbl"],"align":["right"]}],"data":[{"1":"fixed","2":"NA","3":"(Intercept)","4":"0.2855643","5":"0.12884986","6":"2.216256","7":"2.667394e-02"},{"1":"fixed","2":"NA","3":"dob_s","4":"1.2690808","5":"0.09934326","6":"12.774705","7":"2.270070e-37"},{"1":"fixed","2":"NA","3":"genderm","4":"-1.1195199","5":"0.20458109","6":"-5.472255","7":"4.443444e-08"},{"1":"fixed","2":"NA","3":"dob_s:genderm","4":"0.4524445","5":"0.17070147","6":"2.650502","7":"8.037234e-03"},{"1":"ran_pars","2":"idstring","3":"sd__(Intercept)","4":"1.2648999","5":"NA","6":"NA","7":"NA"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["effect"],"name":[1],"type":["chr"],"align":["left"]},{"label":["group"],"name":[2],"type":["chr"],"align":["left"]},{"label":["term"],"name":[3],"type":["chr"],"align":["left"]},{"label":["estimate"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["std.error"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["statistic"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["p.value"],"name":[7],"type":["dbl"],"align":["right"]}],"data":[{"1":"fixed","2":"NA","3":"(Intercept)","4":"0.2855643","5":"0.12891371","6":"2.215159","7":"2.674917e-02"},{"1":"fixed","2":"NA","3":"dob_s","4":"1.2690808","5":"0.09931317","6":"12.778575","7":"2.159899e-37"},{"1":"fixed","2":"NA","3":"genderm","4":"-1.1195200","5":"0.20465244","6":"-5.470348","7":"4.491539e-08"},{"1":"fixed","2":"NA","3":"dob_s:genderm","4":"0.4524445","5":"0.17051302","6":"2.653431","7":"7.967808e-03"},{"1":"ran_pars","2":"idstring","3":"sd__(Intercept)","4":"1.2649001","5":"NA","6":"NA","7":"NA"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 </div>
 </div>
 </section><section id="predictions" class="level3"><h3 class="anchored" data-anchor-id="predictions">Predictions</h3>
+<p>Just to get a sense of the range of <code>dob_s</code></p>
 <div class="cell">
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">um_to_model</span><span class="op">$</span><span class="va">dob_s</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
  -3.240  -1.760  -1.040  -1.061  -0.440   1.120 </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://vincentarelbundock.github.io/marginaleffects/reference/predictions.html">predictions</a></span><span class="op">(</span></span>
+<span>  <span class="va">um_model</span>,</span>
+<span>  newdata <span class="op">=</span> <span class="fu"><a href="https://vincentarelbundock.github.io/marginaleffects/reference/datagrid.html">datagrid</a></span><span class="op">(</span></span>
+<span>    dob_s <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="op">-</span><span class="fl">3</span>, <span class="fl">1</span>, length <span class="op">=</span> <span class="fl">100</span><span class="op">)</span>,</span>
+<span>    gender <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"f"</span>, <span class="st">"m"</span><span class="op">)</span></span>
+<span>  <span class="op">)</span>,</span>
+<span>  type <span class="op">=</span> <span class="st">"response"</span>,</span>
+<span>  re.form <span class="op">=</span> <span class="cn">NA</span></span>
+<span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble</a></span><span class="op">(</span><span class="op">)</span> <span class="op">-&gt;</span></span>
+<span>  <span class="va">um_prob_pred</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">um_prob_pred</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>dob <span class="op">=</span> <span class="op">(</span><span class="va">dob_s</span> <span class="op">*</span> <span class="fl">25</span><span class="op">)</span> <span class="op">+</span> <span class="fl">1970</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">dob</span>, <span class="va">estimate</span>, color <span class="op">=</span> <span class="va">gender</span>, fill <span class="op">=</span> <span class="va">gender</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_ribbon.html">geom_ribbon</a></span><span class="op">(</span></span>
+<span>      <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>ymin <span class="op">=</span> <span class="va">conf.low</span>, ymax <span class="op">=</span> <span class="va">conf.high</span><span class="op">)</span>,</span>
+<span>      alpha <span class="op">=</span> <span class="fl">0.3</span></span>
+<span>    <span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_color_brewer</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"Dark2"</span><span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_fill_brewer</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"Dark2"</span><span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-8-1.png" class="quarto-discovered-preview-image img-fluid" width="672"></p>
+</div>
+</div>
+</section></section><section id="poisson-or-count" class="level2"><h2 class="anchored" data-anchor-id="poisson-or-count">Poisson (or Count)</h2>
+<div class="cell">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">um_dat</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span></span>
+<span>    .by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">idstring</span>, <span class="va">age</span>, <span class="va">gender</span>, <span class="va">nwords</span><span class="op">)</span>,</span>
+<span>    total_fp <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  <span class="op">)</span><span class="op">-&gt;</span></span>
+<span>  <span class="va">fp_count</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">fp_count</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
+<span>    age_c <span class="op">=</span> <span class="va">age</span> <span class="op">-</span> <span class="fl">40</span>,</span>
+<span>    age_s <span class="op">=</span> <span class="va">age_c</span><span class="op">/</span><span class="fl">10</span>,</span>
+<span>    gender <span class="op">=</span> <span class="fu"><a href="https://forcats.tidyverse.org/reference/fct_relevel.html">fct_relevel</a></span><span class="op">(</span><span class="va">gender</span>, <span class="st">"m"</span><span class="op">)</span></span>
+<span>  <span class="op">)</span> <span class="op">-&gt;</span></span>
+<span>  <span class="va">fp_to_model</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="modelling-1" class="level3"><h3 class="anchored" data-anchor-id="modelling-1">Modelling</h3>
+<div class="cell">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">fp_mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/lme4/man/glmer.html">glmer</a></span><span class="op">(</span><span class="va">total_fp</span> <span class="op">~</span> <span class="va">age_s</span> <span class="op">*</span> <span class="va">gender</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/offset.html">offset</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">nwords</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="op">(</span><span class="fl">1</span><span class="op">|</span><span class="va">idstring</span><span class="op">)</span>,</span>
+<span>                data <span class="op">=</span> <span class="va">fp_to_model</span>,</span>
+<span>                family <span class="op">=</span> <span class="va">poisson</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html">tidy</a></span><span class="op">(</span><span class="va">fp_mod</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 7
+  effect   group    term            estimate std.error statistic    p.value
+  &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;
+1 fixed    &lt;NA&gt;     (Intercept)      -4.22      0.0524    -80.4   0        
+2 fixed    &lt;NA&gt;     age_s             0.106     0.0259      4.11  0.0000400
+3 fixed    &lt;NA&gt;     genderf          -0.0795    0.0699     -1.14  0.255    
+4 fixed    &lt;NA&gt;     age_s:genderf    -0.0476    0.0334     -1.43  0.154    
+5 ran_pars idstring sd__(Intercept)   0.662    NA          NA    NA        </code></pre>
+</div>
+</div>
+</section><section id="predictions-1" class="level3"><h3 class="anchored" data-anchor-id="predictions-1">Predictions</h3>
+<div class="cell">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">fp_to_model</span><span class="op">$</span><span class="va">nwords</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+    274    1928    2725    3583    4376   20489 </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://vincentarelbundock.github.io/marginaleffects/reference/predictions.html">predictions</a></span><span class="op">(</span></span>
+<span>  <span class="va">fp_mod</span>,</span>
+<span>  newdata <span class="op">=</span> <span class="fu"><a href="https://vincentarelbundock.github.io/marginaleffects/reference/datagrid.html">datagrid</a></span><span class="op">(</span></span>
+<span>    age_s <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="op">-</span><span class="fl">2</span>, <span class="fl">5</span>, length <span class="op">=</span> <span class="fl">100</span><span class="op">)</span>,</span>
+<span>    gender <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"f"</span>, <span class="st">"m"</span><span class="op">)</span>,</span>
+<span>    nwords <span class="op">=</span> <span class="fl">1000</span></span>
+<span>  <span class="op">)</span>,</span>
+<span>  re.form <span class="op">=</span> <span class="cn">NA</span>,</span>
+<span>  type <span class="op">=</span> <span class="st">"response"</span></span>
+<span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble</a></span><span class="op">(</span><span class="op">)</span><span class="op">-&gt;</span></span>
+<span>  <span class="va">fp_pred</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">fp_pred</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>age <span class="op">=</span> <span class="op">(</span><span class="va">age_s</span> <span class="op">*</span> <span class="fl">10</span><span class="op">)</span> <span class="op">+</span> <span class="fl">40</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">age</span>, <span class="va">estimate</span>, color <span class="op">=</span> <span class="va">gender</span>, fill <span class="op">=</span> <span class="va">gender</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_ribbon.html">geom_ribbon</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>ymin <span class="op">=</span> <span class="va">conf.low</span>, ymax <span class="op">=</span> <span class="va">conf.high</span><span class="op">)</span>,</span>
+<span>                alpha <span class="op">=</span> <span class="fl">0.3</span><span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_color_brewer</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"Dark2"</span><span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_fill_brewer</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"Dark2"</span><span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>y <span class="op">=</span> <span class="st">"filled pauses per 1,000 words"</span><span class="op">)</span><span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 

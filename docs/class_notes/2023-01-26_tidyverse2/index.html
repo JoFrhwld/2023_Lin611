@@ -408,7 +408,7 @@ Work it out
 <section id="getting-monthly-temperature-data" class="level3"><h3 class="anchored" data-anchor-id="getting-monthly-temperature-data">Getting monthly temperature data</h3>
 <div class="cell">
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">lex_temp</span> <span class="op">&lt;-</span> </span>
-<span>  <span class="fu"><a href="https://docs.ropensci.org/nasapower/reference/get_power.html">get_power</a></span><span class="op">(</span></span>
+<span>  <span class="fu">get_power</span><span class="op">(</span></span>
 <span>    community <span class="op">=</span> <span class="st">"ag"</span>,</span>
 <span>    temporal_api <span class="op">=</span> <span class="st">"monthly"</span>,</span>
 <span>    pars <span class="op">=</span> <span class="st">"T2M"</span>,</span>
@@ -536,13 +536,13 @@ Work it out
 </div>
 </div>
 </section></section><section id="untidy-data-examples" class="level2"><h2 class="anchored" data-anchor-id="untidy-data-examples">Untidy data examples</h2>
-<p>Source: <a href="https://www.jvcasillas.com/untidydata/">untidydata</a> by Joseph Casillas</p>
+<p>Source: <code>{untidydata}</code> by Joseph Casillas</p>
 <div class="cell">
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"devtools"</span><span class="op">)</span></span>
-<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"jvcasillas/untidydata"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"jvcasillas/untidydata"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://www.jvcasillas.com/untidydata/">untidydata</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">untidydata</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This is just the <code>nettle</code> dataset all over again, but starts out “long”</p>
 <div class="cell">
@@ -574,11 +574,11 @@ Work it out
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Using a <code>pivot _*()</code> functions, convert the <code><a href="https://www.jvcasillas.com/untidydata/reference/language_diversity.html">untidydata::language_diversity</a></code> data to the format we’ve seen the Nettle data in.</p>
+<p>Using a <code>pivot _*()</code> functions, convert the <code>untidydata::language_diversity</code> data to the format we’ve seen the Nettle data in.</p>
 </div>
 </div>
 </section><section id="stretch-goals" class="level2"><h2 class="anchored" data-anchor-id="stretch-goals">Stretch goals</h2>
-<p>Here’s Spanish vowel data, also from <a href="https://www.jvcasillas.com/untidydata/">untidydata</a>.</p>
+<p>Here’s Spanish vowel data, also from <code>{untidydata}</code>.</p>
 <div class="cell">
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">spanish_vowels</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">

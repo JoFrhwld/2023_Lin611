@@ -386,7 +386,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span>  <span class="co">## once per simulation.</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
 <span>    rolls <span class="op">=</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map</a></span><span class="op">(</span></span>
-<span>      <span class="va">sim</span>, \<span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/pkg/droll/man/roll.html">rroll</a></span><span class="op">(</span><span class="fl">10</span>, <span class="va">d6</span><span class="op">)</span></span>
+<span>      <span class="va">sim</span>, \<span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu">rroll</span><span class="op">(</span><span class="fl">10</span>, <span class="va">d6</span><span class="op">)</span></span>
 <span>    <span class="op">)</span></span>
 <span>  <span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="co">## This counts how many times 1 and 6</span></span>
